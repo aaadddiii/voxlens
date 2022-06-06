@@ -1,2 +1,2 @@
-# blind-app
-app for blind people 
+# Voxlens
+app for visually impaired people 
