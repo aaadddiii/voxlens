@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+
+class Main_menu extends StatelessWidget {
+  const Main_menu({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[600],
+        title: Text('Voxlens'),
+        centerTitle: true,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Flexible(child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: Container(
+                child: Text('doc reader'),
+                padding: EdgeInsets.all(30.0),
+                margin: EdgeInsets.all(20.0),
+                color: Colors.grey[600],
+              )),
+              Expanded(child: Container(
+                child: Text('navigation'),
+                padding: EdgeInsets.all(30.0),
+                margin: EdgeInsets.all(20.0),
+                color: Colors.grey[600],
+              )),
+            ],
+          ),
+          flex: 2,),
+          Flexible(child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(child: Container(
+                child: Text('Currency Detector'),
+                padding: EdgeInsets.all(30.0),
+                margin: EdgeInsets.all(20.0),
+                color: Colors.grey[600],
+              )),
+              Expanded(child: Container(
+                child: Text('Face detection'),
+                padding: EdgeInsets.all(30.0),
+                margin: EdgeInsets.all(20.0),
+                color: Colors.grey[600],
+              )),
+            ],
+          ),
+          flex: 2,),
+          Flexible(child: Expanded(child: Container(
+            child: Text('Favorites'),
+            padding: EdgeInsets.all(30.0),
+            margin: EdgeInsets.all(20.0),
+            color: Colors.grey[600],
+          )),
+          flex: 1,)
+        ],
+      )
+    );
+  }
+}
