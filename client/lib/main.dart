@@ -6,6 +6,3 @@ void main() {
     home: Home()
   ));
 }
-
-
-
