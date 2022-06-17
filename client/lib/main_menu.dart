@@ -1,4 +1,3 @@
-import 'package:client/currency_detector.dart';
 import 'package:flutter/material.dart';
 import 'document_reader.dart';
 import 'currency_detector.dart';

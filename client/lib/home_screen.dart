@@ -28,10 +28,11 @@ class Home extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Text('Start'),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) {
-                return Main_menu();
-              }));
+          // Navigator.push(context,
+          //     MaterialPageRoute(builder: (context) {
+          //       return Main_menu();
+          //     }));
+          STT().startListening();
         },
         backgroundColor: Colors.grey[600],
       ),
