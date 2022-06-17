@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
+import 'tts.dart';
 
 class Doc_Reader extends StatefulWidget {
   const Doc_Reader({Key? key}) : super(key: key);
@@ -69,6 +70,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
   void getImage() async{
     try{
       final pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+      print("Hi");
       if(pickedImage != null){
         imageFile = pickedImage;
         recognizeText(pickedImage);
@@ -85,9 +87,11 @@ class _Doc_ReaderState extends State<Doc_Reader> {
     scannedText = "";
     for(TextBlock block in recognizedText.blocks){
       for(TextLine line in block.lines){
+        TTS().speak(line.text);
         scannedText = scannedText + line.text + "\n";
       }
     }
     print(scannedText);
+    // TTS().speak(scannedText);
   }
 }

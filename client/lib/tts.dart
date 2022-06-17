@@ -5,7 +5,7 @@ class TTS {
   final FlutterTts tts = FlutterTts();
   TTS() {
     tts.setLanguage('en');
-    tts.setSpeechRate(0.4);
+    tts.setSpeechRate(0.3);
   }
   void speak(String text){
     tts.speak(text);
