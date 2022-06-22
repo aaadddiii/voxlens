@@ -28,24 +28,24 @@ class _Doc_ReaderState extends State<Doc_Reader> {
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Expanded(
+                  child: Container(
+                    child: Text('Upload doc'),
+                    padding: EdgeInsets.all(30.0),
+                    margin: EdgeInsets.all(20.0),
+                    color: Colors.grey[600],
+                  )),
               GestureDetector(
                 onTap: () {
-                  getImage();
+                  getImage(1);
                 },
-                child: Expanded(
-                    child: Container(
-                      child: Text('Upload doc'),
-                      padding: EdgeInsets.all(30.0),
-                      margin: EdgeInsets.all(20.0),
-                      color: Colors.grey[600],
-                    )),
+                child: Expanded(child: Container(
+                  child: Text('Upload image'),
+                  padding: EdgeInsets.all(30.0),
+                  margin: EdgeInsets.all(20.0),
+                  color: Colors.grey[600],
+                )),
               ),
-              Expanded(child: Container(
-                child: Text('Uplad image'),
-                padding: EdgeInsets.all(30.0),
-                margin: EdgeInsets.all(20.0),
-                color: Colors.grey[600],
-              )),
             ],
           ),
             flex: 2,),
@@ -60,17 +60,23 @@ class _Doc_ReaderState extends State<Doc_Reader> {
       floatingActionButton: FloatingActionButton(
         child: Text('Camera'),
         onPressed: () {
-          print('camera');
+          getImage(0);
         },
         backgroundColor: Colors.grey[600],
       ),
     );
   }
 
-  void getImage() async{
+  void getImage(int stch) async{
     try{
-      final pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-      print("Hi");
+
+      final pickedImage;
+      if(stch == 1){
+        pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+      }
+      else{
+        pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
+      }
       if(pickedImage != null){
         imageFile = pickedImage;
         recognizeText(pickedImage);
