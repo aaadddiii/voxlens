@@ -20,5 +20,6 @@ class STT{
   }
   void _onSpeechResult(SpeechRecognitionResult result) {
     print(result.recognizedWords);
+
   }
 }
