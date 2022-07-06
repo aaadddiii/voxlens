@@ -7,7 +7,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[600],
+        backgroundColor: Colors.red[300],
         title: Text('Voxlens'),
         centerTitle: true,
       ),
