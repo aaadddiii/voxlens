@@ -10,7 +10,7 @@ class Main_menu extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red[300],
-        title: Text('Voxlens'),
+        title: Text('VoxLens'),
         centerTitle: true,
       ),
       body: Column(
