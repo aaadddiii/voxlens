@@ -32,6 +32,7 @@ class Main_menu extends StatelessWidget {
                   padding: EdgeInsets.all(30.0),
                   margin: EdgeInsets.all(20.0),
                   color: Colors.red[300],
+
                 )),
               ),
               GestureDetector(
