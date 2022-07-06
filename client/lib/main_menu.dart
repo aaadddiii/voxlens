@@ -9,7 +9,7 @@ class Main_menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[600],
+        backgroundColor: Colors.red[300],
         title: Text('Voxlens'),
         centerTitle: true,
       ),
@@ -31,7 +31,7 @@ class Main_menu extends StatelessWidget {
                   child: Text('doc reader'),
                   padding: EdgeInsets.all(30.0),
                   margin: EdgeInsets.all(20.0),
-                  color: Colors.grey[600],
+                  color: Colors.red[300],
                 )),
               ),
               GestureDetector(
@@ -42,7 +42,7 @@ class Main_menu extends StatelessWidget {
                   child: Text('navigation'),
                   padding: EdgeInsets.all(30.0),
                   margin: EdgeInsets.all(20.0),
-                  color: Colors.grey[600],
+                  color: Colors.red[300],
                 )),
               ),
             ],
@@ -63,14 +63,14 @@ class Main_menu extends StatelessWidget {
                   child: Text('Currency Detect'),
                   padding: EdgeInsets.all(30.0),
                   margin: EdgeInsets.all(20.0),
-                  color: Colors.grey[600],
+                  color: Colors.red[300],
                 )),
               ),
               Expanded(child: Container(
                 child: Text('Face detection'),
                 padding: EdgeInsets.all(30.0),
                 margin: EdgeInsets.all(20.0),
-                color: Colors.grey[600],
+                color: Colors.red[300],
               )),
             ],
           ),
@@ -79,7 +79,7 @@ class Main_menu extends StatelessWidget {
             child: Text('Favorites'),
             padding: EdgeInsets.all(30.0),
             margin: EdgeInsets.all(20.0),
-            color: Colors.grey[600],
+            color: Colors.red[300],
           )),
           flex: 1,)
         ],
