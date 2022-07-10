@@ -48,29 +48,40 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => TTS().speak("Welcome to Voxlens!!Shall we start?"));
+        .addPostFrameCallback((_) => TTS().speak("Welcome to Voxlens!!Press Start on the bottom right to begin"));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[600],
+        backgroundColor: Colors.red[300],
         title: Text('Voxlens'),
         centerTitle: true,
       ),
       body: Center(
+// <<<<<<< HEAD
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Text(
-            'Voxlens',
+          'Voxlens',
             style: TextStyle(
-              fontSize: 35.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 10.0,
-              color: Colors.grey[600],
-              fontFamily: 'Anton',
+            fontSize: 35.0,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 5.0,
+            color: Colors.red[300],
+            fontFamily: 'Georgia',
             ),
+// =======
+//         child: Text(
+//           'Voxlens',
+//           style: TextStyle(
+//             fontSize: 35.0,
+//             fontWeight: FontWeight.bold,
+//             letterSpacing: 5.0,
+//             color: Colors.red[300],
+//             fontFamily: 'Georgia',
+// >>>>>>> main
           ),
         GestureDetector(
 
@@ -92,6 +103,21 @@ class _HomeState extends State<Home> {
         ),]
         ),
       ),
+
+      // floatingActionButton: FloatingActionButton(
+      //   child: Text('Start'),
+      //   onPressed: () {
+      //     Navigator.push(context,
+      //         MaterialPageRoute(builder: (context) {
+      //           return Main_menu();
+      //         }));
+      //      // STT().startListening() ;
+      //
+      //   },
+
+      //   backgroundColor: Colors.red[300],
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
     );
   }

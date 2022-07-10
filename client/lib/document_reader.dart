@@ -17,7 +17,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[600],
+        backgroundColor: Colors.red[300],
         title: Text('Voxlens'),
         centerTitle: true,
       ),
@@ -33,7 +33,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                     child: Text('Upload doc'),
                     padding: EdgeInsets.all(30.0),
                     margin: EdgeInsets.all(20.0),
-                    color: Colors.grey[600],
+                    color: Colors.red[300],
                   )),
               GestureDetector(
                 onTap: () {
@@ -43,7 +43,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   child: Text('Upload image'),
                   padding: EdgeInsets.all(30.0),
                   margin: EdgeInsets.all(20.0),
-                  color: Colors.grey[600],
+                  color: Colors.red[300],
                 )),
               ),
             ],
@@ -53,7 +53,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
             child: Text('Scan document'),
             padding: EdgeInsets.all(30.0),
             margin: EdgeInsets.all(20.0),
-            color: Colors.grey[600],
+            color: Colors.red[300],
           )),
             flex: 1,)
         ],),
@@ -62,7 +62,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
         onPressed: () {
           getImage(0);
         },
-        backgroundColor: Colors.grey[600],
+        backgroundColor: Colors.red[300],
       ),
     );
   }
