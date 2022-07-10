@@ -83,7 +83,8 @@ class Main_menu extends StatelessWidget {
           )),
           flex: 1,)
         ],
-      )
+      ),
+
     );
   }
 }

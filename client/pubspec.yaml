@@ -38,7 +38,7 @@ dependencies:
   google_ml_kit:
   image_picker:
   speech_to_text:
-
+  alan_voice: 3.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
