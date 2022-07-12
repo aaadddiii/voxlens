@@ -53,7 +53,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                       decoration: BoxDecoration(
                           color: Colors.grey[900],
                           border: Border.all(width: 3,color: Colors.white),
-                          borderRadius: BorderRadius.all(Radius.circular(15))
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
                       ),
                     )),
               ),
@@ -72,7 +73,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
                       border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15))
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
                   ),
                 )),
               ),
@@ -94,7 +96,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
               decoration: BoxDecoration(
                 color: Colors.grey[900],
                 border: Border.all(width: 3,color: Colors.white),
-                borderRadius: BorderRadius.all(Radius.circular(15))
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
               ),
             )),
           )

@@ -39,7 +39,8 @@ class Main_menu extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
                       border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15))
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
                   ),
                 )),
               ),
@@ -58,7 +59,8 @@ class Main_menu extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
                       border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15))
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
                   ),
                 )),
               ),
@@ -77,7 +79,7 @@ class Main_menu extends StatelessWidget {
                       }));
                 },
                 child: Expanded(child: Container(
-                  child: Text('Currency Detect',
+                  child: Text('Currency Detector',
                     style: TextStyle(
                         color: Colors.white
                     ),),
@@ -87,7 +89,8 @@ class Main_menu extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
                       border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15))
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
                   ),
                 )),
               ),
@@ -103,7 +106,8 @@ class Main_menu extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.grey[900],
                     border: Border.all(width: 3,color: Colors.white),
-                    borderRadius: BorderRadius.all(Radius.circular(15))
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
                 ),
               )),
             ],
@@ -121,7 +125,8 @@ class Main_menu extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.grey[900],
                   border: Border.all(width: 3,color: Colors.white),
-                  borderRadius: BorderRadius.all(Radius.circular(15))
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
               ),
             )),
             flex: 1,),
