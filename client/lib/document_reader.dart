@@ -1,7 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'tts.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:read_pdf_text/read_pdf_text.dart';
+
+
 
 class Doc_Reader extends StatefulWidget {
   const Doc_Reader({Key? key}) : super(key: key);
@@ -28,13 +33,18 @@ class _Doc_ReaderState extends State<Doc_Reader> {
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                  child: Container(
-                    child: Text('Upload doc'),
-                    padding: EdgeInsets.all(30.0),
-                    margin: EdgeInsets.all(20.0),
-                    color: Colors.red[300],
-                  )),
+              GestureDetector(
+                onTap: (){
+                  getPdf();
+                },
+                child: Expanded(
+                    child: Container(
+                      child: Text('Upload doc'),
+                      padding: EdgeInsets.all(30.0),
+                      margin: EdgeInsets.all(20.0),
+                      color: Colors.red[300],
+                    )),
+              ),
               GestureDetector(
                 onTap: () {
                   getImage(1);
@@ -100,4 +110,30 @@ class _Doc_ReaderState extends State<Doc_Reader> {
     print(scannedText);
     // TTS().speak(scannedText);
   }
+}
+
+void getPdf() async{
+  FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+  if (result != null) {
+    PlatformFile file = result.files.first;
+    print(getPDFtextPaginated(file.path as String));
+  } else {
+    // User canceled the picker
+    print("failure");
+  }
+}
+//
+// Future<String> getPDFtext(String path) async {
+//   String text = "";
+//   text = await ReadPdfText.getPDFtext(path);
+//   print(text + ">>>> text");
+//   return text;
+// }
+
+Future<List<String>> getPDFtextPaginated(String path) async {
+  List<String> textList = List<String>.empty();
+  textList = await ReadPdfText.getPDFtextPaginated(path);
+  // print(textList);
+  return textList;
 }
