@@ -40,6 +40,9 @@ class _HomeState extends State<Home> {
       case "back":
         Navigator.pop(context);
         break;
+      case "stop":
+        TTS().stop();
+        break;
       default:
         debugPrint("Unknown command");
     }
@@ -48,7 +51,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => TTS().speak("Welcome to Voxlens!!Press Start on the bottom right to begin"));
+        .addPostFrameCallback((_) => TTS().speak("Welcome"));
   }
 
   @override

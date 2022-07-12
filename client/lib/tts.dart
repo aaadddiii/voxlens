@@ -10,4 +10,7 @@ class TTS {
   void speak(String text){
     tts.speak(text);
   }
+  void stop(){
+    tts.stop();
+  }
 }
