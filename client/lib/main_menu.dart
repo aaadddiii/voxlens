@@ -8,8 +8,9 @@ class Main_menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[700],
       appBar: AppBar(
-        backgroundColor: Colors.red[300],
+        backgroundColor: Colors.grey[900],
         title: Text('Voxlens'),
         centerTitle: true,
       ),
@@ -28,10 +29,18 @@ class Main_menu extends StatelessWidget {
                       }));
                 },
                 child: Expanded(child: Container(
-                  child: Text('doc reader'),
-                  padding: EdgeInsets.all(30.0),
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.red[300],
+                  child: Text('doc reader',
+                    style: TextStyle(
+                        color: Colors.white
+                    ),),
+                  padding: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.all(10.0),
+                  // color: Colors.red[300],
+                  decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      border: Border.all(width: 3,color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+                  ),
                 )),
               ),
               GestureDetector(
@@ -39,10 +48,18 @@ class Main_menu extends StatelessWidget {
                   TTS().speak("navigation");
                 },
                 child: Expanded(child: Container(
-                  child: Text('navigation'),
-                  padding: EdgeInsets.all(30.0),
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.red[300],
+                  child: Text('navigation',
+                    style: TextStyle(
+                        color: Colors.white
+                    ),),
+                  padding: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.all(10.0),
+                  // color: Colors.red[300],
+                  decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      border: Border.all(width: 3,color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+                  ),
                 )),
               ),
             ],
@@ -60,28 +77,55 @@ class Main_menu extends StatelessWidget {
                       }));
                 },
                 child: Expanded(child: Container(
-                  child: Text('Currency Detect'),
-                  padding: EdgeInsets.all(30.0),
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.red[300],
+                  child: Text('Currency Detect',
+                    style: TextStyle(
+                        color: Colors.white
+                    ),),
+                  padding: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.all(10.0),
+                  // color: Colors.red[300],
+                  decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      border: Border.all(width: 3,color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+                  ),
                 )),
               ),
               Expanded(child: Container(
-                child: Text('Face detection'),
-                padding: EdgeInsets.all(30.0),
-                margin: EdgeInsets.all(20.0),
-                color: Colors.red[300],
+                child: Text('Face detection',
+                  style: TextStyle(
+                      color: Colors.white
+                  ),
+                ),
+                padding: EdgeInsets.all(20.0),
+                margin: EdgeInsets.all(10.0),
+                // color: Colors.red[300],
+                decoration: BoxDecoration(
+                    color: Colors.grey[900],
+                    border: Border.all(width: 3,color: Colors.white),
+                    borderRadius: BorderRadius.all(Radius.circular(15))
+                ),
               )),
             ],
           ),
           flex: 2,),
-          Flexible(child: Expanded(child: Container(
-            child: Text('Favorites'),
-            padding: EdgeInsets.all(30.0),
-            margin: EdgeInsets.all(20.0),
-            color: Colors.red[300],
-          )),
-          flex: 1,)
+          GestureDetector(
+            child: Flexible(child: Expanded(child: Container(
+              child: Text('Favorites',
+                style: TextStyle(
+                    color: Colors.white
+                ),),
+              padding: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
+              // color: Colors.red[300],
+              decoration: BoxDecoration(
+                  color: Colors.grey[900],
+                  border: Border.all(width: 3,color: Colors.white),
+                  borderRadius: BorderRadius.all(Radius.circular(15))
+              ),
+            )),
+            flex: 1,),
+          )
         ],
       ),
 

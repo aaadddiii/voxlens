@@ -21,9 +21,13 @@ class _Doc_ReaderState extends State<Doc_Reader> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[700],
       appBar: AppBar(
-        backgroundColor: Colors.red[300],
-        title: Text('Voxlens'),
+        backgroundColor: Colors.grey[900],
+        title: Text('Voxlens',
+        style: TextStyle(
+          color: Colors.white
+        ),),
         centerTitle: true,
       ),
       body: Column(
@@ -39,10 +43,18 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 },
                 child: Expanded(
                     child: Container(
-                      child: Text('Upload doc'),
-                      padding: EdgeInsets.all(30.0),
-                      margin: EdgeInsets.all(20.0),
-                      color: Colors.red[300],
+                      child: Text('Upload doc',
+                        style: TextStyle(
+                            color: Colors.white
+                        ),),
+                      padding: EdgeInsets.all(20.0),
+                      margin: EdgeInsets.all(10.0),
+                      // color: Colors.grey[900],
+                      decoration: BoxDecoration(
+                          color: Colors.grey[900],
+                          border: Border.all(width: 3,color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(15))
+                      ),
                     )),
               ),
               GestureDetector(
@@ -50,30 +62,43 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   getImage(1);
                 },
                 child: Expanded(child: Container(
-                  child: Text('Upload image'),
-                  padding: EdgeInsets.all(30.0),
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.red[300],
+                  child: Text('Upload image',
+                    style: TextStyle(
+                        color: Colors.white
+                    ),),
+                  padding: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.all(10.0),
+                  // color: Colors.grey[900],
+                  decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      border: Border.all(width: 3,color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+                  ),
                 )),
               ),
             ],
           ),
             flex: 2,),
-          Flexible(child: Expanded(child: Container(
-            child: Text('Scan document'),
-            padding: EdgeInsets.all(30.0),
-            margin: EdgeInsets.all(20.0),
-            color: Colors.red[300],
-          )),
-            flex: 1,)
+          GestureDetector(
+            onTap: (){
+              getImage(0);
+            },
+            child: Expanded(child: Container(
+              child: Text('Scan document',
+                style: TextStyle(
+                    color: Colors.white
+                ),),
+              padding: EdgeInsets.all(20.0),
+              margin: EdgeInsets.all(10.0),
+              // color: Colors.red[300],
+              decoration: BoxDecoration(
+                color: Colors.grey[900],
+                border: Border.all(width: 3,color: Colors.white),
+                borderRadius: BorderRadius.all(Radius.circular(15))
+              ),
+            )),
+          )
         ],),
-      floatingActionButton: FloatingActionButton(
-        child: Text('Camera'),
-        onPressed: () {
-          getImage(0);
-        },
-        backgroundColor: Colors.red[300],
-      ),
     );
   }
 
