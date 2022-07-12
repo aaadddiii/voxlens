@@ -133,7 +133,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
       }
     }
     print(scannedText);
-    // TTS().speak(scannedText);
+    TTS().speak(scannedText);
   }
 }
 
@@ -142,7 +142,7 @@ void getPdf() async{
 
   if (result != null) {
     PlatformFile file = result.files.first;
-    print(getPDFtextPaginated(file.path as String));
+    getPDFtextPaginated(file.path as String);
   } else {
     // User canceled the picker
     print("failure");
@@ -156,9 +156,11 @@ void getPdf() async{
 //   return text;
 // }
 
-Future<List<String>> getPDFtextPaginated(String path) async {
+void getPDFtextPaginated(String path) async {
   List<String> textList = List<String>.empty();
   textList = await ReadPdfText.getPDFtextPaginated(path);
-  // print(textList);
-  return textList;
+  print(textList);
+  for(String page in textList){
+    TTS().speak(page);
+  }
 }
