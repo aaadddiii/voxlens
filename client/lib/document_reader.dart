@@ -11,8 +11,8 @@ class Doc_Reader extends StatefulWidget {
 }
 
 class _Doc_ReaderState extends State<Doc_Reader> {
-  XFile? imageFile;
-  String scannedText="";
+  // XFile? imageFile;
+  // String scannedText="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,37 +67,74 @@ class _Doc_ReaderState extends State<Doc_Reader> {
     );
   }
 
-  void getImage(int stch) async{
-    try{
+  // void getImage(int stch) async{
+  //   try{
+  //
+  //     final pickedImage;
+  //     if(stch == 1){
+  //       pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //     }
+  //     else{
+  //       pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
+  //     }
+  //     if(pickedImage != null){
+  //       imageFile = pickedImage;
+  //       recognizeText(pickedImage);
+  //     }
+  //   } catch(e){
+  //     print("Error occured");
+  //   }
+  // }
+  // void recognizeText(XFile image) async{
+  //   final inputImage = InputImage.fromFilePath(image.path);
+  //   final textDetector = GoogleMlKit.vision.textRecognizer();
+  //   RecognizedText recognizedText = await textDetector.processImage(inputImage);
+  //   await textDetector.close();
+  //   scannedText = "";
+  //   for(TextBlock block in recognizedText.blocks){
+  //     for(TextLine line in block.lines){
+  //       TTS().speak(line.text);
+  //       scannedText = scannedText + line.text + "\n";
+  //     }
+  //   }
+  //   print(scannedText);
+  //   // TTS().speak(scannedText);
+  // }
+}
 
-      final pickedImage;
-      if(stch == 1){
-        pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-      }
-      else{
-        pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
-      }
-      if(pickedImage != null){
-        imageFile = pickedImage;
-        recognizeText(pickedImage);
-      }
-    } catch(e){
-      print("Error occured");
+XFile? imageFile;
+String scannedText="";
+
+void getImage(int stch) async{
+  try{
+
+    final pickedImage;
+    if(stch == 1){
+      pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    }
+    else{
+      pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
+    }
+    if(pickedImage != null){
+      imageFile = pickedImage;
+      recognizeText(pickedImage);
+    }
+  } catch(e){
+    print("Error occured");
+  }
+}
+void recognizeText(XFile image) async{
+  final inputImage = InputImage.fromFilePath(image.path);
+  final textDetector = GoogleMlKit.vision.textRecognizer();
+  RecognizedText recognizedText = await textDetector.processImage(inputImage);
+  await textDetector.close();
+  scannedText = "";
+  for(TextBlock block in recognizedText.blocks){
+    for(TextLine line in block.lines){
+      TTS().speak(line.text);
+      scannedText = scannedText + line.text + "\n";
     }
   }
-  void recognizeText(XFile image) async{
-    final inputImage = InputImage.fromFilePath(image.path);
-    final textDetector = GoogleMlKit.vision.textRecognizer();
-    RecognizedText recognizedText = await textDetector.processImage(inputImage);
-    await textDetector.close();
-    scannedText = "";
-    for(TextBlock block in recognizedText.blocks){
-      for(TextLine line in block.lines){
-        TTS().speak(line.text);
-        scannedText = scannedText + line.text + "\n";
-      }
-    }
-    print(scannedText);
-    // TTS().speak(scannedText);
-  }
+  print(scannedText);
+  // TTS().speak(scannedText);
 }

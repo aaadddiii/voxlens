@@ -1,4 +1,4 @@
-import 'package:client/document_reader.dart';
+import 'document_reader.dart';
 import 'package:flutter/material.dart';
 import 'main_menu.dart';
 import 'voice_rec.dart';
@@ -36,7 +36,15 @@ class _HomeState extends State<Home> {
           return Doc_Reader();
         }));
         break;
-
+      case "scan ":
+        getImage(0);
+        break;
+      case "upload_im":
+        getImage(1);
+        break;
+      case "upload_doc":
+        //pdfToText function
+        break;
       case "back":
         Navigator.pop(context);
         break;
@@ -60,7 +68,6 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       body: Center(
-// <<<<<<< HEAD
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Text(
@@ -72,16 +79,7 @@ class _HomeState extends State<Home> {
             color: Colors.red[300],
             fontFamily: 'Georgia',
             ),
-// =======
-//         child: Text(
-//           'Voxlens',
-//           style: TextStyle(
-//             fontSize: 35.0,
-//             fontWeight: FontWeight.bold,
-//             letterSpacing: 5.0,
-//             color: Colors.red[300],
-//             fontFamily: 'Georgia',
-// >>>>>>> main
+
           ),
         GestureDetector(
 
