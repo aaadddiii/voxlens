@@ -112,9 +112,10 @@ class _HomeState extends State<Home> {
           // color: Colors.grey[600],
           decoration: BoxDecoration(
               color: Colors.grey[900],
-              border: Border.all(width: 3,color: Colors.white),
+              // border: Border.all(width: 3,color: Colors.white),
               borderRadius: BorderRadius.all(Radius.circular(15)),
-              boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+            boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+            BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
 
           ),
         )),
