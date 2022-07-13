@@ -1,2 +1,2 @@
 # Voxlens
-app for visually impaired people 
+An app for the visually impaired.
