@@ -108,40 +108,44 @@ class _Doc_ReaderState extends State<Doc_Reader> {
     );
   }
 
-  void getImage(int stch) async{
-    try{
+}
 
-      final pickedImage;
-      if(stch == 1){
-        pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-      }
-      else{
-        pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
-      }
-      if(pickedImage != null){
-        imageFile = pickedImage;
-        recognizeText(pickedImage);
-      }
-    } catch(e){
-      print("Error occured");
+XFile? imageFile;
+String scannedText="";
+void getImage(int stch) async{
+  try{
+
+    final pickedImage;
+    if(stch == 1){
+      pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
     }
-  }
-  void recognizeText(XFile image) async{
-    final inputImage = InputImage.fromFilePath(image.path);
-    final textDetector = GoogleMlKit.vision.textRecognizer();
-    RecognizedText recognizedText = await textDetector.processImage(inputImage);
-    await textDetector.close();
-    scannedText = "";
-    for(TextBlock block in recognizedText.blocks){
-      for(TextLine line in block.lines){
-        TTS().speak(line.text);
-        scannedText = scannedText + line.text + "\n";
-      }
+    else{
+      pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
     }
-    print(scannedText);
-    TTS().speak(scannedText);
+    if(pickedImage != null){
+      imageFile = pickedImage;
+      recognizeText(pickedImage);
+    }
+  } catch(e){
+    print("Error occured");
   }
 }
+void recognizeText(XFile image) async{
+  final inputImage = InputImage.fromFilePath(image.path);
+  final textDetector = GoogleMlKit.vision.textRecognizer();
+  RecognizedText recognizedText = await textDetector.processImage(inputImage);
+  await textDetector.close();
+  scannedText = "";
+  for(TextBlock block in recognizedText.blocks){
+    for(TextLine line in block.lines){
+      TTS().speak(line.text);
+      scannedText = scannedText + line.text + "\n";
+    }
+  }
+  print(scannedText);
+  TTS().speak(scannedText);
+}
+// }
 
 void getPdf() async{
   FilePickerResult? result = await FilePicker.platform.pickFiles();
