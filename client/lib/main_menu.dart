@@ -11,7 +11,7 @@ class Main_menu extends StatelessWidget {
       backgroundColor: Colors.grey[700],
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
-        title: Text('Voxlens'),
+        title: Text('VoxLens'),
         centerTitle: true,
       ),
       body: Column(

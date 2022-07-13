@@ -57,22 +57,25 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Colors.grey[700],
+
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
-        title: Text('Voxlens'),
+        title: Text('VoxLens'),
         centerTitle: true,
+
       ),
       body: Center(
 // <<<<<<< HEAD
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Text(
-          'Voxlens',
+          'VoxLens',
             style: TextStyle(
-            fontSize: 35.0,
+            fontSize: 50.0,
             fontWeight: FontWeight.bold,
-            letterSpacing: 5.0,
+            letterSpacing: 20.0,
             color: Colors.white,
             fontFamily: 'Anton',
             ),
@@ -98,9 +101,11 @@ class _HomeState extends State<Home> {
 
           },
           child: Expanded(child: Container(
-          child: Text('Start',
+          child: Text('START',
             style: TextStyle(
-                color: Colors.white
+                color: Colors.white,
+                fontFamily: 'Open Sans',
+                fontSize: 20
             ),),
           padding: EdgeInsets.all(30.0),
           margin: EdgeInsets.all(20.0),
