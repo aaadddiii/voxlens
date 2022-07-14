@@ -29,7 +29,7 @@ class Main_menu extends StatelessWidget {
                       }));
                 },
                 child: Expanded(child: Container(
-                  child: Text('doc reader',
+                  child: Text('Doc Reader',
                     style: TextStyle(
                         color: Colors.white
                     ),),
@@ -38,9 +38,11 @@ class Main_menu extends StatelessWidget {
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
-                      border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                      border: Border.all(width: 3,color: Colors.black),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+
                   ),
                 )),
               ),
@@ -49,7 +51,7 @@ class Main_menu extends StatelessWidget {
                   TTS().speak("navigation");
                 },
                 child: Expanded(child: Container(
-                  child: Text('navigation',
+                  child: Text('Navigation',
                     style: TextStyle(
                         color: Colors.white
                     ),),
@@ -58,9 +60,10 @@ class Main_menu extends StatelessWidget {
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
-                      border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                      border: Border.all(width: 3,color: Colors.black),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
                   ),
                 )),
               ),
@@ -88,14 +91,15 @@ class Main_menu extends StatelessWidget {
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
-                      border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                    border: Border.all(width: 3,color: Colors.black),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
                   ),
                 )),
               ),
               Expanded(child: Container(
-                child: Text('Face detection',
+                child: Text('Face Detection',
                   style: TextStyle(
                       color: Colors.white
                   ),
@@ -105,9 +109,10 @@ class Main_menu extends StatelessWidget {
                 // color: Colors.red[300],
                 decoration: BoxDecoration(
                     color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.white),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                  border: Border.all(width: 3,color: Colors.black),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
                 ),
               )),
             ],
@@ -115,7 +120,7 @@ class Main_menu extends StatelessWidget {
           flex: 2,),
           GestureDetector(
             child: Flexible(child: Expanded(child: Container(
-              child: Text('Favorites',
+              child: Text('Favourites',
                 style: TextStyle(
                     color: Colors.white
                 ),),
@@ -124,9 +129,10 @@ class Main_menu extends StatelessWidget {
               // color: Colors.red[300],
               decoration: BoxDecoration(
                   color: Colors.grey[900],
-                  border: Border.all(width: 3,color: Colors.white),
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                border: Border.all(width: 3,color: Colors.black),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                  BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
               ),
             )),
             flex: 1,),

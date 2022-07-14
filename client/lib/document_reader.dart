@@ -43,7 +43,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 },
                 child: Expanded(
                     child: Container(
-                      child: Text('Upload doc',
+                      child: Text('Upload Document',
                         style: TextStyle(
                             color: Colors.white
                         ),),
@@ -52,9 +52,10 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
                           color: Colors.grey[900],
-                          border: Border.all(width: 3,color: Colors.white),
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                        border: Border.all(width: 3,color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                          BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
                       ),
                     )),
               ),
@@ -63,7 +64,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   getImage(1);
                 },
                 child: Expanded(child: Container(
-                  child: Text('Upload image',
+                  child: Text('Upload Image',
                     style: TextStyle(
                         color: Colors.white
                     ),),
@@ -72,9 +73,10 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   // color: Colors.grey[900],
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
-                      border: Border.all(width: 3,color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                    border: Border.all(width: 3,color: Colors.black),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
                   ),
                 )),
               ),
@@ -86,7 +88,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
               getImage(0);
             },
             child: Expanded(child: Container(
-              child: Text('Scan document',
+              child: Text('Scan Document',
                 style: TextStyle(
                     color: Colors.white
                 ),),
@@ -95,9 +97,10 @@ class _Doc_ReaderState extends State<Doc_Reader> {
               // color: Colors.red[300],
               decoration: BoxDecoration(
                 color: Colors.grey[900],
-                border: Border.all(width: 3,color: Colors.white),
+                border: Border.all(width: 3,color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(15)),
-                boxShadow : [BoxShadow(color: Colors.white,spreadRadius: 2,blurRadius: 8)],
+                boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                  BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
               ),
             )),
           )
