@@ -2,9 +2,23 @@ import 'package:flutter/material.dart';
 import 'document_reader.dart';
 import 'currency_detector.dart';
 import 'tts.dart';
+import 'package:alan_voice/alan_voice.dart';
 
-class Main_menu extends StatelessWidget {
+class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);
+
+  @override
+  State<Main_menu> createState() => _Main_menuState();
+}
+
+class _Main_menuState extends State<Main_menu> {
+  void initState() {
+    super.initState();
+    AlanVoice.deactivate();
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => TTS().speak("Use doc-reader to read texts and images"));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

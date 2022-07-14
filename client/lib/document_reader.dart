@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'tts.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:read_pdf_text/read_pdf_text.dart';
-
+import 'package:alan_voice/alan_voice.dart';
 
 
 class Doc_Reader extends StatefulWidget {
@@ -16,6 +16,8 @@ class Doc_Reader extends StatefulWidget {
 }
 
 class _Doc_ReaderState extends State<Doc_Reader> {
+
+
   XFile? imageFile;
   String scannedText="";
   @override

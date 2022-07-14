@@ -32,6 +32,8 @@ class _HomeState extends State<Home> {
         }));
         break;
       case "read":
+        AlanVoice.deactivate();
+        TTS().speak("Available options are: Upload document, upload image and scan document");
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return Doc_Reader();
         }));
@@ -69,7 +71,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => TTS().speak("Welcome"));
+        .addPostFrameCallback((_) => TTS().speak("Welcome. Open main menu to find the options"));
   }
 
   @override
