@@ -36,12 +36,13 @@ class _HomeState extends State<Home> {
           return Doc_Reader();
         }));
         break;
-      case "scan ":
+      case "scan":{
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return Doc_Reader();
         }));
         getImage(0);
         break;
+      }
       case "upload_im":
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return Doc_Reader();
