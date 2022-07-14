@@ -83,6 +83,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
 
       ),
+
       body: Center(
 // <<<<<<< HEAD
         child: Column(
@@ -123,6 +124,7 @@ class _HomeState extends State<Home> {
                 color: Colors.white,
                 fontFamily: 'Open Sans',
                 fontSize: 20
+
             ),),
           padding: EdgeInsets.all(30.0),
           margin: EdgeInsets.all(20.0),

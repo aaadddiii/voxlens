@@ -43,7 +43,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 },
                 child: Expanded(
                     child: Container(
-                      child: Text('Upload doc',
+                      child: Text('Upload Document',
                         style: TextStyle(
                             color: Colors.white
                         ),),
@@ -64,7 +64,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   getImage(1);
                 },
                 child: Expanded(child: Container(
-                  child: Text('Upload image',
+                  child: Text('Upload Image',
                     style: TextStyle(
                         color: Colors.white
                     ),),
@@ -88,7 +88,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
               getImage(0);
             },
             child: Expanded(child: Container(
-              child: Text('Scan document',
+              child: Text('Scan Document',
                 style: TextStyle(
                     color: Colors.white
                 ),),

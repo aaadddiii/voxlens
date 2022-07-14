@@ -29,7 +29,7 @@ class Main_menu extends StatelessWidget {
                       }));
                 },
                 child: Expanded(child: Container(
-                  child: Text('doc reader',
+                  child: Text('Doc Reader',
                     style: TextStyle(
                         color: Colors.white
                     ),),
@@ -51,7 +51,7 @@ class Main_menu extends StatelessWidget {
                   TTS().speak("navigation");
                 },
                 child: Expanded(child: Container(
-                  child: Text('navigation',
+                  child: Text('Navigation',
                     style: TextStyle(
                         color: Colors.white
                     ),),
@@ -99,7 +99,7 @@ class Main_menu extends StatelessWidget {
                 )),
               ),
               Expanded(child: Container(
-                child: Text('Face detection',
+                child: Text('Face Detection',
                   style: TextStyle(
                       color: Colors.white
                   ),
@@ -120,7 +120,7 @@ class Main_menu extends StatelessWidget {
           flex: 2,),
           GestureDetector(
             child: Flexible(child: Expanded(child: Container(
-              child: Text('Favorites',
+              child: Text('Favourites',
                 style: TextStyle(
                     color: Colors.white
                 ),),
