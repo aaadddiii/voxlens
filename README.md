@@ -1,2 +1,2 @@
 # Voxlens
-An app for the visually impaired.
+A Flutter application for the visually impaired.
