@@ -49,7 +49,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                         style: TextStyle(
                             color: Colors.white
                         ),),
-                      padding: EdgeInsets.all(20.0),
+                      padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
@@ -70,7 +70,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                     style: TextStyle(
                         color: Colors.white
                     ),),
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(15.0),
                   margin: EdgeInsets.all(10.0),
                   // color: Colors.grey[900],
                   decoration: BoxDecoration(
@@ -94,7 +94,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 style: TextStyle(
                     color: Colors.white
                 ),),
-              padding: EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(15.0),
               margin: EdgeInsets.all(10.0),
               // color: Colors.red[300],
               decoration: BoxDecoration(
