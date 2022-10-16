@@ -3,6 +3,7 @@ import 'document_reader.dart';
 import 'currency_detector.dart';
 import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
+import 'navigation.dart';
 
 class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);
@@ -62,7 +63,11 @@ class _Main_menuState extends State<Main_menu> {
               ),
               GestureDetector(
                 onTap: () {
-                  TTS().speak("navigation");
+                  // TTS().speak("navigation");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return Navigation();
+                      }));
                 },
                 child: Expanded(child: Container(
                   child: Text('Navigation',

@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
 
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
-        title: Text('VoxLens'),
+        title: Text('VoxLens '),
         centerTitle: true,
 
       ),
