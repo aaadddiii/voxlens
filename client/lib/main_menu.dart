@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
 import 'document_reader.dart';
 import 'currency_detector.dart';
 import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
 import 'navigation.dart';
+import 'object_detection.dart';
 
 class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);
@@ -117,23 +119,31 @@ class _Main_menuState extends State<Main_menu> {
                   ),
                 )),
               ),
-              Expanded(child: Container(
-                child: Text('Face Detection',
-                  style: TextStyle(
-                      color: Colors.white
+              GestureDetector(
+                onTap:() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return ObjectDetection();
+                      }));
+                },
+                child: Expanded(child: Container(
+                  child: Text('Object Detection',
+                    style: TextStyle(
+                        color: Colors.white
+                    ),
                   ),
-                ),
-                padding: EdgeInsets.all(20.0),
-                margin: EdgeInsets.all(10.0),
-                // color: Colors.red[300],
-                decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                  border: Border.all(width: 3,color: Colors.black),
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
-                ),
-              )),
+                  padding: EdgeInsets.all(20.0),
+                  margin: EdgeInsets.all(10.0),
+                  // color: Colors.red[300],
+                  decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                    border: Border.all(width: 3,color: Colors.black),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+                  ),
+                )),
+              ),
             ],
           ),
           flex: 2,),
