@@ -52,7 +52,7 @@ class _ObjectDetectionState extends State<ObjectDetection> {
                 },
                 child: Expanded(
                     child: Container(
-                      child: Text('Face Recognition',
+                      child: Text('Object Recognition',
                         style: TextStyle(
                             color: Colors.white
                         ),),
@@ -126,9 +126,9 @@ class _ObjectDetectionState extends State<ObjectDetection> {
         .split('/')
         .last;
     print(fileName);
-    var data = {
-      "image" : image
-    };
+    FormData data = FormData.fromMap({
+      "image": await MultipartFile.fromFile(file.path, filename: fileName)
+    });
     String endPoint = dotenv.env['END_POINT2']!;
     String api_key = dotenv.env['API_KEY2']!;
     Dio dio = new Dio();
