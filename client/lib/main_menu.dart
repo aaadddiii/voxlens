@@ -6,6 +6,7 @@ import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
 import 'navigation.dart';
 import 'object_detection.dart';
+import 'face_recognition/face_ui.dart';
 
 class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);
@@ -107,7 +108,7 @@ class _Main_menuState extends State<Main_menu> {
                     style: TextStyle(
                         color: Colors.white
                     ),),
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(15.0),
                   margin: EdgeInsets.all(10.0),
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
@@ -132,7 +133,7 @@ class _Main_menuState extends State<Main_menu> {
                         color: Colors.white
                     ),
                   ),
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(15.0),
                   margin: EdgeInsets.all(10.0),
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
@@ -148,8 +149,14 @@ class _Main_menuState extends State<Main_menu> {
           ),
           flex: 2,),
           GestureDetector(
+            onTap: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
+                    return FaceUI();
+                  }));
+            },
             child: Flexible(child: Expanded(child: Container(
-              child: Text('Favourites',
+              child: Text('Face Recognition',
                 style: TextStyle(
                     color: Colors.white
                 ),),
