@@ -8,6 +8,10 @@ import 'camera_service.dart';
 import 'package:client/locator.dart';
 import 'face_painter.dart';
 import 'face_detector_service.dart';
+import 'auth-action-button.dart';
+import 'ml_services.dart';
+import 'user_model.dart';
+import 'package:client/tts.dart';
 
 class FaceRec extends StatefulWidget {
   const FaceRec({Key? key}) : super(key: key);
@@ -32,6 +36,7 @@ class FaceRecState extends State<FaceRec> {
   // service injection
   CameraService _cameraService = locator<CameraService>();
   FaceDetectorService _faceDetectorService = locator<FaceDetectorService>();
+  MLService _mlService = locator<MLService>();
   @override
   void initState() {
     super.initState();
@@ -82,7 +87,8 @@ class FaceRecState extends State<FaceRec> {
     }
   }
 
-  _frameFaces() {
+  _frameFaces() async{
+    bool processing = false;
     imageSize = _cameraService.getImageSize();
 
     _cameraService.cameraController?.startImageStream((image) async {
@@ -97,7 +103,7 @@ class FaceRecState extends State<FaceRec> {
               faceDetected = _faceDetectorService.faces[0];
             });
             if (_saving) {
-              // _mlService.setCurrentPrediction(image, faceDetected);
+              _mlService.setCurrentPrediction(image, faceDetected);
               setState(() {
                 _saving = false;
               });
@@ -113,8 +119,26 @@ class FaceRecState extends State<FaceRec> {
           print(e);
           _detectingFaces = false;
         }
+        // if (processing) return; // prevents unnecessary overprocessing.
+        // processing = true;
+        // await _predictFacesFromImage(image: image);
+        // processing = false;
+        // if (_faceDetectorService.faceDetected) {
+        //   User? user = await _mlService.predict();
+        //   String? text = user?.user;
+        //   TTS().speak(text!);
+        // }
       }
     });
+  }
+
+  Future<void> _predictFacesFromImage({@required CameraImage? image}) async {
+    assert(image != null, 'Image is null');
+    await _faceDetectorService.detectFacesFromImage(image!);
+    if (_faceDetectorService.faceDetected) {
+      _mlService.setCurrentPrediction(image, _faceDetectorService.faces[0]);
+    }
+    if (mounted) setState(() {});
   }
 
   _onBackPressed() {
@@ -193,6 +217,14 @@ class FaceRecState extends State<FaceRec> {
           children: [
             body,
           ],
-        ));
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: !_bottomSheetVisible
+            ? AuthActionButton(
+          onPressed: onShot,
+          isLogin: false,
+          reload: _reload,
+        )
+            : Container());
   }
 }

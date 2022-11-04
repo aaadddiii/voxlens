@@ -12,7 +12,6 @@ class DatabaseHelper {
   static final table = 'users';
   static final columnId = 'id';
   static final columnUser = 'user';
-  static final columnPassword = 'password';
   static final columnModelData = 'model_data';
 
   DatabaseHelper._privateConstructor();
@@ -36,7 +35,6 @@ class DatabaseHelper {
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
             $columnUser TEXT NOT NULL,
-            $columnPassword TEXT NOT NULL,
             $columnModelData TEXT NOT NULL
           )
           ''');
