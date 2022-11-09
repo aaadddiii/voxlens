@@ -4,6 +4,10 @@ import 'main_menu.dart';
 import 'voice_rec.dart';
 import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
+import 'package:client/face_recognition/ml_services.dart';
+import 'face_recognition/camera_service.dart';
+import 'face_recognition/face_detector_service.dart';
+import 'locator.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,6 +17,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  MLService _mlService = locator<MLService>();
+  FaceDetectorService _mlKitService = locator<FaceDetectorService>();
+  CameraService _cameraService = locator<CameraService>();
+  bool loading = false;
   @override
   _HomeState() {
     /// Init Alan Button with project key from Alan Studio
@@ -67,11 +75,21 @@ class _HomeState extends State<Home> {
         debugPrint("Unknown command");
     }
   }
-
+  @override
   void initState() {
     super.initState();
+
+    _initializeServices();
     WidgetsBinding.instance
         .addPostFrameCallback((_) => TTS().speak("Welcome. Open main menu to find the options"));
+  }
+
+  _initializeServices() async {
+    setState(() => loading = true);
+    await _cameraService.initialize();
+    await _mlService.initialize();
+    _mlKitService.initialize();
+    setState(() => loading = false);
   }
 
   @override
