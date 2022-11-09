@@ -7,8 +7,8 @@ class TTS {
     tts.setLanguage('en');
     tts.setSpeechRate(0.3);
   }
-  void speak(String text){
-    tts.speak(text);
+  Future speak(String text) async{
+    await tts.speak(text);
   }
   void stop(){
     tts.stop();

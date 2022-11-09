@@ -140,6 +140,8 @@ class FaceRecState extends State<FaceRec> {
           print('its null :(');
         }
         print(u?.user);
+        String? name = u?.user;
+        await TTS().speak(name!);
         print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
       }
     });
