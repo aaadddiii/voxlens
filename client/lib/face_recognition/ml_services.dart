@@ -12,7 +12,7 @@ import 'package:client/tts.dart';
 
 class MLService {
   Interpreter? _interpreter;
-  double threshold = 0.5;
+  double threshold = 0.1;
   List _predictedData = [];
   List get predictedData => _predictedData;
 
@@ -120,12 +120,12 @@ class MLService {
         continue;
       }
       currDist = _euclideanDistance(u.modelData, predictedData);
-      if(currDist == 0.0) {
+      // if(currDist == 0.0) {
         print('currDist');
         print(currDist);
         print(u.modelData);
         print(u.user);
-      }
+      // }
       if (currDist <= threshold && currDist < minDist) {
         minDist = currDist;
         predictedResult = u;

@@ -8,6 +8,7 @@ import 'package:client/face_recognition/ml_services.dart';
 import 'face_recognition/camera_service.dart';
 import 'face_recognition/face_detector_service.dart';
 import 'locator.dart';
+import 'edge_detection/ocr_camera_service.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _HomeState extends State<Home> {
   MLService _mlService = locator<MLService>();
   FaceDetectorService _mlKitService = locator<FaceDetectorService>();
   CameraService _cameraService = locator<CameraService>();
+  OCRCameraService _ocrCameraService = locator<OCRCameraService>();
   bool loading = false;
   @override
   _HomeState() {
@@ -89,6 +91,7 @@ class _HomeState extends State<Home> {
     await _cameraService.initialize();
     await _mlService.initialize();
     _mlKitService.initialize();
+    await _ocrCameraService.initialize();
     setState(() => loading = false);
   }
 
