@@ -10,7 +10,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-
+import 'object_detection/object_detect.dart';
 
 
 class ObjectDetection extends StatefulWidget {
@@ -43,7 +43,7 @@ class _ObjectDetectionState extends State<ObjectDetection> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Flexible(child: Row(
+          Flexible(child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
@@ -75,6 +75,38 @@ class _ObjectDetectionState extends State<ObjectDetection> {
                       ),
                     )),
               ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return OBJ();
+                      }));
+                },
+                child: Expanded(
+                    child: Container(
+                      child: Text('Object Recognition mlkit',
+                        style: TextStyle(
+                            color: Colors.white
+                        ),),
+                      padding: EdgeInsets.all(15.0),
+                      margin: EdgeInsets.all(10.0),
+                      // color: Colors.grey[900],
+                      decoration: BoxDecoration(
+                        color: Colors.grey[900],
+                        border: Border.all(width: 3, color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [BoxShadow(color: Colors.black,
+                            spreadRadius: 2,
+                            blurRadius: 8,
+                            offset: Offset(4, 4)),
+                          BoxShadow(color: Colors.grey,
+                              spreadRadius: 1,
+                              blurRadius: 8,
+                              offset: Offset(-4, -4))
+                        ],
+                      ),
+                    )),
+              )
             ],
           ),
             flex: 2,)

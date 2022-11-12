@@ -1,4 +1,5 @@
 import 'package:client/document_reader.dart';
+import 'package:client/object_detection/obj_camera_service.dart';
 import 'package:flutter/material.dart';
 import 'main_menu.dart';
 import 'voice_rec.dart';
@@ -9,6 +10,7 @@ import 'face_recognition/camera_service.dart';
 import 'face_recognition/face_detector_service.dart';
 import 'locator.dart';
 import 'edge_detection/ocr_camera_service.dart';
+import 'object_detection/object_detect.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,6 +24,7 @@ class _HomeState extends State<Home> {
   FaceDetectorService _mlKitService = locator<FaceDetectorService>();
   CameraService _cameraService = locator<CameraService>();
   OCRCameraService _ocrCameraService = locator<OCRCameraService>();
+  OBJCameraService _objCameraService = locator<OBJCameraService>();
   bool loading = false;
   @override
   _HomeState() {
@@ -92,6 +95,7 @@ class _HomeState extends State<Home> {
     await _mlService.initialize();
     _mlKitService.initialize();
     await _ocrCameraService.initialize();
+    await _objCameraService.initialize();
     setState(() => loading = false);
   }
 
