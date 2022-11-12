@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'document_reader.dart';
 import 'currency_detector.dart';
+import 'object_detection/object_detector.dart';
 import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
 import 'navigation.dart';
-import 'object_detection.dart';
+import 'object_detection/object_detector.dart';
 import 'face_recognition/face_ui.dart';
 
 class Main_menu extends StatefulWidget {
@@ -69,7 +70,7 @@ class _Main_menuState extends State<Main_menu> {
                   // TTS().speak("navigation");
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
-                        return Navigation();
+                        return ObjectDetectorView();
                       }));
                 },
                 child: Expanded(child: Container(
@@ -121,12 +122,12 @@ class _Main_menuState extends State<Main_menu> {
                 )),
               ),
               GestureDetector(
-                onTap:() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                        return ObjectDetection();
-                      }));
-                },
+                // onTap:() {
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) {
+                //         return ObjectDetection();
+                //       }));
+                // },
                 child: Expanded(child: Container(
                   child: Text('Object Detection',
                     style: TextStyle(
