@@ -6,7 +6,7 @@ import 'tts.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:read_pdf_text/read_pdf_text.dart';
 import 'package:alan_voice/alan_voice.dart';
-
+import 'edge_detection/ocr_detection.dart';
 
 class Doc_Reader extends StatefulWidget {
   const Doc_Reader({Key? key}) : super(key: key);
@@ -91,6 +91,30 @@ class _Doc_ReaderState extends State<Doc_Reader> {
             },
             child: Expanded(child: Container(
               child: Text('Scan Document',
+                style: TextStyle(
+                    color: Colors.white
+                ),),
+              padding: EdgeInsets.all(15.0),
+              margin: EdgeInsets.all(10.0),
+              // color: Colors.red[300],
+              decoration: BoxDecoration(
+                color: Colors.grey[900],
+                border: Border.all(width: 3,color: Colors.black),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                  BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+              ),
+            )),
+          ),
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
+                    return OCR();
+                  }));
+            },
+            child: Expanded(child: Container(
+              child: Text('realtime ocr',
                 style: TextStyle(
                     color: Colors.white
                 ),),

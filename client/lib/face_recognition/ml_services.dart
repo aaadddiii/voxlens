@@ -8,38 +8,42 @@ import 'convert_image.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:image/image.dart' as imglib;
+import 'package:client/tts.dart';
 
 class MLService {
   Interpreter? _interpreter;
-  double threshold = 0.5;
+  double threshold = 0.1;
   List _predictedData = [];
   List get predictedData => _predictedData;
 
   Future initialize() async {
     late Delegate delegate;
     try {
-      if (Platform.isAndroid) {
-        delegate = GpuDelegateV2(
-          options: GpuDelegateOptionsV2(
-            isPrecisionLossAllowed: false,
-            inferencePreference: TfLiteGpuInferenceUsage.fastSingleAnswer,
-            inferencePriority1: TfLiteGpuInferencePriority.minLatency,
-            inferencePriority2: TfLiteGpuInferencePriority.auto,
-            inferencePriority3: TfLiteGpuInferencePriority.auto,
-          ),
-        );
-      } else if (Platform.isIOS) {
-        delegate = GpuDelegate(
-          options: GpuDelegateOptions(
-              allowPrecisionLoss: true,
-              waitType: TFLGpuDelegateWaitType.active),
-        );
-      }
-      var interpreterOptions = InterpreterOptions()..addDelegate(delegate);
-
-      this._interpreter = await Interpreter.fromAsset('mobilefacenet.tflite',
-          options: interpreterOptions);
+      // if (Platform.isAndroid) {
+      //   delegate = GpuDelegateV2(
+      //     options: GpuDelegateOptionsV2(
+      //       isPrecisionLossAllowed: false,
+      //       inferencePreference: TfLiteGpuInferenceUsage.fastSingleAnswer,
+      //       inferencePriority1: TfLiteGpuInferencePriority.minLatency,
+      //       inferencePriority2: TfLiteGpuInferencePriority.auto,
+      //       inferencePriority3: TfLiteGpuInferencePriority.auto,
+      //     ),
+      //   );
+      // } else if (Platform.isIOS) {
+      //   delegate = GpuDelegate(
+      //     options: GpuDelegateOptions(
+      //         allowPrecisionLoss: true,
+      //         waitType: TFLGpuDelegateWaitType.active),
+      //   );
+      // }
+      // TTS().speak('loading chyunnu');
+      // var interpreterOptions = InterpreterOptions().addDelegate(delegate);
+      this._interpreter = await Interpreter.fromAsset('mobilefacenet.tflite');
+      print('Successsssssssssssss||||||||||||||||||||||||||||//////////////////////////');
+      TTS().speak('success');
     } catch (e) {
+      print('ooompi|||||||||||||||||||????????????????????/////////////////');
+      // TTS().speak('loading chyaan pateela');
       print('Failed to load model.');
       print(e);
     }
@@ -112,7 +116,16 @@ class MLService {
     User? predictedResult;
 
     for (User u in users) {
+      if(u.modelData.isEmpty){
+        continue;
+      }
       currDist = _euclideanDistance(u.modelData, predictedData);
+      // if(currDist == 0.0) {
+        print('currDist');
+        print(currDist);
+        print(u.modelData);
+        print(u.user);
+      // }
       if (currDist <= threshold && currDist < minDist) {
         minDist = currDist;
         predictedResult = u;

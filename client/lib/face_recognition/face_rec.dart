@@ -102,8 +102,12 @@ class FaceRecState extends State<FaceRec> {
             setState(() {
               faceDetected = _faceDetectorService.faces[0];
             });
+            _saving = true;
             if (_saving) {
               _mlService.setCurrentPrediction(image, faceDetected);
+              // print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+              // print(_mlService.predictedData);
+              // print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
               setState(() {
                 _saving = false;
               });
@@ -113,21 +117,32 @@ class FaceRecState extends State<FaceRec> {
               faceDetected = null;
             });
           }
-
+          // if (processing) return; // prevents unnecessary overprocessing
           _detectingFaces = false;
         } catch (e) {
           print(e);
           _detectingFaces = false;
         }
-        // if (processing) return; // prevents unnecessary overprocessing.
         // processing = true;
         // await _predictFacesFromImage(image: image);
+        // print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+        // print(_mlService.predictedData);
+        // print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
         // processing = false;
         // if (_faceDetectorService.faceDetected) {
         //   User? user = await _mlService.predict();
         //   String? text = user?.user;
         //   TTS().speak(text!);
         // }
+        print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+        User? u = await _mlService.predict();
+        if(u!=null){
+          print('its null :(');
+        }
+        print(u?.user);
+        String? name = u?.user;
+        await TTS().speak(name!);
+        print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
       }
     });
   }

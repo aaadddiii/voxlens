@@ -10,6 +10,7 @@ import 'package:image/image.dart';
 // import '../home.dart';
 import 'app_text_field.dart';
 import 'package:client/main_menu.dart';
+import 'package:client/tts.dart';
 
 class AuthActionButton extends StatefulWidget {
   AuthActionButton(
@@ -38,6 +39,9 @@ class _AuthActionButtonState extends State<AuthActionButton> {
   Future _signUp(context) async {
     DatabaseHelper _databaseHelper = DatabaseHelper.instance;
     List predictedData = _mlService.predictedData;
+    print('/////////////////////////////////////////////////////////////////////////////////////');
+    print(predictedData);
+    print('/////////////////////////////////////////////////////////////////////////////////////');
     String user = _userTextEditingController.text;
     // String password = _passwordTextEditingController.text;
     User userToSave = User(
@@ -46,8 +50,7 @@ class _AuthActionButtonState extends State<AuthActionButton> {
     );
     await _databaseHelper.insert(userToSave);
     this._mlService.setPredictedData([]);
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => Main_menu()));
+    Navigator.pop(context);
   }
 
   Future _signIn(context) async {
