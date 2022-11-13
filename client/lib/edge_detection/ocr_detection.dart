@@ -38,7 +38,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
 
   Future<void> processImage(InputImage inputImage) async {
     if (!_canProcess) return;
-    if(_isBusy) TTS().speak("processing ");
+    if(_isBusy)
     if (_isBusy) return;
     _isBusy = true;
     setState(() {
