@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
-
+import 'package:client/tts.dart';
 import 'ocr_camera_service.dart';
 import 'text_detector_painter.dart';
 
@@ -11,7 +11,7 @@ class TextRecognizerView extends StatefulWidget {
 
 class _TextRecognizerViewState extends State<TextRecognizerView> {
   final TextRecognizer _textRecognizer =
-  TextRecognizer(script: TextRecognitionScript.chinese);
+  TextRecognizer(script: TextRecognitionScript.latin);
   bool _canProcess = true;
   bool _isBusy = false;
   CustomPaint? _customPaint;
@@ -38,6 +38,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
 
   Future<void> processImage(InputImage inputImage) async {
     if (!_canProcess) return;
+    if(_isBusy) TTS().speak("processing ");
     if (_isBusy) return;
     _isBusy = true;
     setState(() {
@@ -51,11 +52,14 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
           inputImage.inputImageData!.size,
           inputImage.inputImageData!.imageRotation);
       _customPaint = CustomPaint(painter: painter);
-    } else {
+    }
+      else {
       _text = 'Recognized text:\n\n${recognizedText.text}';
       // TODO: set _customPaint to draw boundingRect on top of image
       _customPaint = null;
     }
+    print('=======================================================================');
+    print(recognizedText);
     _isBusy = false;
     if (mounted) {
       setState(() {});

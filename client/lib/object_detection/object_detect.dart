@@ -116,6 +116,10 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     });
     TTS().speak('going to process');
     final objects = await _objectDetector.processImage(inputImage);
+    for(var object in objects){
+      print(object.boundingBox);
+
+    }
     TTS().speak('processed');
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
