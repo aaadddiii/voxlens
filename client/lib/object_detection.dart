@@ -79,7 +79,7 @@ class _ObjectDetectionState extends State<ObjectDetection> {
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
-                        return OBJ();
+                        return ObjectDetectorView();
                       }));
                 },
                 child: Expanded(

@@ -110,7 +110,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
             onTap: (){
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) {
-                    return OCR();
+                    return TextRecognizerView();
                   }));
             },
             child: Expanded(child: Container(

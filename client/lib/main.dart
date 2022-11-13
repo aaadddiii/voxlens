@@ -5,9 +5,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'locator.dart';
 import 'package:client/face_recognition/camera_service.dart';
 
+List<CameraDescription> cameras = [];
 Future main() async {
   setupServices();
   await dotenv.load(fileName: ".env");
+  cameras = await availableCameras();
   runApp(MaterialApp(
     home: Home()
   ));

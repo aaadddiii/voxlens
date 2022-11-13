@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
   MLService _mlService = locator<MLService>();
   FaceDetectorService _mlKitService = locator<FaceDetectorService>();
   CameraService _cameraService = locator<CameraService>();
-  OCRCameraService _ocrCameraService = locator<OCRCameraService>();
+  // OCRCameraService _ocrCameraService = locator<OCRCameraService>();
   OBJCameraService _objCameraService = locator<OBJCameraService>();
   bool loading = false;
   @override
@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
     await _cameraService.initialize();
     await _mlService.initialize();
     _mlKitService.initialize();
-    await _ocrCameraService.initialize();
+    // await _ocrCameraService.initialize();
     await _objCameraService.initialize();
     setState(() => loading = false);
   }

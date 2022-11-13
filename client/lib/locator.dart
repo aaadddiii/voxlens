@@ -11,6 +11,6 @@ void setupServices() {
   locator.registerLazySingleton<CameraService>(() => CameraService());
   locator.registerLazySingleton<FaceDetectorService>(() => FaceDetectorService());
   locator.registerLazySingleton<MLService>(() => MLService());
-  locator.registerLazySingleton<OCRCameraService>(() => OCRCameraService());
+  // locator.registerLazySingleton<OCRCameraService>(() => OCRCameraService());
   locator.registerLazySingleton<OBJCameraService>(() => OBJCameraService());
 }
