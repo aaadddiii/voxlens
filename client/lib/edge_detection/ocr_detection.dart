@@ -45,6 +45,13 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
       _text = '';
     });
     final recognizedText = await _textRecognizer.processImage(inputImage);
+    for(var block in recognizedText.blocks){
+      if(block.boundingBox.left < 10){
+        await TTS().speak("move camera left");
+      }
+      print('=======================================================================');
+      print(block.boundingBox.right);
+    }
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
       final painter = TextRecognizerPainter(
@@ -58,8 +65,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
       // TODO: set _customPaint to draw boundingRect on top of image
       _customPaint = null;
     }
-    print('=======================================================================');
-    print(recognizedText);
+    // print(recognizedText);
     _isBusy = false;
     if (mounted) {
       setState(() {});
