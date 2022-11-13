@@ -46,16 +46,19 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
     });
     final recognizedText = await _textRecognizer.processImage(inputImage);
     for(var block in recognizedText.blocks){
-      if(block.boundingBox.left < 10){
-        await TTS().speak("move camera left");
+      if(block.boundingBox.left < 10 && block.cornerPoints[1].y < 10){
+        await TTS().speak("move up");
+      }
+      else if(block.boundingBox.left < 10){
+        await TTS().speak("move left");
+      }
+      else if(block.cornerPoints[1].y < 10){
+        TTS().speak("move right");
       }
       print('=======================================================================');
       print(MediaQuery.of(context).size.width);
       print(block.boundingBox.right);
       print(block.cornerPoints);
-      if(block.cornerPoints[1].y < 10){
-        TTS().speak("move camera right");
-      }
     }
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
