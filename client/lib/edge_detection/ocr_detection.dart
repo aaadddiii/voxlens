@@ -50,7 +50,12 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
         await TTS().speak("move camera left");
       }
       print('=======================================================================');
+      print(MediaQuery.of(context).size.width);
       print(block.boundingBox.right);
+      print(block.cornerPoints);
+      if(block.cornerPoints[1].y < 10){
+        TTS().speak("move camera right");
+      }
     }
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
