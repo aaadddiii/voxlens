@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 
+import '../tts.dart';
 import 'coordinates_translator.dart';
 
 class ObjectDetectorPainter extends CustomPainter {
@@ -34,6 +35,7 @@ class ObjectDetectorPainter extends CustomPainter {
 
       for (final Label label in detectedObject.labels) {
         builder.addText('${label.text} ${label.confidence}\n');
+        TTS().speak(label.text);
       }
 
       builder.pop();
