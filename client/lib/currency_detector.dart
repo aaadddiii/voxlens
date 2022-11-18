@@ -7,7 +7,7 @@ class Currency_detector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red[300],
+        backgroundColor: Colors.black87,
         title: Text('Voxlens'),
         centerTitle: true,
       ),
