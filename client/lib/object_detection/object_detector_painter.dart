@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'dart:ui' as ui;
-
+import 'package:alan_voice/alan_voice.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 
@@ -22,6 +22,8 @@ class ObjectDetectorPainter extends CustomPainter {
       ..color = Colors.lightGreenAccent;
 
     final Paint background = Paint()..color = Color(0x99000000);
+    AlanVoice.activate();
+    String obj_labels='';
 
     for (final DetectedObject detectedObject in _objects) {
       final ParagraphBuilder builder = ParagraphBuilder(
@@ -33,10 +35,12 @@ class ObjectDetectorPainter extends CustomPainter {
       builder.pushStyle(
           ui.TextStyle(color: Colors.lightGreenAccent, background: background));
 
+      obj_labels+=detectedObject.labels[0].text+", ";
       for (final Label label in detectedObject.labels) {
         builder.addText('${label.text} ${label.confidence}\n');
-        TTS().speak(label.text);
+
       }
+      AlanVoice.playText(obj_labels);
 
       builder.pop();
 
@@ -62,6 +66,8 @@ class ObjectDetectorPainter extends CustomPainter {
         Offset(left, top),
       );
     }
+
+
   }
 
   @override

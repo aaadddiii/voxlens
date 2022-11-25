@@ -75,6 +75,8 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     // uncomment next lines if you want to use a local model
     // make sure to add tflite model to assets/ml
     final path = 'assets/object_labeler.tflite';
+    // final path = 'assets/mobilenet_v1_1.0_224.tflite';
+
     TTS().speak('loading model');
     final modelPath = await _getModel(path);
     final options = LocalObjectDetectorOptions(
