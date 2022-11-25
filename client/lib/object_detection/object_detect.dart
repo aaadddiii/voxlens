@@ -114,13 +114,13 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     setState(() {
       _text = '';
     });
-    TTS().speak('going to process');
+    // TTS().speak('going to process');
     final objects = await _objectDetector.processImage(inputImage);
     for(var object in objects){
       print(object.boundingBox);
 
     }
-    TTS().speak('processed');
+    // TTS().speak('processed');
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
       final painter = ObjectDetectorPainter(
@@ -135,6 +135,8 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
         'Object:  trackingId: ${object.trackingId} - ${object.labels.map((e) => e.text)}\n\n';
       }
       _text = text;
+
+      print(text);
       // TODO: set _customPaint to draw boundingRect on top of image
       _customPaint = null;
     }
