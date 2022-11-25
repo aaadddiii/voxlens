@@ -64,31 +64,31 @@ class _Main_menuState extends State<Main_menu> {
                   ),
                 )),
               ),
-              GestureDetector(
-                onTap: () {
-                  // TTS().speak("navigation");
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                        return Navigation();
-                      }));
-                },
-                child: Expanded(child: Container(
-                  child: Text('Navigation',
-                    style: TextStyle(
-                        color: Colors.white
-                    ),),
-                  padding: EdgeInsets.all(20.0),
-                  margin: EdgeInsets.all(10.0),
-                  // color: Colors.red[300],
-                  decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                      border: Border.all(width: 3,color: Colors.black),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
-                  ),
-                )),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     // TTS().speak("navigation");
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) {
+              //           return Navigation();
+              //         }));
+              //   },
+              //   child: Expanded(child: Container(
+              //     child: Text('Navigation',
+              //       style: TextStyle(
+              //           color: Colors.white
+              //       ),),
+              //     padding: EdgeInsets.all(20.0),
+              //     margin: EdgeInsets.all(10.0),
+              //     // color: Colors.red[300],
+              //     decoration: BoxDecoration(
+              //         color: Colors.grey[900],
+              //         border: Border.all(width: 3,color: Colors.black),
+              //       borderRadius: BorderRadius.all(Radius.circular(15)),
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+              //     ),
+              //   )),
+              // ),
             ],
           ),
           flex: 2,),
@@ -103,30 +103,30 @@ class _Main_menuState extends State<Main_menu> {
                         return Currency_detector();
                       }));
                 },
-                child: Expanded(child: Container(
-                  child: Text('Currency Detector',
-                    style: TextStyle(
-                        color: Colors.white
-                    ),),
-                  padding: EdgeInsets.all(15.0),
-                  margin: EdgeInsets.all(10.0),
-                  // color: Colors.red[300],
-                  decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
-                  ),
-                )),
-              ),
-              GestureDetector(
-                onTap:() {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                        return ObjectDetection();
-                      }));
-                },
+              //   child: Expanded(child: Container(
+              //     child: Text('Currency Detector',
+              //       style: TextStyle(
+              //           color: Colors.white
+              //       ),),
+              //     padding: EdgeInsets.all(15.0),
+              //     margin: EdgeInsets.all(10.0),
+              //     // color: Colors.red[300],
+              //     decoration: BoxDecoration(
+              //         color: Colors.grey[900],
+              //       border: Border.all(width: 3,color: Colors.black),
+              //       borderRadius: BorderRadius.all(Radius.circular(15)),
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+              //     ),
+              //   )),
+              // ),
+              // GestureDetector(
+              //   onTap:() {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) {
+              //           return ObjectDetection();
+              //         }));
+              //   },
                 child: Expanded(child: Container(
                   child: Text('Object Detection',
                     style: TextStyle(
