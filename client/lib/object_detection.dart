@@ -85,12 +85,17 @@ class _ObjectDetectionState extends State<ObjectDetection> {
                 child: Expanded(
                     child: Container(
                       child: Text('Object Recognition mlkit',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.white
+                            color: Colors.white,
+                            fontSize: 25,
                         ),),
                       padding: EdgeInsets.all(30.0),
-                      margin: EdgeInsets.all(80.0),
+                      margin: EdgeInsets.all(20.0),
                       // color: Colors.grey[900],
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height/1.2,
+
                       decoration: BoxDecoration(
                         color: Colors.grey[900],
                         border: Border.all(width: 3, color: Colors.black),
