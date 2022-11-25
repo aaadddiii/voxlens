@@ -110,8 +110,8 @@ class _ObjectDetectionState extends State<ObjectDetection> {
             ],
           ),
             flex: 2,)
-            ],
-          ),
+        ],
+      ),
     );
   }
 
