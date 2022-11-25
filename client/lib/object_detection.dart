@@ -46,35 +46,35 @@ class _ObjectDetectionState extends State<ObjectDetection> {
           Flexible(child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {
-                  getImage(0);
-                },
-                child: Expanded(
-                    child: Container(
-                      child: Text('Object Recognition',
-                        style: TextStyle(
-                            color: Colors.white
-                        ),),
-                      padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.all(10.0),
-                      // color: Colors.grey[900],
-                      decoration: BoxDecoration(
-                        color: Colors.grey[900],
-                        border: Border.all(width: 3, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow: [BoxShadow(color: Colors.black,
-                            spreadRadius: 2,
-                            blurRadius: 8,
-                            offset: Offset(4, 4)),
-                          BoxShadow(color: Colors.grey,
-                              spreadRadius: 1,
-                              blurRadius: 8,
-                              offset: Offset(-4, -4))
-                        ],
-                      ),
-                    )),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     getImage(0);
+              //   },
+              //   child: Expanded(
+              //       child: Container(
+              //         child: Text('Object Recognition',
+              //           style: TextStyle(
+              //               color: Colors.white
+              //           ),),
+              //         padding: EdgeInsets.all(15.0),
+              //         margin: EdgeInsets.all(10.0),
+              //         // color: Colors.grey[900],
+              //         decoration: BoxDecoration(
+              //           color: Colors.grey[900],
+              //           border: Border.all(width: 3, color: Colors.black),
+              //           borderRadius: BorderRadius.all(Radius.circular(15)),
+              //           boxShadow: [BoxShadow(color: Colors.black,
+              //               spreadRadius: 2,
+              //               blurRadius: 8,
+              //               offset: Offset(4, 4)),
+              //             BoxShadow(color: Colors.grey,
+              //                 spreadRadius: 1,
+              //                 blurRadius: 8,
+              //                 offset: Offset(-4, -4))
+              //           ],
+              //         ),
+              //       )),
+              // ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
@@ -86,10 +86,11 @@ class _ObjectDetectionState extends State<ObjectDetection> {
                     child: Container(
                       child: Text('Object Recognition mlkit',
                         style: TextStyle(
+                            fontSize: 15,
                             color: Colors.white
                         ),),
-                      padding: EdgeInsets.all(15.0),
-                      margin: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(50.0),
+                      margin: EdgeInsets.all(97.0),
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
                         color: Colors.grey[900],
