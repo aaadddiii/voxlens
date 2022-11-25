@@ -46,10 +46,10 @@ class _ObjectDetectionState extends State<ObjectDetection> {
           Flexible(child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {
-                  getImage(0);
-                },
+              // GestureDetector(
+              //   onTap: () {
+              //     getImage(0);
+              //   },
               //   child: Expanded(
               //       child: Container(
               //         child: Text('Object Recognition',
@@ -75,13 +75,13 @@ class _ObjectDetectionState extends State<ObjectDetection> {
               //         ),
               //       )),
               // ),
-              // GestureDetector(
-              //   onTap: () {
-              //     Navigator.push(context,
-              //         MaterialPageRoute(builder: (context) {
-              //           return ObjectDetectorView();
-              //         }));
-              //   },
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return ObjectDetectorView();
+                      }));
+                },
                 child: Expanded(
                     child: Container(
                       child: Text('Object Recognition mlkit',
