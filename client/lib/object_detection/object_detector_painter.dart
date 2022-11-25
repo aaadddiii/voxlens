@@ -35,7 +35,7 @@ class ObjectDetectorPainter extends CustomPainter {
 
       for (final Label label in detectedObject.labels) {
         builder.addText('${label.text} ${label.confidence}\n');
-        TTS().speak(label.text);
+          // TTS().speak(label.text);
       }
 
       builder.pop();

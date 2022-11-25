@@ -18,6 +18,7 @@ class ObjectDetectorView extends StatefulWidget {
 class _ObjectDetectorView extends State<ObjectDetectorView> {
   late ObjectDetector _objectDetector;
   bool _canProcess = false;
+  bool _speaking = false;
   bool _isBusy = false;
   CustomPaint? _customPaint;
   String? _text;
@@ -64,7 +65,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
 
   void _initializeDetector(DetectionMode mode) async {
     print('Set detector in mode: $mode');
-    TTS().speak('Set detector in mode: $mode');
+    // TTS().speak('Set detector in mode: $mode');
     // uncomment next lines if you want to use the default model
     // final options = ObjectDetectorOptions(
     //     mode: mode,
@@ -75,7 +76,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     // uncomment next lines if you want to use a local model
     // make sure to add tflite model to assets/ml
     final path = 'assets/object_labeler.tflite';
-    TTS().speak('loading model');
+    // TTS().speak('loading model');
     final modelPath = await _getModel(path);
     final options = LocalObjectDetectorOptions(
       mode: mode,
@@ -84,7 +85,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
       multipleObjects: true,
     );
     _objectDetector = ObjectDetector(options: options);
-    TTS().speak('succesfully loaded');
+    // TTS().speak('succesfully loaded');
     // uncomment next lines if you want to use a remote model
     // make sure to add model to firebase
     // final modelName = 'bird-classifier';
@@ -103,6 +104,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
   }
 
   Future<void> processImage(InputImage inputImage) async {
+    if(_speaking) return;
     if (!_canProcess) return;
     if(_isBusy){
       // await TTS().speak('busy aane');
@@ -114,8 +116,21 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     setState(() {
       _text = '';
     });
-    // TTS().speak('going to process');
     final objects = await _objectDetector.processImage(inputImage);
+    String objects_str = "";
+    for (final DetectedObject detectedObject in objects) {
+      for (final Label label in detectedObject.labels) {
+        _speaking = true;
+        await TTS().speak(label.text);
+        _speaking = false;
+        objects_str += label.text + " ";
+        print(label.text);
+      }
+    }
+    _speaking = false;
+    // _speaking = true;
+    // TTS().speak(objects_str);
+    // _speaking = false;
     for(var object in objects){
       print(object.boundingBox);
 
@@ -135,7 +150,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
         'Object:  trackingId: ${object.trackingId} - ${object.labels.map((e) => e.text)}\n\n';
       }
       _text = text;
-
+      // _speaking = true;
       print(text);
       // TODO: set _customPaint to draw boundingRect on top of image
       _customPaint = null;
