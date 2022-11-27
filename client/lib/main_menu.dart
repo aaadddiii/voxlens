@@ -49,11 +49,15 @@ class _Main_menuState extends State<Main_menu> {
                 },
                 child: Expanded(child: Container(
                   child: Text('Doc Reader',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white
+                        color: Colors.white,
+                      fontSize: 25,
                     ),),
                   padding: EdgeInsets.all(20.0),
                   margin: EdgeInsets.all(10.0),
+                  width: MediaQuery.of(context).size.width/1.3,
+                  height: MediaQuery.of(context).size.height/3.2,
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
@@ -65,31 +69,31 @@ class _Main_menuState extends State<Main_menu> {
                   ),
                 )),
               ),
-              GestureDetector(
-                onTap: () {
-                  // TTS().speak("navigation");
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                        return Navigation();
-                      }));
-                },
-                child: Expanded(child: Container(
-                  child: Text('Navigation',
-                    style: TextStyle(
-                        color: Colors.white
-                    ),),
-                  padding: EdgeInsets.all(20.0),
-                  margin: EdgeInsets.all(10.0),
-                  // color: Colors.red[300],
-                  decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                      border: Border.all(width: 3,color: Colors.black),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
-                  ),
-                )),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     // TTS().speak("navigation");
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) {
+              //           return Navigation();
+              //         }));
+              //   },
+              //   child: Expanded(child: Container(
+              //     child: Text('Navigation',
+              //       style: TextStyle(
+              //           color: Colors.white
+              //       ),),
+              //     padding: EdgeInsets.all(20.0),
+              //     margin: EdgeInsets.all(10.0),
+              //     // color: Colors.red[300],
+              //     decoration: BoxDecoration(
+              //         color: Colors.grey[900],
+              //         border: Border.all(width: 3,color: Colors.black),
+              //       borderRadius: BorderRadius.all(Radius.circular(15)),
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+              //     ),
+              //   )),
+              // ),
             ],
           ),
           flex: 2,),
@@ -97,30 +101,30 @@ class _Main_menuState extends State<Main_menu> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                        return Currency_detector();
-                      }));
-                },
-                child: Expanded(child: Container(
-                  child: Text('Currency Detector',
-                    style: TextStyle(
-                        color: Colors.white
-                    ),),
-                  padding: EdgeInsets.all(15.0),
-                  margin: EdgeInsets.all(10.0),
-                  // color: Colors.red[300],
-                  decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
-                  ),
-                )),
-              ),
+              // GestureDetector(
+              //   onTap: (){
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) {
+              //           return Currency_detector();
+              //         }));
+              //   },
+              //  child: Expanded(child: Container(
+              //     child: Text('Currency Detector',
+              //       style: TextStyle(
+              //           color: Colors.white
+              //       ),),
+              //     padding: EdgeInsets.all(15.0),
+              //     margin: EdgeInsets.all(10.0),
+              //     // color: Colors.red[300],
+              //     decoration: BoxDecoration(
+              //         color: Colors.grey[900],
+              //       border: Border.all(width: 3,color: Colors.black),
+              //       borderRadius: BorderRadius.all(Radius.circular(15)),
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+              //     ),
+              //   )),
+              // ),
               GestureDetector(
                 onTap:() {
                   Navigator.push(context,
@@ -130,12 +134,16 @@ class _Main_menuState extends State<Main_menu> {
                 },
                 child: Expanded(child: Container(
                   child: Text('Object Detection',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white
+                        color: Colors.white,
+                      fontSize: 25,
                     ),
                   ),
                   padding: EdgeInsets.all(15.0),
                   margin: EdgeInsets.all(10.0),
+                  width: MediaQuery.of(context).size.width/1.3,
+                  height: MediaQuery.of(context).size.height/3.2,
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                       color: Colors.grey[900],
@@ -185,10 +193,13 @@ class _Main_menuState extends State<Main_menu> {
             child: Flexible(child: Expanded(child: Container(
               child: Text('Distance calc',
                 style: TextStyle(
-                    color: Colors.white
+                    color: Colors.white,
+                    fontSize: 25,
                 ),),
               padding: EdgeInsets.all(20.0),
               margin: EdgeInsets.all(10.0),
+              width: MediaQuery.of(context).size.width/1.3,
+              height: MediaQuery.of(context).size.height/3.2,
               // color: Colors.red[300],
               decoration: BoxDecoration(
                 color: Colors.grey[900],
