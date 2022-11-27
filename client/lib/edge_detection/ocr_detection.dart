@@ -3,6 +3,8 @@ import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart
 import 'package:client/tts.dart';
 import 'ocr_camera_service.dart';
 import 'text_detector_painter.dart';
+import 'package:vibration/vibration.dart';
+
 
 class TextRecognizerView extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
   final TextRecognizer _textRecognizer =
   TextRecognizer(script: TextRecognitionScript.latin);
   bool _canProcess = true;
+  bool _speaking = false;
   bool _isBusy = false;
   CustomPaint? _customPaint;
   String? _text;
@@ -37,6 +40,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
   }
 
   Future<void> processImage(InputImage inputImage) async {
+    if(_speaking) return;
     if (!_canProcess) return;
     if(_isBusy)
     if (_isBusy) return;
@@ -53,7 +57,11 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
         await TTS().speak("move left");
       }
       else if(block.cornerPoints[1].y < 10){
-        TTS().speak("move right");
+        await TTS().speak("move right");
+      }
+      else if(!(block.boundingBox.left < 10) || !(block.cornerPoints[1].y < 10)){
+          Vibration.vibrate(duration: 1000);
+          await TTS().speak("capture");
       }
       print('=======================================================================');
       print(MediaQuery.of(context).size.width);

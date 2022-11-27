@@ -7,6 +7,7 @@ import 'package:alan_voice/alan_voice.dart';
 import 'navigation.dart';
 import 'object_detection.dart';
 import 'face_recognition/face_ui.dart';
+import 'distance_calculation/object_detect.dart';
 
 class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);
@@ -148,15 +149,41 @@ class _Main_menuState extends State<Main_menu> {
             ],
           ),
           flex: 2,),
+          Row(
+            children: [GestureDetector(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) {
+                      return FaceUI();
+                    }));
+              },
+              child: Flexible(child: Expanded(child: Container(
+                child: Text('Face Recognition',
+                  style: TextStyle(
+                      color: Colors.white
+                  ),),
+                padding: EdgeInsets.all(20.0),
+                margin: EdgeInsets.all(10.0),
+                // color: Colors.red[300],
+                decoration: BoxDecoration(
+                    color: Colors.grey[900],
+                  border: Border.all(width: 3,color: Colors.black),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+                ),
+              )),
+              flex: 1,),
+            ),
           GestureDetector(
             onTap: (){
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) {
-                    return FaceUI();
+                    return DistanceCalculatorView();
                   }));
             },
             child: Flexible(child: Expanded(child: Container(
-              child: Text('Face Recognition',
+              child: Text('Distance calc',
                 style: TextStyle(
                     color: Colors.white
                 ),),
@@ -164,16 +191,15 @@ class _Main_menuState extends State<Main_menu> {
               margin: EdgeInsets.all(10.0),
               // color: Colors.red[300],
               decoration: BoxDecoration(
-                  color: Colors.grey[900],
+                color: Colors.grey[900],
                 border: Border.all(width: 3,color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                   BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
               ),
             )),
-            flex: 1,),
-          )
-        ],
+              flex: 1,),
+          )])]
       ),
 
     );
