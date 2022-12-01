@@ -63,6 +63,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
           Vibration.vibrate(duration: 1000);
           await TTS().speak("capture");
       }
+
       print('=======================================================================');
       print(MediaQuery.of(context).size.width);
       print(block.boundingBox.right);

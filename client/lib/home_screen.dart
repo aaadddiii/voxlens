@@ -1,7 +1,9 @@
 import 'package:client/document_reader.dart';
 import 'package:client/object_detection/obj_camera_service.dart';
 import 'package:flutter/material.dart';
+import 'face_recognition/face_ui.dart';
 import 'main_menu.dart';
+import 'object_detection.dart';
 import 'voice_rec.dart';
 import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
@@ -69,6 +71,17 @@ class _HomeState extends State<Home> {
           return Doc_Reader();
         }));
         getPdf();
+        break;
+      case "nav":
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return ObjectDetection();
+        }));
+        break;
+
+      case "face":
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return FaceUI();
+        }));
         break;
       case "back":
         Navigator.pop(context);
