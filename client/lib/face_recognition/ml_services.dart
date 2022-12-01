@@ -12,7 +12,7 @@ import 'package:client/tts.dart';
 
 class MLService {
   Interpreter? _interpreter;
-  double threshold = 0.1;
+  double threshold = 1;
   List _predictedData = [];
   List get predictedData => _predictedData;
 
@@ -112,7 +112,7 @@ class MLService {
 
     List<User> users = await _dbHelper.queryAllUsers();
     double minDist = 999;
-    double currDist = 0.0;
+    double currDist = 999;
     User? predictedResult;
 
     for (User u in users) {

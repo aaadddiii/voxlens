@@ -134,15 +134,28 @@ class FaceRecState extends State<FaceRec> {
         //   String? text = user?.user;
         //   TTS().speak(text!);
         // }
-        print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
-        User? u = await _mlService.predict();
-        if(u!=null){
-          print('its null :(');
+        try{
+          bool speaking = false;
+          if(!speaking){
+            print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+            User? u = await _mlService.predict();
+            if(u==null){
+              print('its null :(');
+            }
+            print(u);
+            print("hihihihihih");
+            String? name = u?.user;
+            speaking = true;
+            await TTS().speak(name!);
+            speaking = false;
+            print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+          }
         }
-        print(u?.user);
-        String? name = u?.user;
-        await TTS().speak(name!);
-        print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+        catch(e){
+          print("==============");
+          print(e);
+          print("==============");
+        }
       }
     });
   }
