@@ -51,18 +51,24 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
     final recognizedText = await _textRecognizer.processImage(inputImage);
     for(var block in recognizedText.blocks){
       if(block.boundingBox.left < 10 && block.cornerPoints[1].y < 10){
-        await TTS().speak("move up");
+        await TTS().speak("move away");
       }
-      else if(block.boundingBox.left < 10){
+      else if(block.boundingBox.left < 5){
         await TTS().speak("move left");
       }
-      else if(block.cornerPoints[1].y < 10){
+      else if(block.cornerPoints[1].y < 5){
         await TTS().speak("move right");
       }
-      else if(!(block.boundingBox.left < 10) || !(block.cornerPoints[1].y < 10)){
-          Vibration.vibrate(duration: 1000);
-          await TTS().speak("capture");
+      else if(block.boundingBox.top< 10){
+        await TTS().speak("move up");
       }
+      else if(block.boundingBox.bottom > 1100){
+        await TTS().speak("move down");
+      }
+      // else if(!(block.boundingBox.left < 10) || !(block.cornerPoints[1].y < 10)){
+      //     Vibration.vibrate(duration: 1000);
+      //     await TTS().speak("capture");
+      // }
 
       print('=======================================================================');
       print(MediaQuery.of(context).size.width);
