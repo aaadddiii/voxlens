@@ -5,8 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'dart:math' as math;
 import '../main.dart';
+import 'package:client/tts.dart';
 
 enum ScreenMode { liveFeed, gallery }
 
@@ -35,6 +36,7 @@ class CameraView extends StatefulWidget {
 class _CameraViewState extends State<CameraView> {
   ScreenMode _mode = ScreenMode.liveFeed;
   CameraController? _controller;
+  String? imagePath;
   File? _image;
   String? _path;
   ImagePicker? _imagePicker;
@@ -42,6 +44,7 @@ class _CameraViewState extends State<CameraView> {
   double zoomLevel = 0.0, minZoomLevel = 0.0, maxZoomLevel = 0.0;
   final bool _allowPicker = true;
   bool _changingCameraLens = false;
+  bool captured = false;
 
   @override
   void initState() {
@@ -125,9 +128,63 @@ class _CameraViewState extends State<CameraView> {
           ),
         ));
   }
+  Future<String> _setImagePath() async{
+    assert(_controller != null, 'Camera controller not initialized');
+    await _controller?.stopImageStream();
+    XFile? file = await _controller?.takePicture();
+    imagePath = file?.path;
+    return "ready";
+  }
+  Widget _captured_body(){
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return FutureBuilder(
+      builder: (ctx, snapshot) {
+        // Checking if future is resolved or not
+        if (snapshot.connectionState == ConnectionState.done) {
+          // If we got an error
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                '${snapshot.error} occurred',
+                style: TextStyle(fontSize: 18),
+              ),
+            );
 
+            // if we got our data
+          } else if (snapshot.hasData) {
+            // Extracting data from snapshot object
+            final data = snapshot.data as String;
+            return Container(
+              width: width,
+              height: height,
+              child: Transform(
+                  alignment: Alignment.center,
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Image.file(File(imagePath!)),
+                  ),
+                  transform: Matrix4.rotationY(math.pi)),
+            );
+          }
+        }
+
+        // Displaying LoadingSpinner to indicate waiting state
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+
+      // Future that needs to be resolved
+      // inorder to display something on the Canvas
+      future: _setImagePath(),
+    );
+  }
   Widget _body() {
     Widget body;
+    if(captured){
+      return _captured_body();
+    }
     if (_mode == ScreenMode.liveFeed) {
       body = _liveFeedBody();
     } else {
@@ -185,12 +242,29 @@ class _CameraViewState extends State<CameraView> {
                   ? null
                   : (maxZoomLevel - 1).toInt(),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 200,
+            left: 10,
+            right: 10,
+            child: SizedBox(
+              height:150,
+              width:150,
+              child:FloatingActionButton(
+                child: Text("Capture"), //child widget inside this button
+                onPressed: (){
+                  print("Button is pressed.");
+                  captured = true;
+                  TTS().stop();
+                  //task to execute when this button is pressed
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-
   Widget _galleryBody() {
     return ListView(shrinkWrap: true, children: [
       _image != null
