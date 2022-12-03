@@ -27,9 +27,9 @@ class _Doc_ReaderState extends State<Doc_Reader> {
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         title: Text('Voxlens',
-        style: TextStyle(
-          color: Colors.white
-        ),),
+          style: TextStyle(
+              color: Colors.white
+          ),),
         centerTitle: true,
       ),
       body: Column(
@@ -46,14 +46,18 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 child: Expanded(
                     child: Container(
                       child: Text('Upload Document',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.white
+                          color: Colors.white,
+                          fontSize: 20,
                         ),),
                       padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
+                      width: MediaQuery.of(context).size.width/1.3,
+                      height: MediaQuery.of(context).size.height/10,
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
-                          color: Colors.grey[900],
+                        color: Colors.grey[900],
                         border: Border.all(width: 3,color: Colors.black),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
@@ -61,51 +65,62 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                       ),
                     )),
               ),
-              GestureDetector(
-                onTap: () {
-                  getImage(1);
-                },
-                child: Expanded(child: Container(
-                  child: Text('Upload Image',
-                    style: TextStyle(
-                        color: Colors.white
-                    ),),
-                  padding: EdgeInsets.all(15.0),
-                  margin: EdgeInsets.all(10.0),
-                  // color: Colors.grey[900],
-                  decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
-                  ),
-                )),
-              ),
             ],
           ),
-            flex: 2,),
-          GestureDetector(
-            onTap: (){
-              getImage(0);
-            },
-            child: Expanded(child: Container(
-              child: Text('Scan Document',
-                style: TextStyle(
-                    color: Colors.white
-                ),),
-              padding: EdgeInsets.all(15.0),
-              margin: EdgeInsets.all(10.0),
-              // color: Colors.red[300],
-              decoration: BoxDecoration(
-                color: Colors.grey[900],
-                border: Border.all(width: 3,color: Colors.black),
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                  BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
-              ),
-            )),
+            flex: 1,),
+
+
+          Flexible(child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [GestureDetector(
+              onTap: () {
+                getImage(1);
+              },
+              child: Expanded(child: Container(
+                child: Text('Upload Image',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),),
+                padding: EdgeInsets.all(15.0),
+                margin: EdgeInsets.all(10.0),
+                width: MediaQuery.of(context).size.width/1.3,
+                height: MediaQuery.of(context).size.height/10,
+                // color: Colors.grey[900],
+                decoration: BoxDecoration(
+                  color: Colors.grey[900],
+                  border: Border.all(width: 3,color: Colors.black),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+                ),
+              )),
+            ),
+            ],
           ),
+            flex: 1,),
+          // GestureDetector(
+          //   onTap: (){
+          //     getImage(0);
+          //   },
+          //   child: Expanded(child: Container(
+          //     child: Text('Scan Document',
+          //       style: TextStyle(
+          //           color: Colors.white
+          //       ),),
+          //     padding: EdgeInsets.all(15.0),
+          //     margin: EdgeInsets.all(10.0),
+          //     // color: Colors.red[300],
+          //     decoration: BoxDecoration(
+          //       color: Colors.grey[900],
+          //       border: Border.all(width: 3,color: Colors.black),
+          //       borderRadius: BorderRadius.all(Radius.circular(15)),
+          //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
+          //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+          //     ),
+          //   )),
+          // ),
           GestureDetector(
             onTap: (){
               Navigator.push(context,
@@ -114,12 +129,16 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   }));
             },
             child: Expanded(child: Container(
-              child: Text('realtime ocr',
+              child: Text('Realtime OCR',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.white
+                  color: Colors.white,
+                  fontSize: 20,
                 ),),
               padding: EdgeInsets.all(15.0),
               margin: EdgeInsets.all(10.0),
+              width: MediaQuery.of(context).size.width/1.3,
+              height: MediaQuery.of(context).size.height/10,
               // color: Colors.red[300],
               decoration: BoxDecoration(
                 color: Colors.grey[900],

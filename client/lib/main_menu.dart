@@ -51,20 +51,20 @@ class _Main_menuState extends State<Main_menu> {
                   child: Text('Doc Reader',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
-                      fontSize: 25,
+                      color: Colors.white,
+                      fontSize: 20,
                     ),),
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
-                  width: MediaQuery.of(context).size.width/2,
-                  height: MediaQuery.of(context).size.height/5,
+                  width: MediaQuery.of(context).size.width/1.3,
+                  height: MediaQuery.of(context).size.height/4,
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                      border: Border.all(width: 3,color: Colors.black),
+                    color: Colors.grey[900],
+                    border: Border.all(width: 3,color: Colors.black),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(5,5)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-5,-5))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
 
                   ),
                 )),
@@ -82,21 +82,21 @@ class _Main_menuState extends State<Main_menu> {
               //       style: TextStyle(
               //           color: Colors.white
               //       ),),
-              //     padding: EdgeInsets.all(20.0),
+              //     padding: EdgeInsets.all(10.0),
               //     margin: EdgeInsets.all(10.0),
               //     // color: Colors.red[300],
               //     decoration: BoxDecoration(
               //         color: Colors.grey[900],
               //         border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
-              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(5,5)),
-              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-5,-5))],
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
               //     ),
               //   )),
               // ),
             ],
           ),
-          flex: 2,),
+            flex: 2,),
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -120,8 +120,8 @@ class _Main_menuState extends State<Main_menu> {
               //         color: Colors.grey[900],
               //       border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
-              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(5,5)),
-              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-5,-5))],
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
               //     ),
               //   )),
               // ),
@@ -136,27 +136,27 @@ class _Main_menuState extends State<Main_menu> {
                   child: Text('Object Detection',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
-                      fontSize: 25,
+                      color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
-                  padding: EdgeInsets.all(15.0),
+                  padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
-                  width: MediaQuery.of(context).size.width/2,
-                  height: MediaQuery.of(context).size.height/5,
+                  width: MediaQuery.of(context).size.width/1.3,
+                  height: MediaQuery.of(context).size.height/4,
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                      color: Colors.grey[900],
+                    color: Colors.grey[900],
                     border: Border.all(width: 3,color: Colors.black),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(5,5)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-5,-5))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                   ),
                 )),
               ),
             ],
           ),
-          flex: 2,),
+            flex: 2,),
           Row(
             children: [GestureDetector(
               onTap: (){
@@ -167,54 +167,58 @@ class _Main_menuState extends State<Main_menu> {
               },
               child: Flexible(child: Expanded(child: Container(
                 child: Text('Face Recognition',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.white
+                    color: Colors.white,
+                    fontSize: 20,
                   ),),
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),
-                width: MediaQuery.of(context).size.width/2,
-                height: MediaQuery.of(context).size.height/5,
+                width: MediaQuery.of(context).size.width/1.3,
+                height: MediaQuery.of(context).size.height/4,
                 // color: Colors.red[300],
                 decoration: BoxDecoration(
-                    color: Colors.grey[900],
+                  color: Colors.grey[900],
                   border: Border.all(width: 3,color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(5,5)),
-                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-5,-5))],
+                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
+                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                 ),
               )),
-              flex: 1,),
-            ),
-          GestureDetector(
-            onTap: (){
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                    return DistanceCalculatorView();
-                  }));
-            },
-            child: Flexible(child: Expanded(child: Container(
-              child: Text('Distance calc',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                ),),
-              padding: EdgeInsets.all(20.0),
-              margin: EdgeInsets.all(10.0),
-              width: MediaQuery.of(context).size.width/2,
-              height: MediaQuery.of(context).size.height/5,
-              // color: Colors.red[300],
-              decoration: BoxDecoration(
-                color: Colors.grey[900],
-                border: Border.all(width: 3,color: Colors.black),
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(5,5)),
-                  BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-5,-5))],
-              ),
-            )),
-              flex: 1,),
-          )])]
+                flex: 1,),
+            ),],),
+          Row(
+              children: [GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return DistanceCalculatorView();
+                      }));
+                },
+                child: Flexible(child: Expanded(child: Container(
+                  child: Text('Distance calculation',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),),
+                  padding: EdgeInsets.all(10.0),
+                  margin: EdgeInsets.all(10.0),
+                  width: MediaQuery.of(context).size.width/1.3,
+                  height: MediaQuery.of(context).size.height/4,
+                  // color: Colors.red[300],
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900],
+                    border: Border.all(width: 3,color: Colors.black),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                  ),
+                )),
+                  flex: 1,),
+              )])
+        ],
       ),
-
     );
   }
 }
