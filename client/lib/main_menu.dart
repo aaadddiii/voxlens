@@ -52,7 +52,7 @@ class _Main_menuState extends State<Main_menu> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 25,
                     ),),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
@@ -137,7 +137,7 @@ class _Main_menuState extends State<Main_menu> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 25,
                     ),
                   ),
                   padding: EdgeInsets.all(10.0),
@@ -172,7 +172,7 @@ class _Main_menuState extends State<Main_menu> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 25,
                   ),),
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),
@@ -205,7 +205,7 @@ class _Main_menuState extends State<Main_menu> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 25,
                     ),),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
