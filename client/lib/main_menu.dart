@@ -157,7 +157,9 @@ class _Main_menuState extends State<Main_menu> {
             ],
           ),
             flex: 2,),
-          Row(
+          Flexible(child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [GestureDetector(
               onTap: (){
                 Navigator.push(context,
@@ -165,7 +167,7 @@ class _Main_menuState extends State<Main_menu> {
                       return FaceUI();
                     }));
               },
-              child: Flexible(child: Expanded(child: Container(
+              child: Expanded(child: Container(
                 child: Text('Face Recognition',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -185,9 +187,12 @@ class _Main_menuState extends State<Main_menu> {
                     BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                 ),
               )),
-                flex: 1,),
+               // flex: 1
             ),],),
-          Row(
+            flex: 2,),
+          Flexible(child:Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [GestureDetector(
                 onTap: (){
                   Navigator.push(context,
@@ -195,7 +200,7 @@ class _Main_menuState extends State<Main_menu> {
                         return DistanceCalculatorView();
                       }));
                 },
-                child: Flexible(child: Expanded(child: Container(
+                child: Expanded(child: Container(
                   child: Text('Distance calculation',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -215,8 +220,9 @@ class _Main_menuState extends State<Main_menu> {
                       BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                   ),
                 )),
-                  flex: 1,),
-              )])
+                //  flex: 1
+              )]),
+        flex: 2,),
         ],
       ),
     );
