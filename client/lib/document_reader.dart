@@ -50,12 +50,12 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 25,
                         ),),
                       padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
                       width: MediaQuery.of(context).size.width/1.1,
-                      height: MediaQuery.of(context).size.height/3,
+                      height: MediaQuery.of(context).size.height/6,
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
                         color: Colors.grey[900],
@@ -84,12 +84,12 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 25,
                   ),),
                 padding: EdgeInsets.all(15.0),
                 margin: EdgeInsets.all(10.0),
                 width: MediaQuery.of(context).size.width/1.1,
-                height: MediaQuery.of(context).size.height/3,
+                height: MediaQuery.of(context).size.height/6,
                 // color: Colors.grey[900],
                 decoration: BoxDecoration(
                   color: Colors.grey[900],
@@ -140,12 +140,12 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 25,
                 ),),
               padding: EdgeInsets.all(15.0),
               margin: EdgeInsets.all(10.0),
               width: MediaQuery.of(context).size.width/1.1,
-              height: MediaQuery.of(context).size.height/3,
+              height: MediaQuery.of(context).size.height/6,
               // color: Colors.red[300],
               decoration: BoxDecoration(
                 color: Colors.grey[900],

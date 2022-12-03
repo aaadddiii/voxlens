@@ -60,7 +60,7 @@ class _Main_menuState extends State<Main_menu> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
 
-                  width: MediaQuery.of(context).size.width/1.3,
+                  width: MediaQuery.of(context).size.width/1.1,
                   height: MediaQuery.of(context).size.height/8,
 
                   // color: Colors.red[300],
@@ -148,7 +148,7 @@ class _Main_menuState extends State<Main_menu> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
 
-                  width: MediaQuery.of(context).size.width/1.3,
+                  width: MediaQuery.of(context).size.width/1.1,
                   height: MediaQuery.of(context).size.height/8,
 
                   // color: Colors.red[300],
@@ -185,7 +185,7 @@ class _Main_menuState extends State<Main_menu> {
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),
 
-                width: MediaQuery.of(context).size.width/1.3,
+                width: MediaQuery.of(context).size.width/1.1,
                 height: MediaQuery.of(context).size.height/8,
 
                 // color: Colors.red[300],
@@ -220,7 +220,7 @@ class _Main_menuState extends State<Main_menu> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
 
-                  width: MediaQuery.of(context).size.width/1.3,
+                  width: MediaQuery.of(context).size.width/1.1,
                   height: MediaQuery.of(context).size.height/8,
 
                   // color: Colors.red[300],
