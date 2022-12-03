@@ -38,6 +38,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
         children:[
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
                 onTap: (){
@@ -53,8 +54,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                         ),),
                       padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
-                      width: MediaQuery.of(context).size.width/1.3,
-                      height: MediaQuery.of(context).size.height/10,
+                      width: MediaQuery.of(context).size.width/1.1,
+                      height: MediaQuery.of(context).size.height/3,
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
                         color: Colors.grey[900],
@@ -72,6 +73,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
 
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [GestureDetector(
               onTap: () {
                 getImage(1);
@@ -85,8 +88,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   ),),
                 padding: EdgeInsets.all(15.0),
                 margin: EdgeInsets.all(10.0),
-                width: MediaQuery.of(context).size.width/1.3,
-                height: MediaQuery.of(context).size.height/10,
+                width: MediaQuery.of(context).size.width/1.1,
+                height: MediaQuery.of(context).size.height/3,
                 // color: Colors.grey[900],
                 decoration: BoxDecoration(
                   color: Colors.grey[900],
@@ -121,7 +124,11 @@ class _Doc_ReaderState extends State<Doc_Reader> {
           //     ),
           //   )),
           // ),
-          GestureDetector(
+          Flexible(child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+
+    children: [GestureDetector(
             onTap: (){
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) {
@@ -137,8 +144,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 ),),
               padding: EdgeInsets.all(15.0),
               margin: EdgeInsets.all(10.0),
-              width: MediaQuery.of(context).size.width/1.3,
-              height: MediaQuery.of(context).size.height/10,
+              width: MediaQuery.of(context).size.width/1.1,
+              height: MediaQuery.of(context).size.height/3,
               // color: Colors.red[300],
               decoration: BoxDecoration(
                 color: Colors.grey[900],
@@ -148,7 +155,10 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
               ),
             )),
-          )
+    ),
+    ],),
+          flex: 1,),
+
         ],),
     );
   }

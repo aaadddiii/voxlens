@@ -55,12 +55,14 @@ class _Main_menuState extends State<Main_menu> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 25,
                     ),),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
+
                   width: MediaQuery.of(context).size.width/1.3,
                   height: MediaQuery.of(context).size.height/8,
+
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
@@ -140,13 +142,15 @@ class _Main_menuState extends State<Main_menu> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 25,
                     ),
                   ),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
+
                   width: MediaQuery.of(context).size.width/1.3,
                   height: MediaQuery.of(context).size.height/8,
+
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
@@ -157,29 +161,33 @@ class _Main_menuState extends State<Main_menu> {
                   ),
                 )),
               ),
+
           //   ],
           // ),
           //   flex: 2,),
           // Row(
           //   children: [
       GestureDetector(
+
               onTap: (){
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
                       return FaceUI();
                     }));
               },
-              child: Flexible(child: Expanded(child: Container(
+              child: Expanded(child: Container(
                 child: Text('Face Recognition',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 25,
                   ),),
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),
+
                 width: MediaQuery.of(context).size.width/1.3,
                 height: MediaQuery.of(context).size.height/8,
+
                 // color: Colors.red[300],
                 decoration: BoxDecoration(
                   color: Colors.grey[900],
@@ -189,29 +197,32 @@ class _Main_menuState extends State<Main_menu> {
                     BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                 ),
               )),
-            //     flex: 1,),
-            ),
-            ),
+      ),
           // Row(
           //     children: [
                     GestureDetector(
+
+
+
                 onTap: (){
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
                         return DistanceCalculatorView();
                       }));
                 },
-                child: Flexible(child: Expanded(child: Container(
+                child: Expanded(child: Container(
                   child: Text('Distance calculation',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 25,
                     ),),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
+
                   width: MediaQuery.of(context).size.width/1.3,
                   height: MediaQuery.of(context).size.height/8,
+
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
@@ -221,10 +232,12 @@ class _Main_menuState extends State<Main_menu> {
                       BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                   ),
                 )),
+
               //
        ),
-                    ), ],
+                     ],
       ),),
+
     );
   }
 }

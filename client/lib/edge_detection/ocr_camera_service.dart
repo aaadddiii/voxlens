@@ -168,7 +168,6 @@ class _CameraViewState extends State<CameraView> {
             );
           }
         }
-
         // Displaying LoadingSpinner to indicate waiting state
         return Center(
           child: CircularProgressIndicator(),
@@ -194,6 +193,9 @@ class _CameraViewState extends State<CameraView> {
   }
 
   Widget _liveFeedBody() {
+    if(captured){
+      return _captured_body();
+    }
     if (_controller?.value.isInitialized == false) {
       return Container();
     }

@@ -48,7 +48,7 @@ class ObjectDetectorPainter extends CustomPainter {
           ui.TextStyle(color: Colors.lightGreenAccent, background: background));
 
       for (final Label label in detectedObject.labels) {
-        // builder.addText('${label.text} ${label.confidence}\n');
+        // builder.addText('${label.t ext} ${label.confidence}\n');
         if(object_features.containsKey(label.text)) {
           // var sample_bounding_box = object_features[label.text]!["cornerPoints"] as List;
           // var sample_dist = object_features[label.text]!["cornerPoints"] as double;
