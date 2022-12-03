@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'document_reader.dart';
 import 'currency_detector.dart';
+import 'object_detection/object_detect.dart';
 import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
 import 'navigation.dart';
@@ -33,13 +34,15 @@ class _Main_menuState extends State<Main_menu> {
         title: Text('VoxLens'),
         centerTitle: true,
       ),
-      body: Column(
+      body: Align(
+        alignment: Alignment.center,
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Flexible(child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+          // Flexible(child: Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
@@ -57,7 +60,7 @@ class _Main_menuState extends State<Main_menu> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
                   width: MediaQuery.of(context).size.width/1.3,
-                  height: MediaQuery.of(context).size.height/4,
+                  height: MediaQuery.of(context).size.height/8,
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
@@ -94,13 +97,13 @@ class _Main_menuState extends State<Main_menu> {
               //     ),
               //   )),
               // ),
-            ],
-          ),
-            flex: 2,),
-          Flexible(child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            // ],
+          // ),
+            // flex: 2,),
+          // Flexible(child: Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   children: [
               // GestureDetector(
               //   onTap: (){
               //     Navigator.push(context,
@@ -129,7 +132,7 @@ class _Main_menuState extends State<Main_menu> {
                 onTap:() {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
-                        return ObjectDetection();
+                        return ObjectDetectorView();
                       }));
                 },
                 child: Expanded(child: Container(
@@ -143,7 +146,7 @@ class _Main_menuState extends State<Main_menu> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
                   width: MediaQuery.of(context).size.width/1.3,
-                  height: MediaQuery.of(context).size.height/4,
+                  height: MediaQuery.of(context).size.height/8,
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
@@ -154,11 +157,12 @@ class _Main_menuState extends State<Main_menu> {
                   ),
                 )),
               ),
-            ],
-          ),
-            flex: 2,),
-          Row(
-            children: [GestureDetector(
+          //   ],
+          // ),
+          //   flex: 2,),
+          // Row(
+          //   children: [
+      GestureDetector(
               onTap: (){
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
@@ -175,7 +179,7 @@ class _Main_menuState extends State<Main_menu> {
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),
                 width: MediaQuery.of(context).size.width/1.3,
-                height: MediaQuery.of(context).size.height/4,
+                height: MediaQuery.of(context).size.height/8,
                 // color: Colors.red[300],
                 decoration: BoxDecoration(
                   color: Colors.grey[900],
@@ -185,10 +189,12 @@ class _Main_menuState extends State<Main_menu> {
                     BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                 ),
               )),
-                flex: 1,),
-            ),],),
-          Row(
-              children: [GestureDetector(
+            //     flex: 1,),
+            ),
+            ),
+          // Row(
+          //     children: [
+                    GestureDetector(
                 onTap: (){
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
@@ -205,7 +211,7 @@ class _Main_menuState extends State<Main_menu> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
                   width: MediaQuery.of(context).size.width/1.3,
-                  height: MediaQuery.of(context).size.height/4,
+                  height: MediaQuery.of(context).size.height/8,
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
                     color: Colors.grey[900],
@@ -215,10 +221,10 @@ class _Main_menuState extends State<Main_menu> {
                       BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
                   ),
                 )),
-                  flex: 1,),
-              )])
-        ],
-      ),
+              //
+       ),
+                    ), ],
+      ),),
     );
   }
 }
