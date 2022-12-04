@@ -28,9 +28,9 @@ class _Main_menuState extends State<Main_menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.blueAccent,
         title: Text('VoxLens'),
         centerTitle: true,
       ),
@@ -65,11 +65,11 @@ class _Main_menuState extends State<Main_menu> {
 
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
+                    color: Colors.lightBlueAccent,
+                    //border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
 
                   ),
                 )),
@@ -91,11 +91,11 @@ class _Main_menuState extends State<Main_menu> {
               //     margin: EdgeInsets.all(10.0),
               //     // color: Colors.red[300],
               //     decoration: BoxDecoration(
-              //         color: Colors.grey[900],
+              //         color: Colors.lightBlueAccent,
               //         border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
-              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
               //     ),
               //   )),
               // ),
@@ -122,11 +122,11 @@ class _Main_menuState extends State<Main_menu> {
               //     margin: EdgeInsets.all(10.0),
               //     // color: Colors.red[300],
               //     decoration: BoxDecoration(
-              //         color: Colors.grey[900],
+              //         color: Colors.lightBlueAccent,
               //       border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
-              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
               //     ),
               //   )),
               // ),
@@ -153,11 +153,11 @@ class _Main_menuState extends State<Main_menu> {
 
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
+                    color: Colors.lightBlueAccent,
+                    //border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
                   ),
                 )),
               ),
@@ -190,11 +190,11 @@ class _Main_menuState extends State<Main_menu> {
 
                 // color: Colors.red[300],
                 decoration: BoxDecoration(
-                  color: Colors.grey[900],
-                  border: Border.all(width: 3,color: Colors.black),
+                  color: Colors.lightBlueAccent,
+                  //border: Border.all(width: 3,color: Colors.blueAccent),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
                 ),
               )),
       ),
@@ -225,11 +225,11 @@ class _Main_menuState extends State<Main_menu> {
 
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
+                    color: Colors.lightBlueAccent,
+                    ////border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
                   ),
                 )),
 
