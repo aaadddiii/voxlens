@@ -23,9 +23,9 @@ class _Doc_ReaderState extends State<Doc_Reader> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.blueAccent,
         title: Text('Voxlens',
           style: TextStyle(
               color: Colors.white
@@ -56,10 +56,10 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                       margin: EdgeInsets.all(10.0),
                       width: MediaQuery.of(context).size.width/1.1,
                       height: MediaQuery.of(context).size.height/6,
-                      // color: Colors.grey[900],
+                      // color: Colors.lightBlueAccent,
                       decoration: BoxDecoration(
-                        color: Colors.grey[900],
-                        border: Border.all(width: 3,color: Colors.black),
+                        color: Colors.lightBlueAccent,
+                        //border: Border.all(width: 3,color: Colors.black),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                           BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
@@ -90,10 +90,10 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 margin: EdgeInsets.all(10.0),
                 width: MediaQuery.of(context).size.width/1.1,
                 height: MediaQuery.of(context).size.height/6,
-                // color: Colors.grey[900],
+                // color: Colors.lightBlueAccent,
                 decoration: BoxDecoration(
-                  color: Colors.grey[900],
-                  border: Border.all(width: 3,color: Colors.black),
+                  color: Colors.lightBlueAccent,
+                  //border: Border.all(width: 3,color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                   boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                     BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
@@ -116,8 +116,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
           //     margin: EdgeInsets.all(10.0),
           //     // color: Colors.red[300],
           //     decoration: BoxDecoration(
-          //       color: Colors.grey[900],
-          //       border: Border.all(width: 3,color: Colors.black),
+          //       color: Colors.lightBlueAccent,
+          //       //border: Border.all(width: 3,color: Colors.black),
           //       borderRadius: BorderRadius.all(Radius.circular(15)),
           //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
           //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
@@ -148,8 +148,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
               height: MediaQuery.of(context).size.height/6,
               // color: Colors.red[300],
               decoration: BoxDecoration(
-                color: Colors.grey[900],
-                border: Border.all(width: 3,color: Colors.black),
+                color: Colors.lightBlueAccent,
+                //border: Border.all(width: 3,color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                   BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],

@@ -31,9 +31,9 @@ class _FaceUIState extends State<FaceUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.blueAccent,
         title: Text('Voxlens',
           style: TextStyle(
               color: Colors.white
@@ -46,6 +46,8 @@ class _FaceUIState extends State<FaceUI> {
         children:[
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [
               GestureDetector(
                 onTap: (){
@@ -54,15 +56,19 @@ class _FaceUIState extends State<FaceUI> {
                 child: Expanded(
                     child: Container(
                       child: Text('Face Recognition',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.white
+                            fontSize: 25,
+                            color: Colors.white,
                         ),),
                       padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
+                      width: MediaQuery.of(context).size.width/1.1,
+                      height: MediaQuery.of(context).size.height/4,
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
-                        color: Colors.grey[900],
-                        border: Border.all(width: 3,color: Colors.black),
+                        color: Colors.lightBlueAccent,
+                        //border: Border.all(width: 3,color: Colors.black),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                           BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
@@ -74,6 +80,8 @@ class _FaceUIState extends State<FaceUI> {
             flex: 2,),
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [
               GestureDetector(
                 onTap: (){
@@ -91,15 +99,19 @@ class _FaceUIState extends State<FaceUI> {
                 child: Expanded(
                     child: Container(
                       child: Text('Register Face',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.white
+                            fontSize: 25,
+                            color: Colors.white,
                         ),),
                       padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
+                      width: MediaQuery.of(context).size.width/1.1,
+                      height: MediaQuery.of(context).size.height/4,
                       // color: Colors.grey[900],
                       decoration: BoxDecoration(
-                        color: Colors.grey[900],
-                        border: Border.all(width: 3,color: Colors.black),
+                        color: Colors.lightBlueAccent,
+                        //border: Border.all(width: 3,color: Colors.black),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                           BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
