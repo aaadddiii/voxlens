@@ -122,11 +122,11 @@ class _DistanceCalculatorView extends State<DistanceCalculatorView> {
         // _speaking = true;
         // await TTS().speak(label.text);
         // _speaking = false;
-        // print('===////////////////////////////////////////////////////////////////////////===');
-        // print(label.text);
-        // print(detectedObject.boundingBox);
-        // print(detectedObject.hashCode);
-        // print('===////////////////////////////////////////////////////////////////////////===');
+        print('===////////////////////////////////////////////////////////////////////////===');
+        print(label.text);
+        print(detectedObject.boundingBox);
+        print(detectedObject.hashCode);
+        print('===////////////////////////////////////////////////////////////////////////===');
         objects_str += label.text + " ";
         print(label.text);
       }
@@ -134,10 +134,10 @@ class _DistanceCalculatorView extends State<DistanceCalculatorView> {
     // _speaking = true;
     // TTS().speak(objects_str);
     // _speaking = false;
-    for(var object in objects){
-      print(object.boundingBox);
-
-    }
+    // for(var object in objects){
+    //   print(object.boundingBox);
+    //
+    // }
     // TTS().speak('processed');
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
@@ -154,7 +154,7 @@ class _DistanceCalculatorView extends State<DistanceCalculatorView> {
       }
       _text = text;
       // _speaking = true;
-      print(text);
+      // print(text);
       // TODO: set _customPaint to draw boundingRect on top of image
       _customPaint = null;
     }

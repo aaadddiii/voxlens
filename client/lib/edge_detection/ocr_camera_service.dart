@@ -1,5 +1,6 @@
+import 'dart:async';
 import 'dart:io';
-
+import 'dart:ui' as ui;
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,9 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:math' as math;
 import '../main.dart';
 import 'package:client/tts.dart';
+import 'convert_image.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart';
 
 enum ScreenMode { liveFeed, gallery }
 
@@ -28,7 +32,6 @@ class CameraView extends StatefulWidget {
   final Function(InputImage inputImage) onImage;
   final Function(ScreenMode mode)? onScreenModeChanged;
   final CameraLensDirection initialDirection;
-
   @override
   State<CameraView> createState() => _CameraViewState();
 }
@@ -39,13 +42,19 @@ class _CameraViewState extends State<CameraView> {
   String? imagePath;
   File? _image;
   String? _path;
+  List<int>? lst;
   ImagePicker? _imagePicker;
   int _cameraIndex = -1;
   double zoomLevel = 0.0, minZoomLevel = 0.0, maxZoomLevel = 0.0;
   final bool _allowPicker = true;
+  String? path;
+  CameraImage? img;
+  Image? image;
+  File? receiptFile;
   bool _changingCameraLens = false;
   bool captured = false;
-
+  bool capturing = false;
+  late InputImage inputImage ;
   @override
   void initState() {
     super.initState();
@@ -128,56 +137,122 @@ class _CameraViewState extends State<CameraView> {
           ),
         ));
   }
-  Future<String> _setImagePath() async{
-    assert(_controller != null, 'Camera controller not initialized');
-    await _controller?.stopImageStream();
-    XFile? file = await _controller?.takePicture();
-    imagePath = file?.path;
-    return "ready";
-  }
+  // Future _setImagePath() async{
+  //   assert(_controller != null, 'Camera controller not initialized');
+  //   await _controller?.stopImageStream();
+  //   XFile? file = await _controller?.takePicture();
+  //   imagePath = file?.path;
+  // }
   Widget _captured_body(){
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    return FutureBuilder(
-      builder: (ctx, snapshot) {
-        // Checking if future is resolved or not
-        if (snapshot.connectionState == ConnectionState.done) {
-          // If we got an error
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                '${snapshot.error} occurred',
-                style: TextStyle(fontSize: 18),
-              ),
-            );
-
-            // if we got our data
-          } else if (snapshot.hasData) {
-            // Extracting data from snapshot object
-            final data = snapshot.data as String;
-            return Container(
-              width: width,
-              height: height,
-              child: Transform(
-                  alignment: Alignment.center,
-                  child: FittedBox(
-                    fit: BoxFit.cover,
-                    child: Image.file(File(imagePath!)),
-                  ),
-                  transform: Matrix4.rotationY(math.pi)),
-            );
-          }
-        }
-        // Displaying LoadingSpinner to indicate waiting state
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-
-      // Future that needs to be resolved
-      // inorder to display something on the Canvas
-      future: _setImagePath(),
+    // return FutureBuilder(
+    //   builder: (ctx, snapshot) {
+    //     // Checking if future is resolved or not
+    //     if (snapshot.connectionState == ConnectionState.done) {
+    //       // If we got an error
+    //       if (snapshot.hasError) {
+    //         return Center(
+    //           child: Text(
+    //             '${snapshot.error} occurred',
+    //             style: TextStyle(fontSize: 18),
+    //           ),
+    //         );
+    //
+    //         // if we got our data
+    //       } else if (snapshot.hasData) {
+    //         // Extracting data from snapshot object
+    //         final data = snapshot.data as String;
+    //         return Container(
+    //           width: width,
+    //           height: height,
+    //           child: Transform(
+    //               alignment: Alignment.center,
+    //               child: FittedBox(
+    //                 fit: BoxFit.cover,
+    //                 child: Image.file(File(imagePath!)),
+    //               ),
+    //               transform: Matrix4.rotationY(math.pi)),
+    //         );
+    //       }
+    //     }
+    //     // Displaying LoadingSpinner to indicate waiting state
+    //     return Center(
+    //       child: CircularProgressIndicator(),
+    //     );
+    //   },
+    //
+    //   // Future that needs to be resolved
+    //   // inorder to display something on the Canvas
+    //   future: _setImagePath(),
+    // );
+    // if(capturing){
+    //   return Center(child: CircularProgressIndicator(),);
+    // }
+    // return Container(
+    //   width: width,
+    //   height: height,
+    //   child: img);
+    final size = MediaQuery.of(context).size;
+    var scale = size.aspectRatio * _controller!.value.aspectRatio;
+    if (scale < 1) scale = 1 / scale;
+    return Container(
+      width: width,
+      height: height,
+      // color: Colors.black,
+      // child: Stack(
+      //   fit: StackFit.expand,
+      //   children: <Widget>[
+      //     Transform.scale(
+      //       scale: scale,
+      //       child: Center(
+      //         child: Image.file(File('$path/image.png')),
+      //         // child: Text("hi"),
+      //       ),
+      //     ),
+      //   ],
+      // ),
+        child : Transform.rotate(
+          angle: math.pi / 2,
+          child: Image.file(File('$path/image.png')),
+        )
     );
+  }
+  Future<String> getPath() async{
+    String path = (await getApplicationDocumentsDirectory()).path;
+    return path;
+  }
+  Future<File> get _localFile async {
+    final path = await getPath();
+    print('path ${path}');
+    return File('$path/image.png');
+  }
+
+  Future<int> delete() async {
+    try {
+      final file = await _localFile;
+
+      await file.delete();
+    } catch (e) {
+      return 0;
+    }
+    return 0;
+  }
+  Future<XFile?> takePicture() async {
+    final CameraController? cameraController = _controller;
+
+    if (cameraController!.value.isTakingPicture) {
+      // A capture is already pending, do nothing.
+      return null;
+    }
+
+    try {
+      XFile file = await cameraController.takePicture();
+      return file;
+    } on CameraException catch (e) {
+      print('Error occured while taking picture: $e');
+      return null;
+    }
   }
   Widget _body() {
     Widget body;
@@ -192,10 +267,16 @@ class _CameraViewState extends State<CameraView> {
     return body;
   }
 
+  // Future<String> getFilePath() async {
+  //   Directory appDocumentsDirectory = await getApplicationDocumentsDirectory(); // 1
+  //   String appDocumentsPath = appDocumentsDirectory.path; // 2
+  //   String filePath = '$appDocumentsPath/demoTextFile.txt'; // 3
+  //
+  //   return filePath;
+  // }
+
+
   Widget _liveFeedBody() {
-    if(captured){
-      return _captured_body();
-    }
     if (_controller?.value.isInitialized == false) {
       return Container();
     }
@@ -254,11 +335,38 @@ class _CameraViewState extends State<CameraView> {
               width:150,
               child:FloatingActionButton(
                 child: Text("Capture"), //child widget inside this button
-                onPressed: (){
+                onPressed: () async{
                   print("Button is pressed.");
-                  captured = true;
                   TTS().stop();
-                  //task to execute when this button is pressed
+                  // _body();
+                  // await _controller?.stopImageStream();
+                  // XFile? rawImage = await takePicture();
+                  captured = true;
+                  // image = Image.memory(convert);
+                  // await delete();
+                  imageCache.clear();
+                  lst = await convertImagetoPng(img!);
+                  // if(lst != null){
+                  // }
+                  // try{
+
+                  // }
+                  // catch(e){
+                  //   print("===+++-----+++++++========>>>>>>><<<<<<<<<<<");
+                  //   print(e);}
+                  // if(receiptFile == null){
+                  //   print("//////////////////////////////////////|||||||||||||--------==========");
+                  // }
+                  path = await getPath();
+                  await File('$path/image.png').writeAsBytes(lst!);
+                  // receiptFile = await File('image.png').writeAsBytes(lst!);
+                  // await File("image.png").writeAsBytesSync(lst!);
+                  setState(() {});
+                  await _stopLiveFeed();
+                  // imagePath = rawImage?.path;
+                  // _captured_body();
+                  // _body();
+                  // task to execute when this button is pressed
                 },
               ),
             ),
@@ -382,11 +490,13 @@ class _CameraViewState extends State<CameraView> {
       _image = File(path);
     });
     _path = path;
-    final inputImage = InputImage.fromFilePath(path);
+    inputImage = InputImage.fromFilePath(path);
     widget.onImage(inputImage);
   }
 
   Future _processCameraImage(CameraImage image) async {
+    // img = convertToImage(image) as Image;
+    img = image;
     final WriteBuffer allBytes = WriteBuffer();
     for (final Plane plane in image.planes) {
       allBytes.putUint8List(plane.bytes);
@@ -422,7 +532,7 @@ class _CameraViewState extends State<CameraView> {
       planeData: planeData,
     );
 
-    final inputImage =
+    inputImage =
     InputImage.fromBytes(bytes: bytes, inputImageData: inputImageData);
 
     widget.onImage(inputImage);

@@ -23,7 +23,36 @@ class ObjectDetectorPainter extends CustomPainter {
       // "cornerPoints": [284.0, 357.0, 431.0, 852.0],
       // "distance": 0.5
       "ratio": 36382.5
-    }
+    },
+    "Calculator": {
+      // "cornerPoints" : [235.0, 327.0, 416.0, 645.0],
+      // "distance": 0.5
+      "ratio" : 28779.0
+    },
+    "Person": {
+      // "cornerPoints" : [196.0, 298.0, 496.0, 1206.0],
+      // "distance" : 2.0
+    },
+     "Bench" : {
+      // "cornerPoints" : [73.0, 30.0, 577.0, 419.0],
+      // "distance" : 3.5
+  },
+    "Chair" : {
+      // "cornerPoints" : [165.0, 133.0, 446.0, 556.0],
+      // "distance" : 2
+  },
+   "Backpack" : {
+      // "cornerPoints" : [280.0, 797.0, 482.0, 1070.0],
+      // "distance" : 2
+  },
+    "Pen" : {
+      // "cornerPoints" : [257.0, 547.0, 315.0, 878.0],
+      // "distance" : 0.5
+    },
+     "Notebook" : {
+      // "cornerPoints" : [167.0, 269.0, 720.0, 1193.0],
+      // "distance" : 0.5
+  }
   };
 
   @override
@@ -48,7 +77,7 @@ class ObjectDetectorPainter extends CustomPainter {
           ui.TextStyle(color: Colors.lightGreenAccent, background: background));
 
       for (final Label label in detectedObject.labels) {
-        // builder.addText('${label.t ext} ${label.confidence}\n');
+        // builder.addText('${label.text} ${label.confidence}\n');
         if(object_features.containsKey(label.text)) {
           // var sample_bounding_box = object_features[label.text]!["cornerPoints"] as List;
           // var sample_dist = object_features[label.text]!["cornerPoints"] as double;
