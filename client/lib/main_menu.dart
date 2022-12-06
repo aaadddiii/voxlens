@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'document_reader.dart';
 import 'currency_detector.dart';
+import 'object_detection/object_detect.dart';
 import 'tts.dart';
 import 'package:alan_voice/alan_voice.dart';
 import 'navigation.dart';
@@ -27,19 +28,21 @@ class _Main_menuState extends State<Main_menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.blueAccent,
         title: Text('VoxLens'),
         centerTitle: true,
       ),
-      body: Column(
+      body: Align(
+        alignment: Alignment.center,
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Flexible(child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+          // Flexible(child: Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
@@ -56,15 +59,17 @@ class _Main_menuState extends State<Main_menu> {
                     ),),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
-                  width: MediaQuery.of(context).size.width/1.3,
-                  height: MediaQuery.of(context).size.height/4,
+
+                  width: MediaQuery.of(context).size.width/1.1,
+                  height: MediaQuery.of(context).size.height/8,
+
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
+                    color: Colors.lightBlueAccent,
+                    //border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
 
                   ),
                 )),
@@ -86,21 +91,21 @@ class _Main_menuState extends State<Main_menu> {
               //     margin: EdgeInsets.all(10.0),
               //     // color: Colors.red[300],
               //     decoration: BoxDecoration(
-              //         color: Colors.grey[900],
+              //         color: Colors.lightBlueAccent,
               //         border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
-              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
               //     ),
               //   )),
               // ),
-            ],
-          ),
-            flex: 2,),
-          Flexible(child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            // ],
+          // ),
+            // flex: 2,),
+          // Flexible(child: Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   children: [
               // GestureDetector(
               //   onTap: (){
               //     Navigator.push(context,
@@ -117,11 +122,11 @@ class _Main_menuState extends State<Main_menu> {
               //     margin: EdgeInsets.all(10.0),
               //     // color: Colors.red[300],
               //     decoration: BoxDecoration(
-              //         color: Colors.grey[900],
+              //         color: Colors.lightBlueAccent,
               //       border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
-              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+              //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+              //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
               //     ),
               //   )),
               // ),
@@ -129,7 +134,7 @@ class _Main_menuState extends State<Main_menu> {
                 onTap:() {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
-                        return ObjectDetection();
+                        return ObjectDetectorView();
                       }));
                 },
                 child: Expanded(child: Container(
@@ -142,25 +147,28 @@ class _Main_menuState extends State<Main_menu> {
                   ),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
-                  width: MediaQuery.of(context).size.width/1.3,
-                  height: MediaQuery.of(context).size.height/4,
+
+                  width: MediaQuery.of(context).size.width/1.1,
+                  height: MediaQuery.of(context).size.height/8,
+
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
+                    color: Colors.lightBlueAccent,
+                    //border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
                   ),
                 )),
               ),
-            ],
-          ),
-            flex: 2,),
-          Flexible(child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [GestureDetector(
+
+          //   ],
+          // ),
+          //   flex: 2,),
+          // Row(
+          //   children: [
+      GestureDetector(
+
               onTap: (){
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
@@ -176,24 +184,26 @@ class _Main_menuState extends State<Main_menu> {
                   ),),
                 padding: EdgeInsets.all(10.0),
                 margin: EdgeInsets.all(10.0),
-                width: MediaQuery.of(context).size.width/1.3,
-                height: MediaQuery.of(context).size.height/4,
+
+                width: MediaQuery.of(context).size.width/1.1,
+                height: MediaQuery.of(context).size.height/8,
+
                 // color: Colors.red[300],
                 decoration: BoxDecoration(
-                  color: Colors.grey[900],
-                  border: Border.all(width: 3,color: Colors.black),
+                  color: Colors.lightBlueAccent,
+                  //border: Border.all(width: 3,color: Colors.blueAccent),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                  boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
                 ),
               )),
-               // flex: 1
-            ),],),
-            flex: 2,),
-          Flexible(child:Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [GestureDetector(
+      ),
+          // Row(
+          //     children: [
+                    GestureDetector(
+
+
+
                 onTap: (){
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
@@ -209,22 +219,25 @@ class _Main_menuState extends State<Main_menu> {
                     ),),
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.all(10.0),
-                  width: MediaQuery.of(context).size.width/1.3,
-                  height: MediaQuery.of(context).size.height/4,
+
+                  width: MediaQuery.of(context).size.width/1.1,
+                  height: MediaQuery.of(context).size.height/8,
+
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.grey[900],
-                    border: Border.all(width: 3,color: Colors.black),
+                    color: Colors.lightBlueAccent,
+                    ////border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(8,8)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-8,-8))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
                   ),
                 )),
-                //  flex: 1
-              )]),
-        flex: 2,),
-        ],
-      ),
+
+              //
+       ),
+                     ],
+      ),),
+
     );
   }
 }

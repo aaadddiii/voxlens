@@ -23,9 +23,9 @@ class _Doc_ReaderState extends State<Doc_Reader> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.blueAccent,
         title: Text('Voxlens',
           style: TextStyle(
               color: Colors.white
@@ -38,6 +38,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
         children:[
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
                 onTap: (){
@@ -49,16 +50,16 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 25,
                         ),),
                       padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
-                      width: MediaQuery.of(context).size.width/1.3,
-                      height: MediaQuery.of(context).size.height/10,
-                      // color: Colors.grey[900],
+                      width: MediaQuery.of(context).size.width/1.1,
+                      height: MediaQuery.of(context).size.height/6,
+                      // color: Colors.lightBlueAccent,
                       decoration: BoxDecoration(
-                        color: Colors.grey[900],
-                        border: Border.all(width: 3,color: Colors.black),
+                        color: Colors.lightBlueAccent,
+                        //border: Border.all(width: 3,color: Colors.black),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                           BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
@@ -72,6 +73,8 @@ class _Doc_ReaderState extends State<Doc_Reader> {
 
           Flexible(child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [GestureDetector(
               onTap: () {
                 getImage(1);
@@ -81,16 +84,16 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 25,
                   ),),
                 padding: EdgeInsets.all(15.0),
                 margin: EdgeInsets.all(10.0),
-                width: MediaQuery.of(context).size.width/1.3,
-                height: MediaQuery.of(context).size.height/10,
-                // color: Colors.grey[900],
+                width: MediaQuery.of(context).size.width/1.1,
+                height: MediaQuery.of(context).size.height/6,
+                // color: Colors.lightBlueAccent,
                 decoration: BoxDecoration(
-                  color: Colors.grey[900],
-                  border: Border.all(width: 3,color: Colors.black),
+                  color: Colors.lightBlueAccent,
+                  //border: Border.all(width: 3,color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                   boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                     BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
@@ -113,15 +116,19 @@ class _Doc_ReaderState extends State<Doc_Reader> {
           //     margin: EdgeInsets.all(10.0),
           //     // color: Colors.red[300],
           //     decoration: BoxDecoration(
-          //       color: Colors.grey[900],
-          //       border: Border.all(width: 3,color: Colors.black),
+          //       color: Colors.lightBlueAccent,
+          //       //border: Border.all(width: 3,color: Colors.black),
           //       borderRadius: BorderRadius.all(Radius.circular(15)),
           //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
           //         BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
           //     ),
           //   )),
           // ),
-          GestureDetector(
+          Flexible(child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+
+    children: [GestureDetector(
             onTap: (){
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) {
@@ -133,22 +140,25 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 25,
                 ),),
               padding: EdgeInsets.all(15.0),
               margin: EdgeInsets.all(10.0),
-              width: MediaQuery.of(context).size.width/1.3,
-              height: MediaQuery.of(context).size.height/10,
+              width: MediaQuery.of(context).size.width/1.1,
+              height: MediaQuery.of(context).size.height/6,
               // color: Colors.red[300],
               decoration: BoxDecoration(
-                color: Colors.grey[900],
-                border: Border.all(width: 3,color: Colors.black),
+                color: Colors.lightBlueAccent,
+                //border: Border.all(width: 3,color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
                   BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
               ),
             )),
-          )
+    ),
+    ],),
+          flex: 1,),
+
         ],),
     );
   }

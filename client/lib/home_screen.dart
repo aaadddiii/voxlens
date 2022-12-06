@@ -116,10 +116,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      backgroundColor: Colors.grey[700],
+      backgroundColor: Colors.white,
 
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.blueAccent,
         title: Text('VoxLens '),
         centerTitle: true,
 
@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
             fontSize: 50.0,
             fontWeight: FontWeight.bold,
             letterSpacing: 20.0,
-            color: Colors.white,
+            color: Colors.blueAccent,
             fontFamily: 'Anton',
             ),
 // =======
@@ -171,11 +171,11 @@ class _HomeState extends State<Home> {
           margin: EdgeInsets.all(20.0),
           // color: Colors.grey[600],
           decoration: BoxDecoration(
-              color: Colors.grey[900],
+              color: Colors.blueAccent,
               // border: Border.all(width: 3,color: Colors.white),
               borderRadius: BorderRadius.all(Radius.circular(15)),
             boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-            BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+            BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 6,offset:Offset(-4,-4))],
 
           ),
         )),
