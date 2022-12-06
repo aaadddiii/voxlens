@@ -129,10 +129,12 @@ class _HomeState extends State<Home> {
 // <<<<<<< HEAD
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text(
+          children: [
+            Container(margin: EdgeInsets.all(25.0), child: Image.asset('assets/icon/icon.png', height: 100,width: 100,))
+            ,Text(
           'VoxLens',
             style: TextStyle(
-            fontSize: 50.0,
+            fontSize: 20.0,
             fontWeight: FontWeight.bold,
             letterSpacing: 20.0,
             color: Colors.blueAccent,
