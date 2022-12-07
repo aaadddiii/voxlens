@@ -368,7 +368,9 @@ class _CameraViewState extends State<CameraView> {
                   // _body();
                   // task to execute when this button is pressed
                 },
+
               ),
+
             ),
           ),
         ],

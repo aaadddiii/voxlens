@@ -31,7 +31,7 @@ class _Main_menuState extends State<Main_menu> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.teal[500],
         title: Text('VoxLens'),
         centerTitle: true,
       ),
@@ -72,15 +72,15 @@ class _Main_menuState extends State<Main_menu> {
                   margin: EdgeInsets.all(15.0),
 
                   width: MediaQuery.of(context).size.width/2.5,
-                  height: MediaQuery.of(context).size.height/2.5,
+                  height: MediaQuery.of(context).size.height/4,
 
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.teal[300],
                     //border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 1,blurRadius: 4,offset:Offset(3,3)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 4,offset:Offset(-3,-3))],
 
                   ),
                 )),
@@ -102,7 +102,7 @@ class _Main_menuState extends State<Main_menu> {
               //     margin: EdgeInsets.all(10.0),
               //     // color: Colors.red[300],
               //     decoration: BoxDecoration(
-              //         color: Colors.lightBlueAccent,
+              //         color: Colors.teal[300],
               //         border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
               //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
@@ -133,7 +133,7 @@ class _Main_menuState extends State<Main_menu> {
               //     margin: EdgeInsets.all(10.0),
               //     // color: Colors.red[300],
               //     decoration: BoxDecoration(
-              //         color: Colors.lightBlueAccent,
+              //         color: Colors.teal[300],
               //       border: Border.all(width: 3,color: Colors.black),
               //       borderRadius: BorderRadius.all(Radius.circular(15)),
               //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
@@ -165,15 +165,15 @@ class _Main_menuState extends State<Main_menu> {
                   margin: EdgeInsets.all(15.0),
 
                   width: MediaQuery.of(context).size.width/2.5,
-                  height: MediaQuery.of(context).size.height/2.5,
+                  height: MediaQuery.of(context).size.height/4,
 
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.teal[300],
                     //border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 1,blurRadius: 4,offset:Offset(3,3)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 4,offset:Offset(-3,-3))],
                   ),
                 )),
               ),
@@ -215,15 +215,15 @@ class _Main_menuState extends State<Main_menu> {
                   margin: EdgeInsets.all(15.0),
 
                   width: MediaQuery.of(context).size.width/2.5,
-                  height: MediaQuery.of(context).size.height/2.5,
+                  height: MediaQuery.of(context).size.height/4,
 
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.teal[300],
                     //border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 1,blurRadius: 4,offset:Offset(3,3)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 4,offset:Offset(-3,-3))],
                   ),
                 )),
               ),
@@ -256,15 +256,15 @@ class _Main_menuState extends State<Main_menu> {
                   margin: EdgeInsets.all(15.0),
 
                   width: MediaQuery.of(context).size.width/2.5,
-                  height: MediaQuery.of(context).size.height/2.5,
+                  height: MediaQuery.of(context).size.height/4,
 
                   // color: Colors.red[300],
                   decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.teal[300],
                     ////border: Border.all(width: 3,color: Colors.blueAccent),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(6,6)),
-                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-6,-6))],
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 1,blurRadius: 4,offset:Offset(3,3)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 4,offset:Offset(-3,-3))],
                   ),
                 )),
 

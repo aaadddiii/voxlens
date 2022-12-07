@@ -25,7 +25,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.teal[700],
         title: Text('Voxlens',
           style: TextStyle(
               color: Colors.white
@@ -56,9 +56,9 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                       margin: EdgeInsets.all(10.0),
                       width: MediaQuery.of(context).size.width/1.1,
                       height: MediaQuery.of(context).size.height/6,
-                      // color: Colors.lightBlueAccent,
+                      // color: Colors.teal[300],
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.teal[300],
                         //border: Border.all(width: 3,color: Colors.black),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
@@ -90,9 +90,9 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 margin: EdgeInsets.all(10.0),
                 width: MediaQuery.of(context).size.width/1.1,
                 height: MediaQuery.of(context).size.height/6,
-                // color: Colors.lightBlueAccent,
+                // color: Colors.teal[300],
                 decoration: BoxDecoration(
-                  color: Colors.lightBlueAccent,
+                  color: Colors.teal[300],
                   //border: Border.all(width: 3,color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                   boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
@@ -116,7 +116,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
           //     margin: EdgeInsets.all(10.0),
           //     // color: Colors.red[300],
           //     decoration: BoxDecoration(
-          //       color: Colors.lightBlueAccent,
+          //       color: Colors.teal[300],
           //       //border: Border.all(width: 3,color: Colors.black),
           //       borderRadius: BorderRadius.all(Radius.circular(15)),
           //       boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
@@ -148,7 +148,7 @@ class _Doc_ReaderState extends State<Doc_Reader> {
               height: MediaQuery.of(context).size.height/6,
               // color: Colors.red[300],
               decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
+                color: Colors.teal[300],
                 //border: Border.all(width: 3,color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),

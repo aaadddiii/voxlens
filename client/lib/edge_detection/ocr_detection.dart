@@ -33,6 +33,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
       title: 'Text Detector',
       customPaint: _customPaint,
       text: _text,
+     
       onImage: (inputImage) {
         processImage(inputImage);
       },
