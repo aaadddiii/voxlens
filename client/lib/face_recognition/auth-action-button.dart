@@ -164,17 +164,9 @@ class _AuthActionButtonState extends State<AuthActionButton> {
                 !widget.isLogin
                     ? AppTextField(
                         controller: _userTextEditingController,
-                        labelText: "Your Name",
+                        labelText: "Name of the person",
                       )
                     : Container(),
-                SizedBox(height: 10),
-                widget.isLogin && predictedUser == null
-                    ? Container()
-                    : AppTextField(
-                        controller: _passwordTextEditingController,
-                        labelText: "Password",
-                        isPassword: true,
-                      ),
                 SizedBox(height: 10),
                 Divider(),
                 SizedBox(height: 10),
@@ -191,7 +183,7 @@ class _AuthActionButtonState extends State<AuthActionButton> {
                       )
                     : !widget.isLogin
                         ? AppButton(
-                            text: 'SIGN UP',
+                            text: 'Register',
                             onPressed: () async {
                               await _signUp(context);
                             },

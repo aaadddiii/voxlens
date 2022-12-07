@@ -32,6 +32,7 @@ class CameraView extends StatefulWidget {
   final Function(InputImage inputImage) onImage;
   final Function(ScreenMode mode)? onScreenModeChanged;
   final CameraLensDirection initialDirection;
+  bool is_captured = false;
   @override
   State<CameraView> createState() => _CameraViewState();
 }
@@ -41,6 +42,7 @@ class _CameraViewState extends State<CameraView> {
   CameraController? _controller;
   String? imagePath;
   File? _image;
+  var tts = TTS();
   String? _path;
   List<int>? lst;
   ImagePicker? _imagePicker;
@@ -145,6 +147,7 @@ class _CameraViewState extends State<CameraView> {
   // }
   Widget _captured_body(){
     widget.onImage(inputImage);
+    widget.is_captured = true;
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return ListView(shrinkWrap: true, children: [

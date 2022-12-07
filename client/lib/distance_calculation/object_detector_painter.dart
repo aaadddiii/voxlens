@@ -9,7 +9,7 @@ import 'coordinates_translator.dart';
 
 class ObjectDetectorPainter extends CustomPainter {
   ObjectDetectorPainter(this._objects, this.rotation, this.absoluteSize);
-
+  var tts = TTS();
   final List<DetectedObject> _objects;
   final Size absoluteSize;
   final InputImageRotation rotation;
@@ -78,7 +78,7 @@ class ObjectDetectorPainter extends CustomPainter {
           ui.TextStyle(color: Colors.lightGreenAccent, background: background));
 
       for (final Label label in detectedObject.labels) {
-        // builder.addText('${label.text} ${label.confidence}\n');
+        builder.addText('${label.text}\n');
         if(object_features.containsKey(label.text)) {
           // var sample_bounding_box = object_features[label.text]!["cornerPoints"] as List;
           // var sample_dist = object_features[label.text]!["cornerPoints"] as double;
@@ -86,7 +86,16 @@ class ObjectDetectorPainter extends CustomPainter {
           try{
             double ratio = object_features[label.text]!["ratio"] as double;
             double distance = ratio/bounding_box_area;
-            builder.addText('distance ${distance}\n');
+            String? dist;
+            if(distance < 1.0){
+              dist = distance.toStringAsFixed(1);
+            }
+            else{
+              dist = distance.toStringAsFixed(0);
+            }
+            if(tts.state == 0)
+              tts.speak("${label.text} is {$dist} metre away from you");
+            builder.addText('distance ${dist}\n');
           }
           catch(e){
             print("catchingggggggggg..........................");

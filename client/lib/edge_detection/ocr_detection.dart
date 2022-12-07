@@ -4,6 +4,7 @@ import 'package:client/tts.dart';
 import 'ocr_camera_service.dart';
 import 'text_detector_painter.dart';
 import 'package:vibration/vibration.dart';
+import 'ocr_camera_service.dart';
 
 
 class TextRecognizerView extends StatefulWidget {
@@ -20,7 +21,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
   CustomPaint? _customPaint;
   String? _text;
   var tts = TTS();
-
+  var cameraView;
   @override
   void dispose() async {
     _canProcess = false;
@@ -30,15 +31,16 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
 
   @override
   Widget build(BuildContext context) {
-    return CameraView(
+    cameraView = CameraView(
       title: 'Text Detector',
       customPaint: _customPaint,
       text: _text,
-     
+
       onImage: (inputImage) {
         processImage(inputImage);
       },
     );
+    return cameraView;
   }
 
   Future<void> processImage(InputImage inputImage) async {
@@ -50,8 +52,14 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
       _text = '';
     });
     final recognizedText = await _textRecognizer.processImage(inputImage);
+    String scannedText = "";
     for(var block in recognizedText.blocks){
-      if(block.boundingBox.left < 10 && block.cornerPoints[1].y < 10){
+      if(cameraView.is_captured == true){
+        for(TextLine line in block.lines){
+          scannedText = scannedText + line.text + "\n";
+        }
+      }
+      else if(block.boundingBox.left < 10 && block.cornerPoints[1].y < 10){
         if(tts.state == 0)
           tts.speak("move away");
       }
@@ -81,6 +89,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
       print(block.boundingBox.right);
       print(block.cornerPoints);
     }
+    tts.speak(scannedText);
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
       final painter = TextRecognizerPainter(

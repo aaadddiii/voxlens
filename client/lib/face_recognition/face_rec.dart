@@ -21,6 +21,7 @@ class FaceRec extends StatefulWidget {
 }
 
 class FaceRecState extends State<FaceRec> {
+  var tts = TTS();
   String? imagePath;
   Face? faceDetected;
   Size? imageSize;
@@ -132,11 +133,10 @@ class FaceRecState extends State<FaceRec> {
         // if (_faceDetectorService.faceDetected) {
         //   User? user = await _mlService.predict();
         //   String? text = user?.user;
-        //   TTS().speak(text!);
+        //   tts.speak(text!);
         // }
         try{
           bool speaking = false;
-          if(!speaking){
             print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
             User? u = await _mlService.predict();
             if(u==null){
@@ -146,10 +146,16 @@ class FaceRecState extends State<FaceRec> {
             print("hihihihihih");
             String? name = u?.user;
             speaking = true;
-            await TTS().speak(name!);
+            if(faceDetected != null){
+              if(tts.state == 0) {
+                if(name != null)
+                  tts.speak("found" + name!);
+                else
+                  tts.speak("found unknown person");
+              }
+            }
             speaking = false;
             print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
-          }
         }
         catch(e){
           print("==============");
