@@ -52,63 +52,71 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                 },
                 child: Expanded(
                     child: Container(
-                      child: Text('Upload Document',
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children : [
+                        Image.asset('assets/upload_doc.png', width: 70, height: 70,),
+                          Text('Upload Document',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 25,
-                        ),),
+                          fontSize: 16,
+                        ),),],
+                      ),
                       padding: EdgeInsets.all(15.0),
                       margin: EdgeInsets.all(10.0),
-                      width: MediaQuery.of(context).size.width/1.1,
-                      height: MediaQuery.of(context).size.height/6,
+                      width: MediaQuery.of(context).size.width/2.3,
+                      height: MediaQuery.of(context).size.height/4,
                       // color: Colors.teal[300],
                       decoration: BoxDecoration(
                         color: Colors.teal[300],
                         //border: Border.all(width: 3,color: Colors.black),
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                          BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+                          ],
                       ),
                     )),
               ),
-            ],
-          ),
-            flex: 1,),
 
 
-          Flexible(child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
 
-            children: [GestureDetector(
+          GestureDetector(
               onTap: () {
                 getImage(1);
               },
               child: Expanded(child: Container(
-                child: Text('Upload Image',
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset('assets/upload_im.png', width: 70, height: 70,),
+                    Text('Upload Image',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 16,
                   ),),
+                  ],
+                ),
                 padding: EdgeInsets.all(15.0),
-                margin: EdgeInsets.all(10.0),
-                width: MediaQuery.of(context).size.width/1.1,
-                height: MediaQuery.of(context).size.height/6,
+                margin: EdgeInsets.all(8.0),
+                width: MediaQuery.of(context).size.width/2.3,
+                height: MediaQuery.of(context).size.height/4,
                 // color: Colors.teal[300],
                 decoration: BoxDecoration(
                   color: Colors.teal[300],
                   //border: Border.all(width: 3,color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                   boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                    BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+                    ],
                 ),
               )),
             ),
             ],
           ),
-            flex: 1,),
+            flex: 2,),
           // GestureDetector(
           //   onTap: (){
           //     getImage(0);
@@ -142,23 +150,29 @@ class _Doc_ReaderState extends State<Doc_Reader> {
                   }));
             },
             child: Expanded(child: Container(
-              child: Text('Realtime OCR',
+              child : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset('assets/scan.png', width: 70, height: 70,),
+                Text('Realtime OCR',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
-                ),),
+                  fontSize: 16,
+                ),),],
+                ),
               padding: EdgeInsets.all(15.0),
               margin: EdgeInsets.all(10.0),
-              width: MediaQuery.of(context).size.width/1.1,
-              height: MediaQuery.of(context).size.height/6,
+              width: MediaQuery.of(context).size.width/2,
+              height: MediaQuery.of(context).size.height/4,
               // color: Colors.red[300],
               decoration: BoxDecoration(
                 color: Colors.teal[300],
                 //border: Border.all(width: 3,color: Colors.black),
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 2,blurRadius: 8,offset:Offset(4,4)),
-                  BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 8,offset:Offset(-4,-4))],
+                  ],
               ),
             )),
     ),
