@@ -11,6 +11,11 @@ Future main() async {
   await dotenv.load(fileName: ".env");
   cameras = await availableCameras();
   runApp(MaterialApp(
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(
+        color : Colors.teal[700],
+          ),
+      ),
     home: Home()
   ));
 }

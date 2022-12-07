@@ -334,6 +334,7 @@ class _CameraViewState extends State<CameraView> {
               height:150,
               width:150,
               child:FloatingActionButton(
+                backgroundColor: Colors.teal[300],
                 child: Text("Capture"), //child widget inside this button
                 onPressed: () async{
                   print("Button is pressed.");
@@ -368,7 +369,9 @@ class _CameraViewState extends State<CameraView> {
                   // _body();
                   // task to execute when this button is pressed
                 },
+
               ),
+
             ),
           ),
         ],
