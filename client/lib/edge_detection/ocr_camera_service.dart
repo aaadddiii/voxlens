@@ -144,79 +144,26 @@ class _CameraViewState extends State<CameraView> {
   //   imagePath = file?.path;
   // }
   Widget _captured_body(){
+    widget.onImage(inputImage);
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    // return FutureBuilder(
-    //   builder: (ctx, snapshot) {
-    //     // Checking if future is resolved or not
-    //     if (snapshot.connectionState == ConnectionState.done) {
-    //       // If we got an error
-    //       if (snapshot.hasError) {
-    //         return Center(
-    //           child: Text(
-    //             '${snapshot.error} occurred',
-    //             style: TextStyle(fontSize: 18),
-    //           ),
-    //         );
-    //
-    //         // if we got our data
-    //       } else if (snapshot.hasData) {
-    //         // Extracting data from snapshot object
-    //         final data = snapshot.data as String;
-    //         return Container(
-    //           width: width,
-    //           height: height,
-    //           child: Transform(
-    //               alignment: Alignment.center,
-    //               child: FittedBox(
-    //                 fit: BoxFit.cover,
-    //                 child: Image.file(File(imagePath!)),
-    //               ),
-    //               transform: Matrix4.rotationY(math.pi)),
-    //         );
-    //       }
-    //     }
-    //     // Displaying LoadingSpinner to indicate waiting state
-    //     return Center(
-    //       child: CircularProgressIndicator(),
-    //     );
-    //   },
-    //
-    //   // Future that needs to be resolved
-    //   // inorder to display something on the Canvas
-    //   future: _setImagePath(),
-    // );
-    // if(capturing){
-    //   return Center(child: CircularProgressIndicator(),);
-    // }
-    // return Container(
-    //   width: width,
-    //   height: height,
-    //   child: img);
-    final size = MediaQuery.of(context).size;
-    var scale = size.aspectRatio * _controller!.value.aspectRatio;
-    if (scale < 1) scale = 1 / scale;
-    return Container(
-      // width: width,
-      // height: height,
-      // color: Colors.black,
-      // child: Stack(
-      //   fit: StackFit.expand,
-      //   children: <Widget>[
-      //     Transform.scale(
-      //       scale: scale,
-      //       child: Center(
-      //         child: Image.file(File('$path/image.png')),
-      //         // child: Text("hi"),
-      //       ),
-      //     ),
-      //   ],
-      // ),
-        child : Transform.rotate(
-          angle: math.pi / 2,
-          child: Image.file(File('$path/image.png')),
+    return ListView(shrinkWrap: true, children: [
+      Transform.rotate(
+        angle: math.pi/2,
+        child: SizedBox(
+          height: height,
+          width: width,
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Image.file(File('$path/image.png')),
+              Transform.rotate(angle: -math.pi/2,
+                  child: widget.customPaint!),
+            ],
+          ),
         )
-    );
+      )
+    ]);
   }
   Future<String> getPath() async{
     String path = (await getApplicationDocumentsDirectory()).path;
