@@ -19,6 +19,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
   bool _isBusy = false;
   CustomPaint? _customPaint;
   String? _text;
+  var tts = TTS();
 
   @override
   void dispose() async {
@@ -41,7 +42,6 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
   }
 
   Future<void> processImage(InputImage inputImage) async {
-    if(_speaking) return;
     if (!_canProcess) return;
     if(_isBusy)
     if (_isBusy) return;
@@ -52,23 +52,28 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
     final recognizedText = await _textRecognizer.processImage(inputImage);
     for(var block in recognizedText.blocks){
       if(block.boundingBox.left < 10 && block.cornerPoints[1].y < 10){
-        await TTS().speak("move away");
+        if(tts.state == 0)
+          tts.speak("move away");
       }
       else if(block.boundingBox.left < 5){
-        await TTS().speak("move left");
+        if(tts.state == 0)
+          tts.speak("move left");
       }
       else if(block.cornerPoints[1].y < 5){
-        await TTS().speak("move right");
+        if(tts.state == 0)
+          tts.speak("move right");
       }
       else if(block.boundingBox.top< 10){
-        await TTS().speak("move up");
+        if(tts.state == 0)
+          tts.speak("move up");
       }
       else if(block.boundingBox.bottom > 1100){
-        await TTS().speak("move down");
+        if(tts.state == 0)
+          tts.speak("move down");
       }
       // else if(!(block.boundingBox.left < 10) || !(block.cornerPoints[1].y < 10)){
       //     Vibration.vibrate(duration: 1000);
-      //     await TTS().speak("capture");
+      //     await tts.speak("capture");
       // }
 
       print('=======================================================================');

@@ -22,7 +22,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
   bool _isBusy = false;
   CustomPaint? _customPaint;
   String? _text;
-
+  var tts = TTS();
   @override
   void initState() {
     super.initState();
@@ -65,7 +65,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
 
   void _initializeDetector(DetectionMode mode) async {
     print('Set detector in mode: $mode');
-    // TTS().speak('Set detector in mode: $mode');
+    // tts.speak('Set detector in mode: $mode');
     // uncomment next lines if you want to use the default model
     // final options = ObjectDetectorOptions(
     //     mode: mode,
@@ -76,7 +76,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     // uncomment next lines if you want to use a local model
     // make sure to add tflite model to assets/ml
     final path = 'assets/object_labeler.tflite';
-    // TTS().speak('loading model');
+    // tts.speak('loading model');
     final modelPath = await _getModel(path);
     final options = LocalObjectDetectorOptions(
       mode: mode,
@@ -85,7 +85,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
       multipleObjects: true,
     );
     _objectDetector = ObjectDetector(options: options);
-    // TTS().speak('succesfully loaded');
+    // tts.speak('succesfully loaded');
     // uncomment next lines if you want to use a remote model
     // make sure to add model to firebase
     // final modelName = 'bird-classifier';
@@ -107,7 +107,7 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     if(_speaking) return;
     if (!_canProcess) return;
     if(_isBusy){
-      // await TTS().speak('busy aane');
+      // await tts.speak('busy aane');
       // print('==========================================================================');
     }
     // print('==========================================================================');
@@ -120,22 +120,21 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
     String objects_str = "";
     for (final DetectedObject detectedObject in objects) {
       for (final Label label in detectedObject.labels) {
-        _speaking = true;
-        await TTS().speak(label.text);
-        _speaking = false;
+        if(tts.state == 0)
+          tts.speak(label.text);
         objects_str += label.text + " ";
         print(label.text);
       }
     }
     _speaking = false;
     // _speaking = true;
-    // TTS().speak(objects_str);
+    // tts.speak(objects_str);
     // _speaking = false;
     for(var object in objects){
       print(object.boundingBox);
 
     }
-    // TTS().speak('processed');
+    // tts.speak('processed');
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
       final painter = ObjectDetectorPainter(
