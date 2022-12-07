@@ -1,6 +1,9 @@
 import 'package:client/document_reader.dart';
 import 'package:client/object_detection/obj_camera_service.dart';
 import 'package:flutter/material.dart';
+import 'distance_calculation/object_detect.dart';
+import 'edge_detection/ocr_detection.dart';
+import 'face_recognition/face_rec.dart';
 import 'face_recognition/face_ui.dart';
 import 'main_menu.dart';
 import 'object_detection.dart';
@@ -55,9 +58,9 @@ class _HomeState extends State<Home> {
         break;
       case "scan":{
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return Doc_Reader();
+          return TextRecognizerView();
         }));
-        getImage(0);
+
         break;
       }
       case "upload_im":
@@ -80,7 +83,12 @@ class _HomeState extends State<Home> {
 
       case "face":
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return FaceUI();
+          return FaceRec();
+        }));
+        break;
+      case "dist":
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DistanceCalculatorView();
         }));
         break;
       case "back":
@@ -88,6 +96,9 @@ class _HomeState extends State<Home> {
         break;
       case "stop":
         TTS().stop();
+        break;
+      case "exit":
+        AlanVoice.deactivate();
         break;
       default:
         debugPrint("Unknown command");
@@ -99,7 +110,7 @@ class _HomeState extends State<Home> {
 
     _initializeServices();
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => TTS().speak("Welcome. Open main menu to find the options"));
+        .addPostFrameCallback((_) => TTS().speak("Welcome to VoxLens"));
   }
 
   _initializeServices() async {
@@ -130,7 +141,7 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(margin: EdgeInsets.all(25.0), child: Image.asset('assets/icon/icon.png', height: 100,width: 100,))
+            Container(margin: EdgeInsets.all(25.0), child: Image.asset('assets/icon.png', height: 100,width: 100,))
             ,Text(
           'VoxLens',
             style: TextStyle(

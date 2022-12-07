@@ -17,6 +17,12 @@ class Doc_Reader extends StatefulWidget {
 
 class _Doc_ReaderState extends State<Doc_Reader> {
 
+  void initState() {
+    super.initState();
+    AlanVoice.deactivate();
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => TTS().speak("Opened Doc reader"));
+  }
 
   XFile? imageFile;
   String scannedText="";

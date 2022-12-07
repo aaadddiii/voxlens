@@ -197,8 +197,8 @@ class _CameraViewState extends State<CameraView> {
     var scale = size.aspectRatio * _controller!.value.aspectRatio;
     if (scale < 1) scale = 1 / scale;
     return Container(
-      width: width,
-      height: height,
+      // width: width,
+      // height: height,
       // color: Colors.black,
       // child: Stack(
       //   fit: StackFit.expand,

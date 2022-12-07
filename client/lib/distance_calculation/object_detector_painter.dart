@@ -19,6 +19,7 @@ class ObjectDetectorPainter extends CustomPainter {
       // "distance": 0.5
       "ratio": 36382.5
     },
+
     "Tableware": {
       // "cornerPoints": [284.0, 357.0, 431.0, 852.0],
       // "distance": 0.5
