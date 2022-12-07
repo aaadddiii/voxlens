@@ -85,7 +85,7 @@ class _CameraViewState extends State<CameraView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Distance Calculation"),
         actions: [
           if (_allowPicker)
             Padding(
