@@ -1,3 +1,4 @@
+import 'package:alan_voice/alan_voice.dart';
 import 'package:client/locator.dart';
 import 'db_helper.dart';
 import 'user_model.dart';
@@ -35,6 +36,17 @@ class _AuthActionButtonState extends State<AuthActionButton> {
       TextEditingController(text: '');
 
   User? predictedUser;
+  _AuthActionButtonState(){
+    AlanVoice.onCommand.add((command) => _handleCommand(command.data));
+  }
+
+  void _handleCommand(Map<String, dynamic> command) {
+    switch(command["command"]) {
+      case "capture":
+        onTap();
+        break;
+    }
+  }
 
   Future _signUp(context) async {
     DatabaseHelper _databaseHelper = DatabaseHelper.instance;
