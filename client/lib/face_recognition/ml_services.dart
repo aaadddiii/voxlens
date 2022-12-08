@@ -12,7 +12,7 @@ import 'package:client/tts.dart';
 
 class MLService {
   Interpreter? _interpreter;
-  double threshold = 1;
+  double threshold = 1.0;
   List _predictedData = [];
   List get predictedData => _predictedData;
 
