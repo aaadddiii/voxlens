@@ -116,10 +116,10 @@ class ObjectDetectorPainter extends CustomPainter {
             else{
               dist = distance.toStringAsFixed(0);
             }
-            // if(tts.state == 0){
-            //   Future.delayed(const Duration(milliseconds: 500),);
-            //   tts.speak("${label.text} is {$dist} metre away");
-            // }
+            if(tts.state == 0){
+              Future.delayed(const Duration(milliseconds: 500),);
+              tts.speak("${label.text} is {$dist} metre away");
+            }
             builder.addText('distance ${dist}\n');
           }
           catch(e){
