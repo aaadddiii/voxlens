@@ -13,6 +13,7 @@ import 'package:alan_voice/alan_voice.dart';
 import 'package:client/face_recognition/ml_services.dart';
 import 'face_recognition/camera_service.dart';
 import 'face_recognition/face_detector_service.dart';
+import 'face_recognition/auth-action-button.dart';
 import 'locator.dart';
 import 'edge_detection/ocr_camera_service.dart';
 import 'object_detection/object_detect.dart';
@@ -31,6 +32,7 @@ class _HomeState extends State<Home> {
   // OCRCameraService _ocrCameraService = locator<OCRCameraService>();
   OBJCameraService _objCameraService = locator<OBJCameraService>();
   bool loading = false;
+
   @override
   _HomeState() {
     /// Init Alan Button with project key from Alan Studio
@@ -86,6 +88,7 @@ class _HomeState extends State<Home> {
           return FaceRec();
         }));
         break;
+
       case "dist":
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return DistanceCalculatorView();

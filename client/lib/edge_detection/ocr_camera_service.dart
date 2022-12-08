@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
+import 'package:alan_voice/alan_voice.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,18 @@ class _CameraViewState extends State<CameraView> {
   bool capturing = false;
   late InputImage inputImage ;
   @override
+  _CameraViewState(){
+    AlanVoice.onCommand.add((command) => _handleCommand(command.data));
+  }
+
+  void _handleCommand(Map<String, dynamic> command) {
+    switch(command["command"]) {
+      case "capture":
+        capture();
+       break;
+    }
+  }
+
   void initState() {
     super.initState();
 
@@ -286,39 +299,7 @@ class _CameraViewState extends State<CameraView> {
               child:FloatingActionButton(
                 backgroundColor: Colors.teal[300],
                 child: Text("Capture"), //child widget inside this button
-                onPressed: () async{
-                  print("Button is pressed.");
-                  TTS().stop();
-                  // _body();
-                  // await _controller?.stopImageStream();
-                  // XFile? rawImage = await takePicture();
-                  captured = true;
-                  // image = Image.memory(convert);
-                  // await delete();
-                  imageCache.clear();
-                  lst = await convertImagetoPng(img!);
-                  // if(lst != null){
-                  // }
-                  // try{
-
-                  // }
-                  // catch(e){
-                  //   print("===+++-----+++++++========>>>>>>><<<<<<<<<<<");
-                  //   print(e);}
-                  // if(receiptFile == null){
-                  //   print("//////////////////////////////////////|||||||||||||--------==========");
-                  // }
-                  path = await getPath();
-                  await File('$path/image.png').writeAsBytes(lst!);
-                  // receiptFile = await File('image.png').writeAsBytes(lst!);
-                  // await File("image.png").writeAsBytesSync(lst!);
-                  setState(() {});
-                  await _stopLiveFeed();
-                  // imagePath = rawImage?.path;
-                  // _captured_body();
-                  // _body();
-                  // task to execute when this button is pressed
-                },
+                onPressed: capture,
 
               ),
 
@@ -368,7 +349,39 @@ class _CameraViewState extends State<CameraView> {
         ),
     ]);
   }
+  Future capture() async{
+  print("Button is pressed.");
+  TTS().stop();
+  // _body();
+  // await _controller?.stopImageStream();
+  // XFile? rawImage = await takePicture();
+  captured = true;
+  // image = Image.memory(convert);
+  // await delete();
+  imageCache.clear();
+  lst = await convertImagetoPng(img!);
+  // if(lst != null){
+  // }
+  // try{
 
+  // }
+  // catch(e){
+  //   print("===+++-----+++++++========>>>>>>><<<<<<<<<<<");
+  //   print(e);}
+  // if(receiptFile == null){
+  //   print("//////////////////////////////////////|||||||||||||--------==========");
+  // }
+  path = await getPath();
+  await File('$path/image.png').writeAsBytes(lst!);
+  // receiptFile = await File('image.png').writeAsBytes(lst!);
+  // await File("image.png").writeAsBytesSync(lst!);
+  setState(() {});
+  await _stopLiveFeed();
+// imagePath = rawImage?.path;
+// _captured_body();
+// _body();
+// task to execute when this button is pressed
+}
   Future _getImage(ImageSource source) async {
     setState(() {
       _image = null;
