@@ -179,7 +179,13 @@ class _Doc_ReaderState extends State<Doc_Reader> {
     ],),
           flex: 1,),
 
-        ],),
+          SizedBox(
+              height: 100.0,
+              width: 100.0,
+              child: FloatingActionButton(
+                onPressed: (){TTS().stop();},
+                child: Text("Stop"),
+              )),],),
     );
   }
 

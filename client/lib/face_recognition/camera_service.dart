@@ -1,8 +1,11 @@
 import 'dart:ui';
-
 import 'package:camera/camera.dart';
-import 'package:flutter/foundation.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:flutter/material.dart';
+import 'package:google_mlkit_commons/google_mlkit_commons.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:client/tts.dart';
+
 
 class CameraService {
   CameraController? _cameraController;
@@ -16,6 +19,7 @@ class CameraService {
 
   Future<void> initialize() async {
     if (_cameraController != null) return;
+
     CameraDescription description = await getCameraDescription();
     await _setupCameraController(description: description);
     this._cameraRotation = rotationIntToImageRotation(
@@ -27,6 +31,7 @@ class CameraService {
     List<CameraDescription> cameras = await availableCameras();
     return cameras.firstWhere((CameraDescription camera) =>
     camera.lensDirection == CameraLensDirection.front);
+
   }
 
   Future _setupCameraController({

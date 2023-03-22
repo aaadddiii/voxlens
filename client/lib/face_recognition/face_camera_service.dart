@@ -1,18 +1,12 @@
-import 'dart:async';
 import 'dart:io';
-import 'dart:ui' as ui;
-import 'package:alan_voice/alan_voice.dart';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:math' as math;
+
 import '../main.dart';
-import 'package:client/tts.dart';
-import 'convert_image.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:flutter/services.dart';
 
 enum ScreenMode { liveFeed, gallery }
 
@@ -33,7 +27,7 @@ class CameraView extends StatefulWidget {
   final Function(InputImage inputImage) onImage;
   final Function(ScreenMode mode)? onScreenModeChanged;
   final CameraLensDirection initialDirection;
-  bool is_captured = false;
+
   @override
   State<CameraView> createState() => _CameraViewState();
 }
@@ -41,36 +35,15 @@ class CameraView extends StatefulWidget {
 class _CameraViewState extends State<CameraView> {
   ScreenMode _mode = ScreenMode.liveFeed;
   CameraController? _controller;
-  String? imagePath;
   File? _image;
-  var tts = TTS();
   String? _path;
-  List<int>? lst;
   ImagePicker? _imagePicker;
   int _cameraIndex = -1;
   double zoomLevel = 0.0, minZoomLevel = 0.0, maxZoomLevel = 0.0;
   final bool _allowPicker = true;
-  String? path;
-  CameraImage? img;
-  Image? image;
-  File? receiptFile;
   bool _changingCameraLens = false;
-  bool captured = false;
-  bool capturing = false;
-  late InputImage inputImage ;
+
   @override
-  _CameraViewState(){
-    AlanVoice.onCommand.add((command) => _handleCommand(command.data));
-  }
-
-  void _handleCommand(Map<String, dynamic> command) {
-    switch(command["command"]) {
-      case "capture":
-        capture();
-       break;
-    }
-  }
-
   void initState() {
     super.initState();
 
@@ -110,10 +83,9 @@ class _CameraViewState extends State<CameraView> {
 
   @override
   Widget build(BuildContext context) {
-    if(!captured)
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Distance Calculation"),
         actions: [
           if (_allowPicker)
             Padding(
@@ -135,31 +107,6 @@ class _CameraViewState extends State<CameraView> {
       floatingActionButton: _floatingActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
-    else
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        actions: [
-          if (_allowPicker)
-            Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: _switchScreenMode,
-                child: Icon(
-                  _mode == ScreenMode.liveFeed
-                      ? Icons.photo_library_outlined
-                      : (Platform.isIOS
-                      ? Icons.camera_alt_outlined
-                      : Icons.camera),
-                ),
-                ),
-              ),
-        ],
-      ),
-      body: _body(),
-      floatingActionButton: _floatingActionButton_captured(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
   }
 
   Widget? _floatingActionButton() {
@@ -179,87 +126,8 @@ class _CameraViewState extends State<CameraView> {
         ));
   }
 
-  Widget? _floatingActionButton_captured() {
-    if (_mode == ScreenMode.gallery) return null;
-    if (cameras.length == 1) return null;
-    return SizedBox(
-        height: 70.0,
-        width: 70.0,
-        child: FloatingActionButton(
-          onPressed: (){TTS().stop();},
-          child: Text("Stop"),
-        ));
-  }
-  // Future _setImagePath() async{
-  //   assert(_controller != null, 'Camera controller not initialized');
-  //   await _controller?.stopImageStream();
-  //   XFile? file = await _controller?.takePicture();
-  //   imagePath = file?.path;
-  // }
-  Widget _captured_body(){
-    widget.onImage(inputImage);
-    widget.is_captured = true;
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    return ListView(shrinkWrap: true, children: [
-      Transform.rotate(
-        angle: math.pi/2,
-        child: SizedBox(
-          height: height,
-          width: width,
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              Image.file(File('$path/image.png')),
-              Transform.rotate(angle: -math.pi/2,
-                  child: widget.customPaint!),
-            ],
-          ),
-        )
-      ),
-    ]);
-  }
-  Future<String> getPath() async{
-    String path = (await getApplicationDocumentsDirectory()).path;
-    return path;
-  }
-  Future<File> get _localFile async {
-    final path = await getPath();
-    print('path ${path}');
-    return File('$path/image.png');
-  }
-
-  Future<int> delete() async {
-    try {
-      final file = await _localFile;
-
-      await file.delete();
-    } catch (e) {
-      return 0;
-    }
-    return 0;
-  }
-  Future<XFile?> takePicture() async {
-    final CameraController? cameraController = _controller;
-
-    if (cameraController!.value.isTakingPicture) {
-      // A capture is already pending, do nothing.
-      return null;
-    }
-
-    try {
-      XFile file = await cameraController.takePicture();
-      return file;
-    } on CameraException catch (e) {
-      print('Error occured while taking picture: $e');
-      return null;
-    }
-  }
   Widget _body() {
     Widget body;
-    if(captured){
-      return _captured_body();
-    }
     if (_mode == ScreenMode.liveFeed) {
       body = _liveFeedBody();
     } else {
@@ -267,15 +135,6 @@ class _CameraViewState extends State<CameraView> {
     }
     return body;
   }
-
-  // Future<String> getFilePath() async {
-  //   Directory appDocumentsDirectory = await getApplicationDocumentsDirectory(); // 1
-  //   String appDocumentsPath = appDocumentsDirectory.path; // 2
-  //   String filePath = '$appDocumentsPath/demoTextFile.txt'; // 3
-  //
-  //   return filePath;
-  // }
-
 
   Widget _liveFeedBody() {
     if (_controller?.value.isInitialized == false) {
@@ -326,27 +185,12 @@ class _CameraViewState extends State<CameraView> {
                   ? null
                   : (maxZoomLevel - 1).toInt(),
             ),
-          ),
-          Positioned(
-            bottom: 200,
-            left: 10,
-            right: 10,
-            child: SizedBox(
-              height:150,
-              width:150,
-              child:FloatingActionButton(
-                backgroundColor: Colors.teal[300],
-                child: Text("Capture"), //child widget inside this button
-                onPressed: capture,
-
-              ),
-
-            ),
-          ),
+          )
         ],
       ),
     );
   }
+
   Widget _galleryBody() {
     return ListView(shrinkWrap: true, children: [
       _image != null
@@ -387,40 +231,7 @@ class _CameraViewState extends State<CameraView> {
         ),
     ]);
   }
-  Future capture() async{
-  print("Button is pressed.");
-  TTS().stop();
-  // _body();
-  // await _controller?.stopImageStream();
-  // XFile? rawImage = await takePicture();
-  captured = true;
-  widget.is_captured = true;
-  // image = Image.memory(convert);
-  // await delete();
-  imageCache.clear();
-  lst = await convertImagetoPng(img!);
-  // if(lst != null){
-  // }
-  // try{
 
-  // }
-  // catch(e){
-  //   print("===+++-----+++++++========>>>>>>><<<<<<<<<<<");
-  //   print(e);}
-  // if(receiptFile == null){
-  //   print("//////////////////////////////////////|||||||||||||--------==========");
-  // }
-  path = await getPath();
-  await File('$path/image.png').writeAsBytes(lst!);
-  // receiptFile = await File('image.png').writeAsBytes(lst!);
-  // await File("image.png").writeAsBytesSync(lst!);
-  setState(() {});
-  await _stopLiveFeed();
-// imagePath = rawImage?.path;
-// _captured_body();
-// _body();
-// task to execute when this button is pressed
-}
   Future _getImage(ImageSource source) async {
     setState(() {
       _image = null;
@@ -495,13 +306,11 @@ class _CameraViewState extends State<CameraView> {
       _image = File(path);
     });
     _path = path;
-    inputImage = InputImage.fromFilePath(path);
+    final inputImage = InputImage.fromFilePath(path);
     widget.onImage(inputImage);
   }
 
   Future _processCameraImage(CameraImage image) async {
-    // img = convertToImage(image) as Image;
-    img = image;
     final WriteBuffer allBytes = WriteBuffer();
     for (final Plane plane in image.planes) {
       allBytes.putUint8List(plane.bytes);
@@ -537,7 +346,8 @@ class _CameraViewState extends State<CameraView> {
       planeData: planeData,
     );
 
-    inputImage = InputImage.fromBytes(bytes: bytes, inputImageData: inputImageData);
+    final inputImage =
+    InputImage.fromBytes(bytes: bytes, inputImageData: inputImageData);
 
     widget.onImage(inputImage);
   }

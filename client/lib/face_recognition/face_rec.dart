@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'package:camera/camera.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'camera_service.dart';
 import 'package:client/locator.dart';
@@ -51,12 +52,16 @@ class FaceRecState extends State<FaceRec> {
   }
 
   _start() async {
-    setState(() => _initializing = true);
-    await _cameraService.initialize();
-    _faceDetectorService.initialize();
-    setState(() => _initializing = false);
+    try{
 
-    _frameFaces();
+      setState(() => _initializing = true);
+      await _cameraService.initialize();
+      _faceDetectorService.initialize();
+      setState(() => _initializing = false);
+
+      _frameFaces();
+    }
+    catch(e){}
   }
 
   Future<bool> onShot() async {

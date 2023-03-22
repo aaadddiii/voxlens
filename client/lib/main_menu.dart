@@ -10,6 +10,7 @@ import 'object_detection.dart';
 import 'face_recognition/face_ui.dart';
 import 'distance_calculation/object_detect.dart';
 import 'face_recognition/face_rec.dart';
+import 'face_recognition/recognition_service.dart';
 
 class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);
@@ -195,7 +196,7 @@ class _Main_menuState extends State<Main_menu> {
                 onTap: (){
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
-                        return FaceRec();
+                        return FaceRecView();
                       }));
                 },
                 child: Expanded(child: Container(
