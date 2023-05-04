@@ -24,7 +24,7 @@ class _Main_menuState extends State<Main_menu> {
     super.initState();
     AlanVoice.deactivate();
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => TTS().speak("Opened main menu"));
+        .addPostFrameCallback((_) => TTS().speak("Welcome to VoxLens"));
   }
 
   @override

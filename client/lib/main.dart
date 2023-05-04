@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'locator.dart';
 import 'package:client/face_recognition/camera_service.dart';
 import 'package:flutter/services.dart';
-
+import 'main_menu.dart';
 
 List<CameraDescription> cameras = [];
 Future main() async {
@@ -21,6 +21,6 @@ Future main() async {
         color : Colors.teal[700],
           ),
       ),
-    home: Home()
+    home: Main_menu()
   ));
 }
