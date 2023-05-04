@@ -272,9 +272,56 @@ class _Main_menuState extends State<Main_menu> {
                 //
               ),
             ],
+          ),
+
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GestureDetector(
+
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                        return FaceRecView();
+                      }));
+                },
+                child: Expanded(child: Container(
+                  child: Center(child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/money.png', width: 100, height: 100,),
+                        Text('Currency Detector',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),),]
+                  ),),
+                  padding: EdgeInsets.all(15.0),
+                  margin: EdgeInsets.all(15.0),
+
+                  width: MediaQuery.of(context).size.width/2.5,
+                  height: MediaQuery.of(context).size.height/4,
+
+                  // color: Colors.red[300],
+                  decoration: BoxDecoration(
+                    color: Colors.teal[300],
+                    //border: Border.all(width: 3,color: Colors.blueAccent),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow : [BoxShadow(color: Colors.black,spreadRadius: 1,blurRadius: 4,offset:Offset(3,3)),
+                      BoxShadow(color: Colors.grey,spreadRadius: 1,blurRadius: 4,offset:Offset(-3,-3))],
+                  ),
+                )),
+              ),
+              // Row(
+
+            ],
           )
 
-                     ],
+        ],
       ),),
 
     );
