@@ -198,7 +198,7 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
     // TTS().speak("the lael is " + plantLabel);
     _setAnalyzing(false);
     final result = _ResultStatus.found;
-    List arr = ["ten", "twenty", "fifty", "two hundred", "two hundred", "five hundred", "two thousand"];
+    List arr = ["ten", "twenty", "fifty", "one hundred", "two hundred", "fifty", "five hundred"];
     final plantLabel = arr[index];
     final accuracy = 0.0;
     setState(() {
