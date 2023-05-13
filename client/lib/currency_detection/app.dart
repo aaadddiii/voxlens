@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'widget/plant_recogniser.dart';
+import 'widget/currency_recogniser.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
       ],
     );
     return MaterialApp(
-      title: 'Plant Recognizer',
+      title: 'Currency Recognizer',
       theme: ThemeData.light(),
       home: const PlantRecogniser(),
       debugShowCheckedModeBanner: false,

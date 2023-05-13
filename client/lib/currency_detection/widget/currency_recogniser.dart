@@ -33,7 +33,7 @@ import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 import '../classifier/classifier.dart';
 import '../styles.dart';
-import 'plant_photo_view.dart';
+import 'currency_photo_view.dart';
 import 'package:client/tts.dart';
 
 const _labelsFileName = 'assets/labels.txt';
