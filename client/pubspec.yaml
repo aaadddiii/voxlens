@@ -51,6 +51,12 @@ dependencies:
   flutter_mobile_vision_2:
   image: ^3.2.2
   vibration: ^1.7.5
+  tflite_flutter_helper:
+    git:
+      url: https://github.com/elephantum/tflite_flutter_helper.git
+      ref: a7d7a59a33f7cffa0a2a12ab05625807622cc97a
+
+
 
 dev_dependencies:
   flutter_launcher_icons: "^0.9.2"

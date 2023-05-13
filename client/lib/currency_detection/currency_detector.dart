@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
+import 'package:client/tts.dart';
 
 class CurrencyDetector extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -46,6 +47,7 @@ class _CurrencyDetectorState extends State<CurrencyDetector> {
     try {
       _interpreter = await Interpreter.fromAsset('currency_detector.tflite');
       print('Interpreter loaded successfully');
+      TTS().speak('Interpreter loaded successfully');
     } catch (e) {
       print('Failed to load interpreter: $e');
     }

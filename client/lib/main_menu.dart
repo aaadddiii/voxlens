@@ -11,6 +11,8 @@ import 'face_recognition/face_ui.dart';
 import 'distance_calculation/object_detect.dart';
 import 'face_recognition/face_rec.dart';
 import 'face_recognition/recognition_service.dart';
+import 'currency_detection/sample.dart';
+import 'currency_detection/app.dart';
 
 class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);
@@ -284,7 +286,7 @@ class _Main_menuState extends State<Main_menu> {
                 onTap: (){
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) {
-                        return FaceRecView();
+                        return MainApp();
                       }));
                 },
                 child: Expanded(child: Container(
