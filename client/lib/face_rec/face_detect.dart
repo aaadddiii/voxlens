@@ -1,0 +1,184 @@
+import 'dart:io' as io;
+import 'package:client/tts.dart';
+import 'package:camera/camera.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
+
+import 'face_camera_view.dart';
+import 'face_detector_paintor.dart';
+import 'ml_services.dart';
+import 'package:client/locator.dart';
+import 'package:image/image.dart' as imglib;
+
+class FaceDetectorView extends StatefulWidget {
+  @override
+  State<FaceDetectorView> createState() => _FaceDetectorView();
+}
+
+class _FaceDetectorView extends State<FaceDetectorView> {
+  late FaceDetector _objectDetector;
+  bool _canProcess = false;
+  List<Face> objects = [];
+  bool _speaking = false;
+  bool _isBusy = false;
+  CustomPaint? _customPaint;
+  String? _text;
+  var tts = TTS();
+  @override
+  void initState() {
+    super.initState();
+
+    _initializeDetector(DetectionMode.stream);
+  }
+
+  @override
+  void dispose() {
+    _canProcess = false;
+    _objectDetector.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CameraView(
+      title: 'Object Detector',
+      customPaint: _customPaint,
+      text: _text,
+      onImage: (inputImage) {
+        processImage(inputImage);
+      },
+      onScreenModeChanged: _onScreenModeChanged,
+      initialDirection: CameraLensDirection.back,
+    );
+  }
+
+  void _onScreenModeChanged(ScreenMode mode) {
+    switch (mode) {
+      case ScreenMode.gallery:
+        _initializeDetector(DetectionMode.single);
+        return;
+
+      case ScreenMode.liveFeed:
+        _initializeDetector(DetectionMode.stream);
+        return;
+    }
+  }
+
+  void _initializeDetector(DetectionMode mode) async {
+    print('Set detector in mode: $mode');
+    // tts.speak('Set detector in mode: $mode');
+    // uncomment next lines if you want to use the default model
+    // final options = ObjectDetectorOptions(
+    //     mode: mode,
+    //     classifyObjects: true,
+    //     multipleObjects: true);
+    // _objectDetector = ObjectDetector(options: options);
+
+    // uncomment next lines if you want to use a local model
+    // make sure to add tflite model to assets/ml
+    final path = 'assets/object_labeler.tflite';
+    // tts.speak('loading model');
+    final modelPath = await _getModel(path);
+    final options = LocalObjectDetectorOptions(
+      mode: mode,
+      modelPath: modelPath,
+      classifyObjects: true,
+      multipleObjects: true,
+    );
+    _objectDetector = GoogleMlKit.vision.faceDetector();
+    // tts.speak('succesfully loaded');
+    // uncomment next lines if you want to use a remote model
+    // make sure to add model to firebase
+    // final modelName = 'bird-classifier';
+    // final response =
+    //     await FirebaseObjectDetectorModelManager().downloadModel(modelName);
+    // print('Downloaded: $response');
+    // final options = FirebaseObjectDetectorOptions(
+    //   mode: mode,
+    //   modelName: modelName,
+    //   classifyObjects: true,
+    //   multipleObjects: true,
+    // );
+    // _objectDetector = ObjectDetector(options: options);
+
+    _canProcess = true;
+  }
+
+  Future<void> processImage(InputImage inputImage) async {
+    if(_speaking) return;
+    if (!_canProcess) return;
+    if(_isBusy){
+      // await tts.speak('busy aane');
+      // print('==========================================================================');
+    }
+    // print('==========================================================================');
+    if (_isBusy) return;
+    _isBusy = true;
+    setState(() {
+      _text = '';
+    });
+    objects = await _objectDetector.processImage(inputImage);
+    String objects_str = "";
+    // FaceMLService.face = objects[0];
+    // for (final DetectedObject detectedObject in objects) {
+    //   for (final Label label in detectedObject.labels) {
+    //     if(tts.state == 0){
+    //       Future.delayed(const Duration(milliseconds: 500),);
+    //       tts.speak(label.text);
+    //     }
+    //     objects_str += label.text + " ";
+    //     print(label.text);
+    //   }
+    // }
+    // _speaking = false;
+    // _speaking = true;
+    // tts.speak(objects_str);
+    // _speaking = false;
+    // for(var object in objects){
+    //   print(object.boundingBox);
+    //
+    // }
+    // tts.speak('processed');
+    if (inputImage.inputImageData?.size != null &&
+        inputImage.inputImageData?.imageRotation != null) {
+      final painter = FaceDetectorPainter(
+          objects,
+          inputImage.inputImageData!.imageRotation,
+          inputImage.inputImageData!.size);
+      _customPaint = CustomPaint(painter: painter);
+    } else {
+      // String text = 'Objects found: ${objects.length}\n\n';
+      // for (final object in objects) {
+      //   text +=
+      //   'Object:  trackingId: ${object.trackingId} - ${object.labels.map((e) => e.text)}\n\n';
+      // }
+      // _text = text;
+      // // _speaking = true;
+      // print(text);
+      // TODO: set _customPaint to draw boundingRect on top of image
+      _customPaint = null;
+    }
+    _isBusy = false;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+  Future<String> _getModel(String assetPath) async {
+    if (io.Platform.isAndroid) {
+      return 'flutter_assets/$assetPath';
+    }
+    final path = '${(await getApplicationSupportDirectory()).path}/$assetPath';
+    await io.Directory(dirname(path)).create(recursive: true);
+    final file = io.File(path);
+    if (!await file.exists()) {
+      final byteData = await rootBundle.load(assetPath);
+      await file.writeAsBytes(byteData.buffer
+          .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    }
+    return file.path;
+  }
+}
