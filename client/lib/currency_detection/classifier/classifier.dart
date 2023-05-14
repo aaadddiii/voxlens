@@ -134,12 +134,19 @@ class Classifier {
 
     // Post Process the outputBuffer
     List<double> result = outputBuffer.getDoubleList();
+
     // List<double> doubleList = result.map((item) => item.toDouble()).toList();
     // final resultCategories = _postProcessOutput(outputBuffer);
+    print('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+    if(result.reduce((a, b) => a > b ? a : b) < 0.03){
+      return 7;
+    }
+    print('=======================================================================');
     final index = result.indexOf(result.reduce((a, b) => a > b ? a : b));
     // debugPrint('Top category: $topResult');
     List arr = ["ten", "twenty", "fifty", "two hundred", "two hundred", "five hundred", "two thousand"];
     print(arr[index]);
+
     return index;
   }
 

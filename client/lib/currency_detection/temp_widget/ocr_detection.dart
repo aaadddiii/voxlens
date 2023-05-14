@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:client/tts.dart';
@@ -5,14 +7,16 @@ import 'ocr_camera_service.dart';
 import 'text_detector_painter.dart';
 import 'package:vibration/vibration.dart';
 import 'ocr_camera_service.dart';
+import 'package:image/image.dart' as img;
 
 
-class TextRecognizerView extends StatefulWidget {
+
+class CurrencyRecognizerView extends StatefulWidget {
   @override
-  State<TextRecognizerView> createState() => _TextRecognizerViewState();
+  State<CurrencyRecognizerView> createState() => _CurrencyRecognizerViewState();
 }
 
-class _TextRecognizerViewState extends State<TextRecognizerView> {
+class _CurrencyRecognizerViewState extends State<CurrencyRecognizerView> {
   final TextRecognizer _textRecognizer =
   TextRecognizer(script: TextRecognitionScript.latin);
   bool _canProcess = true;
@@ -22,6 +26,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
   String? _text;
   var tts = TTS();
   var cameraView;
+
   @override
   void dispose() async {
     _canProcess = false;
@@ -42,6 +47,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
     );
     return cameraView;
   }
+
 
   Future<void> processImage(InputImage inputImage) async {
     if (!_canProcess) return;
@@ -89,7 +95,7 @@ class _TextRecognizerViewState extends State<TextRecognizerView> {
       print(block.boundingBox.right);
       print(block.cornerPoints);
     }
-    tts.speak(scannedText);
+    // tts.speak(scannedText);
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
       final painter = TextRecognizerPainter(

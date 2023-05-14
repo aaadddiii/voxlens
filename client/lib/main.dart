@@ -21,6 +21,6 @@ Future main() async {
         color : Colors.teal[700],
           ),
       ),
-    home: Main_menu()
+    home: Home()
   ));
 }

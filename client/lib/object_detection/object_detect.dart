@@ -122,7 +122,8 @@ class _ObjectDetectorView extends State<ObjectDetectorView> {
       for (final Label label in detectedObject.labels) {
         if(tts.state == 0){
           Future.delayed(const Duration(milliseconds: 500),);
-          tts.speak(label.text);
+          if(label.confidence > 0.8)
+            tts.speak(label.text);
         }
         objects_str += label.text + " ";
         print(label.text);

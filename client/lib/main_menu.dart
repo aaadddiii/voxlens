@@ -14,6 +14,7 @@ import 'face_recognition/recognition_service.dart';
 import 'currency_detection/sample.dart';
 import 'currency_detection/app.dart';
 import 'face_rec/face_detect.dart';
+import 'currency_detection/temp_widget/ocr_detection.dart';
 
 class Main_menu extends StatefulWidget {
   const Main_menu({Key? key}) : super(key: key);

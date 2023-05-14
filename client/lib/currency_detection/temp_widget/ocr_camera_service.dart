@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
+import 'package:client/currency_detection/classifier/classifier.dart';
+import 'package:image/image.dart' as imglib;
 import 'package:alan_voice/alan_voice.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
@@ -8,11 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:math' as math;
-import '../main.dart';
+import 'package:client/main.dart';
 import 'package:client/tts.dart';
 import 'convert_image.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
+import '../classifier/classifier.dart';
 
 enum ScreenMode { liveFeed, gallery }
 
@@ -41,6 +44,7 @@ class CameraView extends StatefulWidget {
 class _CameraViewState extends State<CameraView> {
   ScreenMode _mode = ScreenMode.liveFeed;
   CameraController? _controller;
+  Classifier? classifier;
   String? imagePath;
   File? _image;
   var tts = TTS();
@@ -71,7 +75,7 @@ class _CameraViewState extends State<CameraView> {
     }
   }
 
-  void initState() {
+  void initState(){
     super.initState();
 
     _imagePicker = ImagePicker();
@@ -100,6 +104,15 @@ class _CameraViewState extends State<CameraView> {
     } else {
       _mode = ScreenMode.gallery;
     }
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      asyncMethod();
+    });
+  }
+  asyncMethod() async {
+    classifier = await Classifier.loadWith(
+      labelsFileName: 'assets/labels.txt',
+      modelFileName: 'currency.tflite',
+    );
   }
 
   @override
@@ -411,16 +424,34 @@ class _CameraViewState extends State<CameraView> {
   //   print("//////////////////////////////////////|||||||||||||--------==========");
   // }
   path = await getPath();
-  await File('$path/image.png').writeAsBytes(lst!);
+  File fl = await File('$path/image.png').writeAsBytes(lst!);
+  // Uint8List imageBytes = img.planes[0].bytes;
+
   // receiptFile = await File('image.png').writeAsBytes(lst!);
   // await File("image.png").writeAsBytesSync(lst!);
   setState(() {});
   await _stopLiveFeed();
 // imagePath = rawImage?.path;
+  _analyzeImage(fl);
 // _captured_body();
 // _body();
 // task to execute when this button is pressed
 }
+  void _analyzeImage(File image) async {
+
+    final imageInput = imglib.decodeImage(image.readAsBytesSync())!;
+    final index = classifier?.predict(imageInput);
+    // final result = resultCategory.score >= 0.8
+    //     ? _ResultStatus.found
+    //     : _ResultStatus.notFound;
+    // final plantLabel = resultCategory.label;
+    // final accuracy = resultCategory.score;
+    // TTS().speak("the lael is " + plantLabel);
+    List arr = ["Ten","One hundred","Twenty", "Two hundred", "Two thousand", "Fifty", "Five hundred"];
+    final plantLabel = arr[index!];
+    final accuracy = 0.0;
+    TTS().speak(plantLabel);
+  }
   Future _getImage(ImageSource source) async {
     setState(() {
       _image = null;

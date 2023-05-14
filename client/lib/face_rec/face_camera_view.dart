@@ -2,13 +2,16 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'auth-action-button.dart';
 import '../main.dart';
 import 'package:client/locator.dart';
 import 'face_detect.dart';
+import 'package:path/path.dart' as pt;
 import 'ml_services.dart';
 
 enum ScreenMode { liveFeed, gallery }
@@ -36,8 +39,10 @@ class CameraView extends StatefulWidget {
 }
 
 class _CameraViewState extends State<CameraView> {
-  Face? faceDetected;
   String? imagePath;
+  Face? faceDetected;
+  late FaceDetector _objectDetector;
+  List<Face> objects = [];
   ScreenMode _mode = ScreenMode.liveFeed;
   CameraController? _controller;
   File? _image;
@@ -79,11 +84,13 @@ class _CameraViewState extends State<CameraView> {
     } else {
       _mode = ScreenMode.gallery;
     }
+    _initializeDetector(DetectionMode.stream);
   }
 
   @override
   void dispose() {
     _stopLiveFeed();
+    _objectDetector.close();
     super.dispose();
   }
 
@@ -113,6 +120,45 @@ class _CameraViewState extends State<CameraView> {
       floatingActionButton: _floatingActionButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  void _initializeDetector(DetectionMode mode) async {
+    print('Set detector in mode: $mode');
+    // tts.speak('Set detector in mode: $mode');
+    // uncomment next lines if you want to use the default model
+    // final options = ObjectDetectorOptions(
+    //     mode: mode,
+    //     classifyObjects: true,
+    //     multipleObjects: true);
+    // _objectDetector = ObjectDetector(options: options);
+
+    // uncomment next lines if you want to use a local model
+    // make sure to add tflite model to assets/ml
+    final path = 'assets/object_labeler.tflite';
+    // tts.speak('loading model');
+    final modelPath = await _getModel(path);
+    final options = LocalObjectDetectorOptions(
+      mode: mode,
+      modelPath: modelPath,
+      classifyObjects: true,
+      multipleObjects: true,
+    );
+    _objectDetector = GoogleMlKit.vision.faceDetector();
+    // tts.speak('succesfully loaded');
+    // uncomment next lines if you want to use a remote model
+    // make sure to add model to firebase
+    // final modelName = 'bird-classifier';
+    // final response =
+    //     await FirebaseObjectDetectorModelManager().downloadModel(modelName);
+    // print('Downloaded: $response');
+    // final options = FirebaseObjectDetectorOptions(
+    //   mode: mode,
+    //   modelName: modelName,
+    //   classifyObjects: true,
+    //   multipleObjects: true,
+    // );
+    // _objectDetector = ObjectDetector(options: options);
+
   }
 
   Widget? _floatingActionButton() {
@@ -196,7 +242,7 @@ class _CameraViewState extends State<CameraView> {
                     ? null
                     : (maxZoomLevel - 1).toInt(),
               ),SizedBox(),
-                AuthActionButton(onPressed: (){}, isLogin: false, reload: (){})]
+                AuthActionButton(onPressed: onShot, isLogin: false, reload: (){})]
             ),
           ),
         ],
@@ -374,7 +420,20 @@ class _CameraViewState extends State<CameraView> {
     final inputImage = InputImage.fromFilePath(path);
     widget.onImage(inputImage);
   }
-
+  Future<String> _getModel(String assetPath) async {
+    if (Platform.isAndroid) {
+      return 'flutter_assets/$assetPath';
+    }
+    final path = '${(await getApplicationSupportDirectory()).path}/$assetPath';
+    await Directory(pt.dirname(path)).create(recursive: true);
+    final file = File(path);
+    if (!await file.exists()) {
+      final byteData = await rootBundle.load(assetPath);
+      await file.writeAsBytes(byteData.buffer
+          .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    }
+    return file.path;
+  }
   Future _processCameraImage(CameraImage image) async {
     final WriteBuffer allBytes = WriteBuffer();
     for (final Plane plane in image.planes) {
@@ -413,7 +472,8 @@ class _CameraViewState extends State<CameraView> {
 
     final inputImage =
     InputImage.fromBytes(bytes: bytes, inputImageData: inputImageData);
-
+    objects = await _objectDetector.processImage(inputImage);
+    _mlService.setCurrentPrediction(image, objects[0]);
     widget.onImage(inputImage);
   }
 }

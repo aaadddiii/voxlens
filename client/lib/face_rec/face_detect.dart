@@ -162,6 +162,7 @@ class _FaceDetectorView extends State<FaceDetectorView> {
       // TODO: set _customPaint to draw boundingRect on top of image
       _customPaint = null;
     }
+
     _isBusy = false;
     if (mounted) {
       setState(() {});

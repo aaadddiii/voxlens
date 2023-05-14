@@ -15,7 +15,6 @@ class FaceMLService {
   double threshold = 1.0;
   List _predictedData = [];
   List get predictedData => _predictedData;
-  static Face? face;
   Future initialize() async {
     late Delegate delegate;
     try {
@@ -38,7 +37,10 @@ class FaceMLService {
       // }
       // TTS().speak('loading chyunnu');
       // var interpreterOptions = InterpreterOptions().addDelegate(delegate);
+      TTS().speak('loading');
+
       this._interpreter = await Interpreter.fromAsset('mobilefacenet.tflite');
+
       print('Successsssssssssssss||||||||||||||||||||||||||||//////////////////////////');
       TTS().speak('success');
     } catch (e) {
@@ -49,8 +51,8 @@ class FaceMLService {
     }
   }
 
-  void setCurrentPrediction(CameraImage cameraImage) {
-    if (_interpreter == null) throw Exception('Interpreter is null');
+  void setCurrentPrediction(CameraImage cameraImage, Face face) {
+    if (this._interpreter == null) throw Exception('Interpreter is null');
     if (face == null) throw Exception('Face is null');
     List input = _preProcess(cameraImage, face!);
 

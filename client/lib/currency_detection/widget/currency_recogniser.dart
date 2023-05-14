@@ -136,7 +136,7 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
 
   Widget _buildTitle() {
     return const Text(
-      'currency Recogniser',
+      'currency Recognizer',
       style: kTitleTextStyle,
       textAlign: TextAlign.center,
     );
@@ -198,9 +198,10 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
     // TTS().speak("the lael is " + plantLabel);
     _setAnalyzing(false);
     final result = _ResultStatus.found;
-    List arr = ["ten", "twenty", "fifty", "one hundred", "two hundred", "fifty", "five hundred"];
+    List arr = ["Ten","One hundred","Twenty", "Two hundred", "Two thousand", "Fifty", "Five hundred", "Cannot recognize currency"];
     final plantLabel = arr[index];
     final accuracy = 0.0;
+    TTS().speak(plantLabel);
     setState(() {
       _resultStatus = result;
       _plantLabel = plantLabel;
@@ -229,8 +230,8 @@ class _PlantRecogniserState extends State<PlantRecogniser> {
       children: [
         Text(title, style: kResultTextStyle),
         const SizedBox(height: 10),
-        Text(accuracyLabel, style: kResultRatingTextStyle)
-      ],
-    );
+        // Text(accuracyLabel, style: kResultRatingTextStyle)
+      // ],
+    ]);
   }
 }
