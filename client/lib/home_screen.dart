@@ -1,6 +1,7 @@
 import 'package:client/document_reader.dart';
 import 'package:client/object_detection/obj_camera_service.dart';
 import 'package:flutter/material.dart';
+import 'currency_detection/app.dart';
 import 'distance_calculation/object_detect.dart';
 import 'edge_detection/ocr_detection.dart';
 import 'face_recognition/face_rec.dart';
@@ -81,7 +82,7 @@ class _HomeState extends State<Home> {
         break;
       case "nav":
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ObjectDetection();
+          return ObjectDetectorView();
         }));
         break;
 
@@ -94,6 +95,11 @@ class _HomeState extends State<Home> {
       case "dist":
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return DistanceCalculatorView();
+        }));
+        break;
+      case "currency":
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return MainApp();
         }));
         break;
       case "back":
